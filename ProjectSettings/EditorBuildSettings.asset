@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/SimulFactory/Scene/Logo.unity
+    guid: 541c5f7f55009d24c9e6563d66ccac9a
+  - enabled: 1
+    path: Assets/SimulFactory/Scene/Login.unity
+    guid: 1fdcd750eefba2b45925d5403c7b4877
+  - enabled: 1
+    path: Assets/SimulFactory/Scene/Main.unity
+    guid: 38f91a0d726a9474eb42958d64274f87
   m_configObjects: {}
