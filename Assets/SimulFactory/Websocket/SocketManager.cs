@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using WebSocketSharp;
 using System.Text;
+using System.Net.Sockets;
+using System;
 
 /// <summary>
 /// 데이터 보낼 때 사용하는 클래스
@@ -47,7 +49,21 @@ namespace SimulFactory.WebSocket
             m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 서버 ip주소
             m_Socket.OnMessage += Recv;
             m_Socket.Connect();
+            StartCoroutine(CheckServer());
         }
+        IEnumerator CheckServer()
+        {
+            while(true)
+            {
+                yield return new WaitForSeconds(1f);
+                if(m_Socket.ReadyState == WebSocketState.Open)
+                {
+                    break;
+                }
+            }
+            Debug.Log("Websocket Connected");
+        }
+
 
         /// <summary>
         /// 새로운 데이터를 받아오는 메서드.
