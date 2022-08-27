@@ -15,6 +15,7 @@ namespace SimulFactory.Manager
             EventManager.GetInstance();
             WorldManager.GetInstance();
             ObjectPoolManager.GetInstance();
+            LoadingManager.GetInstance();
         }
     }
 
