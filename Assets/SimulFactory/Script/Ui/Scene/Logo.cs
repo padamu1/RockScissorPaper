@@ -26,7 +26,7 @@ namespace SimulFactory.Ui.Logo
 
             hideAnimation = DOTween.Sequence();
             hideAnimation.Append(logoImage.DOFade(0f, 2f).From(1f));
-            hideAnimation.Insert(0f, logoFrame.DOFade(1f, 2f).From(0f));
+            hideAnimation.Insert(0f, logoFrame.DOFade(0f, 2f).From(1f));
             hideAnimation.Insert(0f,logoText.DOFade(0f, 2f).From(1f));
             hideAnimation.SetAutoKill(false);
             hideAnimation.OnComplete(LoadLogin);
