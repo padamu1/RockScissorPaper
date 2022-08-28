@@ -28,9 +28,9 @@ namespace SimulFactory.Manager
         {
             param = new Dictionary<byte, object>(photonEvent.Parameters.paramDict);
             
-            switch((Define.EventCode)photonEvent.Code)
+            switch((Define.EVENT_CODE)photonEvent.Code)
             {
-                case Define.EventCode.ServerInfoS:
+                case Define.EVENT_CODE.ServerInfoS:
                     break;
                 default:
                     break;

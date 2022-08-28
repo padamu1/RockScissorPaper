@@ -36,7 +36,7 @@ namespace SimulFactory.Manager
             if (EventList.ContainsKey(Eventcode))
                 EventList[Eventcode] -= EventAction;
             else
-                Debug.Log("EventCode does not exist");
+                Debug.Log("EVENT_CODE does not exist");
         }
         /// <summary>
         /// Event 발생
@@ -50,7 +50,7 @@ namespace SimulFactory.Manager
                 EventList[EventCode]?.Invoke(null);
             }
             else
-                Debug.Log("The EventList does not contain EventCode.");
+                Debug.Log("The EventList does not contain EVENT_CODE.");
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SimulFactory.Manager
                 EventList[EventCode]?.Invoke(message);
             }
             else
-                Debug.Log("The EventList does not contain EventCode.");
+                Debug.Log("The EventList does not contain EVENT_CODE.");
         }
     }
 }

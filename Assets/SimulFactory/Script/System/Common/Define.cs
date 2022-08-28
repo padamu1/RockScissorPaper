@@ -6,22 +6,21 @@ namespace SimulFactory.System.Common
 {
     public class Define : MonoBehaviour
     {
-        public enum UnityEvent
+        public enum UNOTY_EVENT
         {
-            TEST_EVENT= 1,
-            TEST_EVENT2= 2,
 
         }
-        public enum EventCode
+        public enum EVENT_CODE
         {
+            PlayerNameC = 0,
             ServerInfoS = 1,    // 서버에서 정보를 받을 때 사용
         }
-        public enum HapticType
+        public enum HAPTIC_EVET
         {
             ShortHaptic,
             LongHaptic,
         }
-        public enum AudioSourceType
+        public enum AUDIO_SOURCE_TYPE
         {
             Effect,
             BackGround,

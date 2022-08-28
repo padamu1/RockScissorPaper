@@ -5,6 +5,7 @@ using WebSocketSharp;
 using System.Text;
 using System.Net.Sockets;
 using System;
+using SimulFactory.System.Common;
 
 /// <summary>
 /// 데이터 보낼 때 사용하는 클래스
@@ -14,6 +15,11 @@ public class RequestPacketData
 {
     public byte eventCode;
     public Dictionary<byte, object> data;
+    public void Clear()
+    {
+        eventCode = 0;
+        data.Clear();
+    }
 }
 
 /// <summary>
@@ -42,11 +48,14 @@ namespace SimulFactory.WebSocket
         {
             recvDataList = new List<ReceivedPacketData>();
             recvData = new ReceivedPacketData();
+            recvData.data = new Dictionary<byte, object>();
             reqData = new RequestPacketData();
+            reqData.data = new Dictionary<byte, object>();
         }
         private void Start()
         {
             m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 서버 ip주소
+            //m_Socket = new WebSocketSharp.WebSocket("ws://127.0.0.1:80"); // 서버 ip주소
             m_Socket.OnMessage += Recv;
             m_Socket.Connect();
             StartCoroutine(CheckServer());
@@ -58,6 +67,7 @@ namespace SimulFactory.WebSocket
                 yield return new WaitForSeconds(1f);
                 if(m_Socket.ReadyState == WebSocketState.Open)
                 {
+                    SendPacket(0, new Dictionary<byte, object>());
                     break;
                 }
             }
@@ -73,8 +83,13 @@ namespace SimulFactory.WebSocket
             recvData = JsonUtility.FromJson<ReceivedPacketData>(e.Data);
             DataProcess(recvData);
         }
-        public void SendPacket()
+        public void SendPacket(byte eventCode, Dictionary<byte,object> param)
         {
+            eventCode = (byte)Define.EVENT_CODE.PlayerNameC;
+
+            reqData.eventCode = eventCode;
+            reqData.data.Add(0, "UserName");
+            Debug.Log(reqData);
             m_Socket.Send(JsonUtility.ToJson(reqData));
         }
         private void DataProcess(ReceivedPacketData recvData)
