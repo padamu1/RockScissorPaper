@@ -2,11 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using WebSocketSharp;
-using System.Text;
-using System.Net.Sockets;
-using System;
 using SimulFactory.System.Common;
-
+using Newtonsoft.Json;
 /// <summary>
 /// 데이터 보낼 때 사용하는 클래스
 /// </summary>
@@ -62,35 +59,32 @@ namespace SimulFactory.WebSocket
         }
         IEnumerator CheckServer()
         {
-            while(true)
+            while(m_Socket.ReadyState != WebSocketState.Open)
             {
-                yield return new WaitForSeconds(1f);
-                if(m_Socket.ReadyState == WebSocketState.Open)
-                {
-                    SendPacket(0, new Dictionary<byte, object>());
-                    break;
-                }
+                yield return new WaitForSeconds(0.01f);
             }
+            SendPacket(0, new Dictionary<byte, object>());
             Debug.Log("Websocket Connected");
         }
 
 
         /// <summary>
         /// 새로운 데이터를 받아오는 메서드.
-        /// </summary>
+        /// </summary
         private void Recv(object sender, MessageEventArgs e)
         {
-            recvData = JsonUtility.FromJson<ReceivedPacketData>(e.Data);
+            recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
             DataProcess(recvData);
         }
         public void SendPacket(byte eventCode, Dictionary<byte,object> param)
         {
             eventCode = (byte)Define.EVENT_CODE.PlayerNameC;
 
-            reqData.eventCode = eventCode;
+            reqData.eventCode = 113;
             reqData.data.Add(0, "UserName");
-            Debug.Log(reqData);
-            m_Socket.Send(JsonUtility.ToJson(reqData));
+            Debug.Log(reqData.data[0]);
+            m_Socket.Send(JsonConvert.SerializeObject(reqData));
+            Debug.Log(JsonConvert.SerializeObject(reqData));
         }
         private void DataProcess(ReceivedPacketData recvData)
         {

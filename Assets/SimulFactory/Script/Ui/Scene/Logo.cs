@@ -8,6 +8,7 @@ namespace SimulFactory.Ui.Logo
 {
     public class Logo : MonoBehaviour
     {
+        public Image logoFrame;
         public Image logoImage;
         public TMP_Text logoText;
         private Sequence showAnimation;
@@ -17,6 +18,7 @@ namespace SimulFactory.Ui.Logo
         {
             showAnimation = DOTween.Sequence();
             showAnimation.Append(logoImage.DOFade(1f, 2f).From(0f));
+            showAnimation.Insert(0f, logoFrame.DOFade(1f, 2f).From(0f));
             showAnimation.Insert(0f,logoText.DOFade(1f, 2f).From(0f));
             showAnimation.SetAutoKill(false);
             showAnimation.OnComplete(HideAnimationStart);
@@ -24,6 +26,7 @@ namespace SimulFactory.Ui.Logo
 
             hideAnimation = DOTween.Sequence();
             hideAnimation.Append(logoImage.DOFade(0f, 2f).From(1f));
+            hideAnimation.Insert(0f, logoFrame.DOFade(1f, 2f).From(0f));
             hideAnimation.Insert(0f,logoText.DOFade(0f, 2f).From(1f));
             hideAnimation.SetAutoKill(false);
             hideAnimation.OnComplete(LoadLogin);
