@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivatePanel : MonoBehaviour
+public class PanelSwitch : MonoBehaviour
 {
-    public void Activate(GameObject h)
+    public void PanelOnOff(GameObject h)
     {
-        if(h.activeSelf == true)
+        if (h.activeSelf == true)
         {
             h.SetActive(false);
         }
@@ -16,9 +16,9 @@ public class ActivatePanel : MonoBehaviour
         }
     }
 
-    public void OtherActive(GameObject j)
+    public void PanelOff(GameObject j)
     {
-        if(j.activeSelf == true)
+        if (j.activeSelf == true)
         {
             j.SetActive(false);
         }
