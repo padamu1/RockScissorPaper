@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using WebSocketSharp;
 using SimulFactory.System.Common;
 using Newtonsoft.Json;
+using SimulFactory.Game.Event;
 /// <summary>
 /// 데이터 보낼 때 사용하는 클래스
 /// </summary>
@@ -63,7 +64,6 @@ namespace SimulFactory.WebSocket
             {
                 yield return new WaitForSeconds(0.01f);
             }
-            SendPacket(0, new Dictionary<byte, object>());
             Debug.Log("Websocket Connected");
         }
 
@@ -76,22 +76,38 @@ namespace SimulFactory.WebSocket
             recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
             DataProcess(recvData);
         }
-        public void SendPacket(byte eventCode, Dictionary<byte,object> param)
+        public void SendPacket(byte eventCode)
         {
-            eventCode = (byte)Define.EVENT_CODE.PlayerNameC;
-
-            reqData.eventCode = 113;
-            reqData.data.Add(0, "UserName");
-            Debug.Log(reqData.data[0]);
+            reqData.eventCode = eventCode;
+            reqData.data = new Dictionary<byte, object>();
             m_Socket.Send(JsonConvert.SerializeObject(reqData));
             Debug.Log(JsonConvert.SerializeObject(reqData));
+        }
+        public void SendPacket(byte eventCode, Dictionary<byte,object> param)
+        {
+            reqData.Clear();
+            reqData.eventCode = eventCode;
+            reqData.data = param;
+            reqData.data.Add(120, 0);   // 널 처리용 데이터
+            m_Socket.Send(JsonConvert.SerializeObject(reqData));
+            Debug.Log(JsonConvert.SerializeObject(reqData));
+        }
+        public WebSocketState GetWebSocketState()
+        {
+            if(m_Socket == null)
+            {
+                return WebSocketState.Closed;
+            }
+            return m_Socket.ReadyState;
         }
         private void DataProcess(ReceivedPacketData recvData)
         {
             Dictionary<byte, object> param = recvData.data;
             switch(recvData.eventCode)
             {
-                case 0:
+                case (byte)Define.EVENT_CODE.LoginS:
+                    Debug.Log(param[0]);
+                    C_StartMatching.StartMatchingC();
                     break;
                 case 1:
                     break;
@@ -100,52 +116,5 @@ namespace SimulFactory.WebSocket
             }
         }
 
-        #region 데이터 받아서 리스트에 넣어 처리할 때 사용 하는 코드 - 현재 사용안함
-        /*
-        /// <summary>
-        /// 받아온 데이터를 처리함.
-        /// </summary>
-        private void DataProcess()
-        {
-            for (int i = 0; i < data.Count; i++)
-            {
-                recvData = JsonUtility.FromJson<RecvData>(data[i]);
-                switch(recvData.type)
-                {
-                    case "PlayerName":
-                        ResPlayerName.PlayerNameResponse(recvData.data);
-                        break;
-                    case "MakeRoom":
-                        ResMakeRoom.MakeRoomResponse(recvData.data,recvData.subData);
-                        break;
-                    case "RoomList":
-                        ResRoomList.RoomListResponse(recvData.data);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            data.Clear();
-        }
-
-        
-        /// <summary>
-        /// 0.1초마다 데이터가 있는지 확인 후 처리하게 함.
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator DataChecker()
-        {
-            waitForSeconds = new WaitForSeconds(0.1f);
-            while (true)
-            {
-                if(recvDataList.Count > 0)
-                {
-                    DataProcess();
-                }
-                yield return waitForSeconds;
-            }
-        }
-        */
-        #endregion
     }
 }

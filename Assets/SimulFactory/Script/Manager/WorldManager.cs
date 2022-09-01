@@ -30,8 +30,6 @@ namespace SimulFactory.Manager
             
             switch((Define.EVENT_CODE)photonEvent.Code)
             {
-                case Define.EVENT_CODE.ServerInfoS:
-                    break;
                 default:
                     break;
             }
