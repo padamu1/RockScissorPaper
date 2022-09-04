@@ -3,10 +3,14 @@ using SimulFactory.Manager;
 using SimulFactory.WebSocket;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiLogin : MonoBehaviour
 {
+    [SerializeField] private TMP_InputField idInput;
+    [SerializeField] private TMP_InputField nameInput;
     private void Awake()
     {
         Managers.GetInstance();
@@ -22,10 +26,13 @@ public class UiLogin : MonoBehaviour
         {
             yield return waitTime;
         }
-        LoginToServer();
     }
-    private void LoginToServer()
+    public void LoginButtonClicked()
     {
-        C_Login.LoginC();
+        if(idInput.text.Equals(string.Empty) || nameInput.text.Equals(string.Empty))
+        {
+            return;
+        }
+        C_Login.LoginC(idInput.text,nameInput.text);
     }
 }

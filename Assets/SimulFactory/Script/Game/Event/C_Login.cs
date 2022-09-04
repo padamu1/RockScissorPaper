@@ -10,7 +10,7 @@ namespace SimulFactory.Game
 {
     public class C_Login
     {
-        public static void LoginC()
+        public static void LoginC(string userId, string userName)
         {
             Dictionary<byte,object> dic = new Dictionary<byte,object>();
             dic[0] = "padamu1";
