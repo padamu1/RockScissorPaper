@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using SimulFactory.Manager;
 
 namespace SimulFactory.Ui.Logo
 {
@@ -42,7 +43,8 @@ namespace SimulFactory.Ui.Logo
         }
         private void LoadLogin()
         {
-            SceneManager.LoadScene("Login");
+            DOTween.KillAll();
+            Managers.GetInstance().LoadScene("Login");
         }
     }
 }

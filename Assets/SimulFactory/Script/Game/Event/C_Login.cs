@@ -13,8 +13,8 @@ namespace SimulFactory.Game
         public static void LoginC(string userId, string userName)
         {
             Dictionary<byte,object> dic = new Dictionary<byte,object>();
-            dic[0] = "padamu1";
-            dic[1] = "김선오";
+            dic[0] = userId;
+            dic[1] = userName;
             dic[2] = 1000;
             dic[3] = 0;
             dic[4] = 0;

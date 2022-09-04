@@ -14,6 +14,7 @@ public class UiLogin : MonoBehaviour
     [SerializeField] private GameObject uiFrame;
     [SerializeField] private TMP_InputField idInput;
     [SerializeField] private TMP_InputField nameInput;
+    private bool isLogin = false;
     private bool isLoginClicked = false;
     private void Awake()
     {
@@ -37,24 +38,33 @@ public class UiLogin : MonoBehaviour
     public void LoginButtonClicked()
     {
         if (isLoginClicked) return;
-        isLoginClicked = true;
         if (idInput.text.Equals(string.Empty) || nameInput.text.Equals(string.Empty))
         {
             return;
         }
+        isLoginClicked = true;
         EventManager.GetInstance().StartListening((byte)Define.UNITY_EVENT.Login, LoginState);
         C_Login.LoginC(idInput.text,nameInput.text);
     }
     private void LoginState(Dictionary<string,object> message)
     {
         EventManager.GetInstance().StopListening((byte)Define.UNITY_EVENT.Login, LoginState);
-        if ((bool)message["result"])
-        {
-            SceneManager.LoadScene("Main");
-        }
-        else
+        if ((bool)message["result"] == false)
         {
             isLoginClicked = false;
+            return;
         }
+        Invoke("LoadMain", 2f);
+    }
+    private void FixedUpdate()
+    {
+        if(isLogin)
+        {
+            Managers.GetInstance().LoadScene("GameMain");
+        }
+    }
+    public void LoadMain()
+    {
+        Managers.GetInstance().LoadScene("GameMain");
     }
 }
