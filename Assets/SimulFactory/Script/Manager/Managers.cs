@@ -25,5 +25,4 @@ namespace SimulFactory.Manager
             SceneManager.LoadScene(sceneName);
         }
     }
-
 }
