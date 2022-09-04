@@ -8,7 +8,7 @@ namespace SimulFactory.System.Common
     {
         public enum UNITY_EVENT
         {
-
+            Login = 0,
         }
         public enum EVENT_CODE
         {

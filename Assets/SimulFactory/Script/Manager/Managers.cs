@@ -2,6 +2,7 @@ using SimulFactory.WebSocket;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SimulFactory.Manager
 {
@@ -18,6 +19,10 @@ namespace SimulFactory.Manager
             ObjectPoolManager.GetInstance();
             LoadingManager.GetInstance();
             SocketManager.GetInstance();
+        }
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
         }
     }
 

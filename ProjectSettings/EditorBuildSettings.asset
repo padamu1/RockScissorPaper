@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/SimulFactory/Scene/Login.unity
     guid: 1fdcd750eefba2b45925d5403c7b4877
   - enabled: 1
-    path: Assets/SimulFactory/Scene/Main.unity
+    path: Assets/SimulFactory/Scene/GameMain.unity
     guid: 38f91a0d726a9474eb42958d64274f87
   m_configObjects: {}

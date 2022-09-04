@@ -106,8 +106,7 @@ namespace SimulFactory.WebSocket
             switch(recvData.eventCode)
             {
                 case (byte)Define.EVENT_CODE.LoginS:
-                    Debug.Log(param[0]);
-                    C_StartMatching.StartMatchingC();
+                    S_Login.LoginS(param);
                     break;
                 case 1:
                     break;
