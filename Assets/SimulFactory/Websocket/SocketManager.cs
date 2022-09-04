@@ -108,7 +108,8 @@ namespace SimulFactory.WebSocket
                 case (byte)Define.EVENT_CODE.LoginS:
                     S_Login.LoginS(param);
                     break;
-                case 1:
+                case (byte)Define.EVENT_CODE.MatchingSuccessS:
+                    Debug.Log("Match Success");
                     break;
                 default:
                     break;
