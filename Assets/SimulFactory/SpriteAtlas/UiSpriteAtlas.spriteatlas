@@ -30,13 +30,18 @@ SpriteAtlas:
       enableTightPacking: 1
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables: []
+    packables:
+    - {fileID: 102900000, guid: 431b2aa9a16e545438b1201361c3e2a1, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 2a995b843931b654e9022975f240a0ba, type: 3}
+  - {fileID: 21300000, guid: 29071f7f5bf094d4f9305712b3066b0a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Logo
+  - frame_1
   m_RenderDataMap: {}
   m_Tag: UiSpriteAtlas
   m_IsVariant: 0
