@@ -54,9 +54,9 @@ public class UiLogin : MonoBehaviour
             isLoginClicked = false;
             return;
         }
-        Invoke("LoadMain", 2f);
+        isLogin = true;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if(isLogin)
         {
