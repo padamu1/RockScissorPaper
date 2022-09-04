@@ -1400,6 +1400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f60d77059e1874888d3043d301a369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiFrame: {fileID: 85582749}
   idInput: {fileID: 568527596}
   nameInput: {fileID: 1356450445}
 --- !u!1 &1356450443

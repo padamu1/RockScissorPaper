@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class UiLogin : MonoBehaviour
 {
-    [SerializeField] private GameObject uiPanel;
+    [SerializeField] private GameObject uiFrame;
     [SerializeField] private TMP_InputField idInput;
     [SerializeField] private TMP_InputField nameInput;
     private bool isLoginClicked = false;
@@ -21,7 +21,7 @@ public class UiLogin : MonoBehaviour
     }
     private void Start()
     {
-        uiPanel.gameObject.SetActive(false);
+        uiFrame.gameObject.SetActive(false);
         StartCoroutine(WaitForServer());
     }
     private IEnumerator WaitForServer()
@@ -31,7 +31,7 @@ public class UiLogin : MonoBehaviour
         {
             yield return waitTime;
         }
-        uiPanel.gameObject.SetActive(true);
+        uiFrame.gameObject.SetActive(true);
         isLoginClicked = false;
     }
     public void LoginButtonClicked()
