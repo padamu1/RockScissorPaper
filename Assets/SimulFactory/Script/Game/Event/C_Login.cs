@@ -1,4 +1,5 @@
-﻿using SimulFactory.System.Common;
+﻿using SimulFactory.Game.Event;
+using SimulFactory.System.Common;
 using SimulFactory.WebSocket;
 using System;
 using System.Collections.Generic;
