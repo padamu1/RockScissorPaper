@@ -36,6 +36,8 @@ namespace SimulFactory.System.Common
             Voice,
             Nature
         }
+
+        public static readonly int PLAYERPREFS_USER_NO = 1;
     }
 
 }
