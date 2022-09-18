@@ -12,8 +12,6 @@ using UnityEngine.UI;
 public class UiLogin : MonoBehaviour
 {
     [SerializeField] private GameObject uiFrame;
-    [SerializeField] private TMP_InputField idInput;
-    [SerializeField] private TMP_InputField nameInput;
     private bool isLogin = false;
     private bool isLoginClicked = false;
     private void Awake()
@@ -32,19 +30,22 @@ public class UiLogin : MonoBehaviour
         {
             yield return waitTime;
         }
-        uiFrame.gameObject.SetActive(true);
+        //uiFrame.gameObject.SetActive(true);
         isLoginClicked = false;
+        LoginButtonClicked();
     }
     public void LoginButtonClicked()
     {
         if (isLoginClicked) return;
-        if (idInput.text.Equals(string.Empty) || nameInput.text.Equals(string.Empty))
-        {
-            return;
-        }
         isLoginClicked = true;
         EventManager.GetInstance().StartListening((byte)Define.UNITY_EVENT.Login, LoginState);
-        C_Login.LoginC(idInput.text,nameInput.text);
+
+        long userNo = 0;
+        if (PlayerPrefs.HasKey(Define.PLAYERPREFS_USER_NO))
+        {
+            userNo = long.Parse(PlayerPrefs.GetString(Define.PLAYERPREFS_USER_NO));
+        }
+        C_Login.LoginC(userNo);
     }
     private void LoginState(Dictionary<string,object> message)
     {
@@ -54,12 +55,17 @@ public class UiLogin : MonoBehaviour
             isLoginClicked = false;
             return;
         }
+        UserData.GetInstance().UserNo = (long)message["userNo"];
+        Debug.Log("Login Success");
         isLogin = true;
     }
     private void Update()
     {
         if(isLogin)
         {
+            PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
+            GameObject obj = Instantiate(Resources.Load<GameObject>("TempUi"));
+            obj.GetComponent<UiManager>().Init();
             Managers.GetInstance().LoadScene("GameMain");
         }
     }

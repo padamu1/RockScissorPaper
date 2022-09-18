@@ -58,6 +58,8 @@ namespace SimulFactory.WebSocket
             m_Socket.Connect();
             StartCoroutine(CheckServer());
         }
+
+        #region 기본 로직
         IEnumerator CheckServer()
         {
             while(m_Socket.ReadyState != WebSocketState.Open)
@@ -78,19 +80,16 @@ namespace SimulFactory.WebSocket
         }
         public void SendPacket(byte eventCode)
         {
+            reqData.Clear();
             reqData.eventCode = eventCode;
-            reqData.data = new Dictionary<byte, object>();
             m_Socket.Send(JsonConvert.SerializeObject(reqData));
-            Debug.Log(JsonConvert.SerializeObject(reqData));
         }
         public void SendPacket(byte eventCode, Dictionary<byte,object> param)
         {
             reqData.Clear();
             reqData.eventCode = eventCode;
             reqData.data = param;
-            reqData.data.Add(120, 0);   // 널 처리용 데이터
             m_Socket.Send(JsonConvert.SerializeObject(reqData));
-            Debug.Log(JsonConvert.SerializeObject(reqData));
         }
         public WebSocketState GetWebSocketState()
         {
@@ -100,6 +99,8 @@ namespace SimulFactory.WebSocket
             }
             return m_Socket.ReadyState;
         }
+        #endregion
+
         private void DataProcess(ReceivedPacketData recvData)
         {
             Dictionary<byte, object> param = recvData.data;
@@ -108,8 +109,20 @@ namespace SimulFactory.WebSocket
                 case (byte)Define.EVENT_CODE.LoginS:
                     S_Login.LoginS(param);
                     break;
+                case (byte)Define.EVENT_CODE.StartMatchingS:
+                    S_StartMatching.StartMatchingS(param);
+                    break;
                 case (byte)Define.EVENT_CODE.MatchingSuccessS:
-                    Debug.Log("Match Success");
+                    S_MatchingSuccess.MatchingSuccessS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.MatchingResponseS:
+                    S_MatchingResponse.MatchingResponseS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.MatchingCancelS:
+                    S_MatchingCancel.MatchingCancelS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.MatchingResultS:
+                    S_MatchingResult.MatchingResultS(param);
                     break;
                 default:
                     break;

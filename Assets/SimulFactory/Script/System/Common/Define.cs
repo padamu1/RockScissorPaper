@@ -23,6 +23,7 @@ namespace SimulFactory.System.Common
             MatchingSuccessS = 3,   // 매칭 성공시 클라이언트에 내려줌
             MatchingResponseS = 4,  // 매칭 수락 응답에 대한 답변 -> 성공 / 실패
             MatchingCancelS = 5,    // 매칭 취소 요청 응답
+            MatchingResultS = 6,    // 매칭 결과 전송
         }
         public enum HAPTIC_EVET
         {
@@ -36,6 +37,8 @@ namespace SimulFactory.System.Common
             Voice,
             Nature
         }
+
+        public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
     }
 
 }
