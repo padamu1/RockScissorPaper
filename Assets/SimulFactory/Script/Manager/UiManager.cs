@@ -34,7 +34,20 @@ namespace SimulFactory.Manager
         }
         public void MatchSuccess()
         {
+            Debug.Log("매칭 성공");
             MatchObj.SetActive(true);
+        }
+        public void MatchingReponse(int result)
+        {
+            if (result == 1)
+            {
+                Debug.Log("매칭 시작 실패");
+                startButton.gameObject.SetActive(true);
+                stopButton.gameObject.SetActive(false);
+                return;
+            }
+
+            Debug.Log("매칭 시작 성공");
         }
         public void AcceptButtonClicked(bool isAccept)
         {
