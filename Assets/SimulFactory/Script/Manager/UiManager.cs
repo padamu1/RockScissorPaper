@@ -13,12 +13,9 @@ namespace SimulFactory.Manager
         [SerializeField] private GameObject startButton; 
         [SerializeField] private GameObject stopButton;
         [SerializeField] private GameObject MatchObj;
-        private void Awake()
-        {
-            Init();
-        }
         public void Init()
         {
+            DontDestroyOnLoad(this.gameObject);
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
             MatchObj.SetActive(false);
