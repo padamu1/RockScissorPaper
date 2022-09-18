@@ -1,3 +1,4 @@
+using SimulFactory.System.Common;
 using SimulFactory.WebSocket;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace SimulFactory.Manager
         {
             EventManager.GetInstance();
             WorldManager.GetInstance();
+            UserData.GetInstance();
             ObjectPoolManager.GetInstance();
             LoadingManager.GetInstance();
             SocketManager.GetInstance();
