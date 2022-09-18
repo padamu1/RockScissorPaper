@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SimulFactory.Game.Event
 {
-    public class C_StartMatching
+    public class C_MatchingCancel
     {
-        public static void StartMatchingC()
+        public static void MatchingCancelC()
         {
-            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.StartMatchingC);
+            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.MatchingCancelC);
         }
     }
 }
