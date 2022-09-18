@@ -12,7 +12,6 @@ namespace SimulFactory.Game.Event
     {
         public static void MatchingSuccessS(Dictionary<byte,object> param)
         {
-            Debug.Log("매칭 성공");
             UiManager.GetInstance().MatchSuccess();
         }
     }

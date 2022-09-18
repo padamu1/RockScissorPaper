@@ -13,9 +13,13 @@ namespace SimulFactory.Manager
         [SerializeField] private GameObject startButton; 
         [SerializeField] private GameObject stopButton;
         [SerializeField] private GameObject MatchObj;
+
+        private void Awake()
+        {
+            GetInstance();
+        }
         public void Init()
         {
-            DontDestroyOnLoad(this.gameObject);
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
             MatchObj.SetActive(false);
@@ -35,6 +39,19 @@ namespace SimulFactory.Manager
         public void MatchSuccess()
         {
             MatchObj.SetActive(true);
+            Debug.Log("매칭 성공");
+        }
+        public void MatchingReponse(int result)
+        {
+            if (result == 1)
+            {
+                Debug.Log("매칭 시작 실패");
+                startButton.gameObject.SetActive(true);
+                stopButton.gameObject.SetActive(false);
+                return;
+            }
+
+            Debug.Log("매칭 시작 성공");
         }
         public void AcceptButtonClicked(bool isAccept)
         {

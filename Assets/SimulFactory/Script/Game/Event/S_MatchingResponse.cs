@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimulFactory.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace SimulFactory.Game.Event
 {
     public class S_MatchingResponse
     {
-        public static void MatchingResponseS(Dictionary<byte,object> param)
+        public static void MatchingResponseS(Dictionary<byte, object> param)
         {
-            Debug.Log("매칭 시작 성공");
+            UiManager.GetInstance().MatchingReponse((int)param[0]);
         }
     }
 }

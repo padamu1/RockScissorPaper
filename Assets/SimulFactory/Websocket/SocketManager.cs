@@ -42,6 +42,7 @@ namespace SimulFactory.WebSocket
         private WebSocketSharp.WebSocket m_Socket = null;
         private RequestPacketData reqData;
         private ReceivedPacketData recvData;
+        private Queue<ReceivedPacketData> receivedPacketDatas = new Queue<ReceivedPacketData>();
         private void Awake()
         {
             recvDataList = new List<ReceivedPacketData>();
@@ -62,7 +63,7 @@ namespace SimulFactory.WebSocket
         #region 기본 로직
         IEnumerator CheckServer()
         {
-            while(m_Socket.ReadyState != WebSocketState.Open)
+            while (m_Socket.ReadyState != WebSocketState.Open)
             {
                 yield return new WaitForSeconds(0.01f);
             }
@@ -76,7 +77,7 @@ namespace SimulFactory.WebSocket
         private void Recv(object sender, MessageEventArgs e)
         {
             recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
-            DataProcess(recvData);
+            receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = recvData.eventCode, data = recvData.data});
         }
         public void SendPacket(byte eventCode)
         {
@@ -84,7 +85,7 @@ namespace SimulFactory.WebSocket
             reqData.eventCode = eventCode;
             m_Socket.Send(JsonConvert.SerializeObject(reqData));
         }
-        public void SendPacket(byte eventCode, Dictionary<byte,object> param)
+        public void SendPacket(byte eventCode, Dictionary<byte, object> param)
         {
             reqData.Clear();
             reqData.eventCode = eventCode;
@@ -93,7 +94,7 @@ namespace SimulFactory.WebSocket
         }
         public WebSocketState GetWebSocketState()
         {
-            if(m_Socket == null)
+            if (m_Socket == null)
             {
                 return WebSocketState.Closed;
             }
@@ -104,7 +105,7 @@ namespace SimulFactory.WebSocket
         private void DataProcess(ReceivedPacketData recvData)
         {
             Dictionary<byte, object> param = recvData.data;
-            switch(recvData.eventCode)
+            switch (recvData.eventCode)
             {
                 case (byte)Define.EVENT_CODE.LoginS:
                     S_Login.LoginS(param);
@@ -126,6 +127,14 @@ namespace SimulFactory.WebSocket
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void Update()
+        {
+            if (receivedPacketDatas.Count > 0)
+            {
+                DataProcess(receivedPacketDatas.Dequeue());
             }
         }
 
