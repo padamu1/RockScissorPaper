@@ -30,8 +30,9 @@ public class UiLogin : MonoBehaviour
         {
             yield return waitTime;
         }
-        uiFrame.gameObject.SetActive(true);
+        //uiFrame.gameObject.SetActive(true);
         isLoginClicked = false;
+        LoginButtonClicked();
     }
     public void LoginButtonClicked()
     {
@@ -40,9 +41,9 @@ public class UiLogin : MonoBehaviour
         EventManager.GetInstance().StartListening((byte)Define.UNITY_EVENT.Login, LoginState);
 
         long userNo = 0;
-        if (PlayerPrefs.HasKey(Define.PLAYERPREFS_USER_NO.ToString()))
+        if (PlayerPrefs.HasKey(Define.PLAYERPREFS_USER_NO))
         {
-            userNo = long.Parse(PlayerPrefs.GetString(Define.PLAYERPREFS_USER_NO.ToString()));
+            userNo = long.Parse(PlayerPrefs.GetString(Define.PLAYERPREFS_USER_NO));
         }
         C_Login.LoginC(userNo);
     }
@@ -55,12 +56,14 @@ public class UiLogin : MonoBehaviour
             return;
         }
         UserData.GetInstance().UserNo = (long)message["userNo"];
+        Debug.Log("Login Success");
         isLogin = true;
     }
     private void Update()
     {
         if(isLogin)
         {
+            PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
             Managers.GetInstance().LoadScene("GameMain");
         }
     }

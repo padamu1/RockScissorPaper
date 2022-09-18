@@ -88,9 +88,8 @@ namespace SimulFactory.WebSocket
             reqData.Clear();
             reqData.eventCode = eventCode;
             reqData.data = param;
-            reqData.data.Add(120, 0);   // 널 처리용 데이터
+            reqData.data.Add(120, 0);   // 널 처리용 데이터 -> 비어있는 데이터
             m_Socket.Send(JsonConvert.SerializeObject(reqData));
-            Debug.Log(JsonConvert.SerializeObject(reqData));
         }
         public WebSocketState GetWebSocketState()
         {

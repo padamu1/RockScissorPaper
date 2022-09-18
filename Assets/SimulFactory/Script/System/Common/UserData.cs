@@ -9,5 +9,6 @@ namespace SimulFactory.System.Common
     public class UserData : MonoSingleton<UserData>
     {
         public long UserNo { get; set; }
+        public string UserName { get; set; }
     }
 }

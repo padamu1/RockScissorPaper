@@ -37,7 +37,7 @@ namespace SimulFactory.System.Common
             Nature
         }
 
-        public static readonly int PLAYERPREFS_USER_NO = 1;
+        public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
     }
 
 }
