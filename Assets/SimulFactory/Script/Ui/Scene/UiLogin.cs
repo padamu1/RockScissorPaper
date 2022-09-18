@@ -12,7 +12,6 @@ using UnityEngine.UI;
 public class UiLogin : MonoBehaviour
 {
     [SerializeField] private GameObject uiFrame;
-    private bool isLogin = false;
     private bool isLoginClicked = false;
     private void Awake()
     {
@@ -56,19 +55,12 @@ public class UiLogin : MonoBehaviour
             return;
         }
         UserData.GetInstance().UserNo = (long)message["userNo"];
+        PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
+        GameObject obj = Instantiate(Resources.Load<GameObject>("TempUi"));
+        UiManager uiManager = obj.GetComponent<UiManager>();
+        uiManager.Init();
         Debug.Log("Login Success");
-        isLogin = true;
-    }
-    private void Update()
-    {
-        if(isLogin)
-        {
-            PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
-            GameObject obj = Instantiate(Resources.Load<GameObject>("TempUi"));
-            UiManager uiManager = obj.GetComponent<UiManager>();
-            uiManager.Init();
-            Managers.GetInstance().LoadScene("GameMain");
-        }
+        Managers.GetInstance().LoadScene("GameMain");
     }
     public void LoadMain()
     {

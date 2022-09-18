@@ -30,7 +30,6 @@ public class ReceivedPacketData
     public Dictionary<byte, object> data;
 }
 
-
 namespace SimulFactory.WebSocket
 {
     /// <summary>
@@ -69,7 +68,6 @@ namespace SimulFactory.WebSocket
             }
             Debug.Log("Websocket Connected");
         }
-
 
         /// <summary>
         /// 새로운 데이터를 받아오는 메서드.
