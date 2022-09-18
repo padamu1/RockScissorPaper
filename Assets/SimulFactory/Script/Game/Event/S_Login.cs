@@ -15,7 +15,6 @@ namespace SimulFactory.Game.Event
                 message.Add("userNo", param[1]);
             }
             EventManager.GetInstance().TriggerEvent((byte)Define.UNITY_EVENT.Login, message);
-            C_StartMatching.StartMatchingC();
         }
     }
 }
