@@ -66,7 +66,7 @@ namespace SimulFactory.Context
         private readonly Property<Sprite> SlotButtonImgValue =
             new Property<Sprite>();
 
-        public string SlotButtonImg
+        public Sprite SlotButtonImg
         {
             get
             {
