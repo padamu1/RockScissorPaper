@@ -37,6 +37,11 @@ namespace SimulFactory.System.Common
             Voice,
             Nature
         }
+        public enum CONTEXT_LIST
+        {
+            RockScissorPaper,
+
+        }
 
         public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
     }
