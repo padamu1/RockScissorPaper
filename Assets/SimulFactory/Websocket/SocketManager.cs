@@ -37,29 +37,36 @@ namespace SimulFactory.WebSocket
     /// </summary>
     public class SocketManager : MonoSingleton<SocketManager>
     {
-        private List<ReceivedPacketData> recvDataList;
         private WebSocketSharp.WebSocket m_Socket = null;
-        private RequestPacketData reqData;
-        private ReceivedPacketData recvData;
-        private Queue<ReceivedPacketData> receivedPacketDatas = new Queue<ReceivedPacketData>();
+        private RequestPacketData m_reqData;
+        private ReceivedPacketData m_recvData;
+        private Queue<ReceivedPacketData> m_receivedPacketDatas = new Queue<ReceivedPacketData>();
+        private bool m_disconnect = false;
         private void Awake()
         {
-            recvDataList = new List<ReceivedPacketData>();
-            recvData = new ReceivedPacketData();
-            recvData.data = new Dictionary<byte, object>();
-            reqData = new RequestPacketData();
-            reqData.data = new Dictionary<byte, object>();
+            m_recvData = new ReceivedPacketData();
+            m_recvData.data = new Dictionary<byte, object>();
+            m_reqData = new RequestPacketData();
+            m_reqData.data = new Dictionary<byte, object>();
         }
         private void Start()
         {
             m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 서버 ip주소
             //m_Socket = new WebSocketSharp.WebSocket("ws://127.0.0.1:80"); // 서버 ip주소
             m_Socket.OnMessage += Recv;
-            m_Socket.Connect();
-            StartCoroutine(CheckServer());
+            m_Socket.OnClose += OnClose;
+            Connect();
         }
 
         #region 기본 로직
+        /// <summary>
+        /// 서버와 연결을 시도하는 함수
+        /// </summary>
+        public void Connect()
+        {
+            m_Socket.Connect();
+            StartCoroutine(CheckServer());
+        }
         IEnumerator CheckServer()
         {
             while (m_Socket.ReadyState != WebSocketState.Open)
@@ -74,21 +81,47 @@ namespace SimulFactory.WebSocket
         /// </summary
         private void Recv(object sender, MessageEventArgs e)
         {
-            recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
-            receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = recvData.eventCode, data = recvData.data});
+            m_recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
+            m_receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = m_recvData.eventCode, data = m_recvData.data});
         }
+        /// <summary>
+        /// 서버에 메시지 보낼 때 사용
+        /// </summary>
+        /// <param name="eventCode"></param>
         public void SendPacket(byte eventCode)
         {
-            reqData.Clear();
-            reqData.eventCode = eventCode;
-            m_Socket.Send(JsonConvert.SerializeObject(reqData));
+            m_reqData.Clear();
+            m_reqData.eventCode = eventCode;
+            m_Socket.Send(JsonConvert.SerializeObject(m_reqData));
         }
+        /// <summary>
+        /// 서버에 메시지 보낼 때 사용
+        /// </summary>
+        /// <param name="eventCode"></param>
+        /// <param name="param"></param>
         public void SendPacket(byte eventCode, Dictionary<byte, object> param)
         {
-            reqData.Clear();
-            reqData.eventCode = eventCode;
-            reqData.data = param;
-            m_Socket.Send(JsonConvert.SerializeObject(reqData));
+            m_reqData.Clear();
+            m_reqData.eventCode = eventCode;
+            m_reqData.data = param;
+            m_Socket.Send(JsonConvert.SerializeObject(m_reqData));
+        }
+        /// <summary>
+        /// 연결 끊겼을 때 호출
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClose(object sender, CloseEventArgs e)
+        {
+            m_disconnect = true;
+        }
+        /// <summary>
+        /// 서버와의 연결을 끊는 함수
+        /// </summary>
+        public void Disconnect()
+        {
+            m_Socket.Close();
+            Debug.Log("서버 연결 끊음");
         }
         public WebSocketState GetWebSocketState()
         {
@@ -130,9 +163,16 @@ namespace SimulFactory.WebSocket
 
         private void Update()
         {
-            if (receivedPacketDatas.Count > 0)
+            if(!m_disconnect)
             {
-                DataProcess(receivedPacketDatas.Dequeue());
+                if (m_receivedPacketDatas.Count > 0)
+                {
+                    DataProcess(m_receivedPacketDatas.Dequeue());
+                }
+            }
+            else
+            {
+                Debug.Log("서버 연결 끊김");
             }
         }
 
