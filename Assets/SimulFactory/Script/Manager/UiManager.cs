@@ -1,4 +1,5 @@
 ﻿using SimulFactory.Game.Event;
+using Slash.Unity.DataBind.Core.Presentation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,27 @@ namespace SimulFactory.Manager
     {
         [SerializeField] private GameObject startButton; 
         [SerializeField] private GameObject stopButton;
-        [SerializeField] private GameObject MatchObj;
-
+        [SerializeField] private GameObject matchObj;
+        [SerializeField] private GameObject uiHolder;
+        private GameObject gameUi;
         private void Awake()
         {
             GetInstance();
         }
         public void Init()
         {
+            // 게임 ui 설정
+            BattleManager.GetInstance().Init();
+            gameUi = Instantiate(Resources.Load("Ui/GameUI") as GameObject,uiHolder.transform);
+
+            // 컨텍스트 세팅
+            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
+            contextHolder.Context = Managers.GetInstance().GetMasterContext();
+
+            // 메인 ui 설정
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
-            MatchObj.SetActive(false);
+            matchObj.SetActive(false);
         }
         public void StartButtonClicked()
         {
@@ -38,7 +49,7 @@ namespace SimulFactory.Manager
         }
         public void MatchSuccess()
         {
-            MatchObj.SetActive(true);
+            matchObj.SetActive(true);
             Debug.Log("매칭 성공");
         }
         public void MatchingReponse(int result)
@@ -55,7 +66,7 @@ namespace SimulFactory.Manager
         }
         public void AcceptButtonClicked(bool isAccept)
         {
-            MatchObj.SetActive(false);
+            matchObj.SetActive(false);
             C_MatchingResponse.MatchingResponseC(isAccept);
         }
     }

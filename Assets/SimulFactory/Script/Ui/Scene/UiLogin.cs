@@ -56,7 +56,7 @@ public class UiLogin : MonoBehaviour
         }
         UserData.GetInstance().UserNo = (long)message["userNo"];
         PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
-        GameObject obj = Instantiate(Resources.Load<GameObject>("TempUi"));
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Ui/TempUi"));
         UiManager uiManager = obj.GetComponent<UiManager>();
         uiManager.Init();
         Debug.Log("Login Success");
