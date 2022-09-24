@@ -1,6 +1,8 @@
 ﻿using SimulFactory.Game.Event;
+using SimulFactory.Script.Util;
 using Slash.Unity.DataBind.Core.Presentation;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +28,7 @@ namespace SimulFactory.Manager
             BattleManager.GetInstance().Init();
             gameUi = Instantiate(Resources.Load("Ui/GameUI") as GameObject,uiHolder.transform);
 
+            CoroutineHelper.StartLogoStopCoroutine(SendPing());
             // 컨텍스트 세팅
             ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
             contextHolder.Context = Managers.GetInstance().GetMasterContext();
@@ -34,6 +37,14 @@ namespace SimulFactory.Manager
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
             matchObj.SetActive(false);
+        }
+        private IEnumerator SendPing()
+        {
+            while(true)
+            {
+                C_Ping.PingC();
+                yield return CoroutineHelper.GetWaitForSeconds(1f);
+            }
         }
         public void StartButtonClicked()
         {

@@ -12,11 +12,12 @@ namespace SimulFactory.System.Common
         }
         public enum EVENT_CODE
         {
-            LoginC = 0,             // 로그인 요청
-            StartMatchingC = 1,     // 매칭 요청
-            MatchingResponseC = 2,  // 매칭 응답
-            MatchingCancelC = 3,    // 매칭 취소 요청
-            PingC = 4,              // 서버에 주기적으로 접속 확인을 위한 핑을 보냄 -> 안보내면 끊어지게 설정
+            LoginC = 0,                     // 로그인 요청
+            StartMatchingC = 1,             // 매칭 요청
+            MatchingResponseC = 2,          // 매칭 응답
+            MatchingCancelC = 3,            // 매칭 취소 요청
+            PingC = 4,                      // 서버에 주기적으로 접속 확인을 위한 핑을 보냄 -> 안보내면 끊어지게 설정
+            UserBattleButtonClicked = 5,    // 배틀 중 유저가 클릭한 버튼을 보냄
 
             LoginS = 0,             // 로그인 응답
             UserInfoS = 1,          // 유저 정보 내려줌

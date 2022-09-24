@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimulFactory.Game
+namespace SimulFactory.Game.Event
 {
     public class C_Login
     {
