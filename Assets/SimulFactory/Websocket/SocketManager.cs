@@ -5,6 +5,7 @@ using WebSocketSharp;
 using SimulFactory.System.Common;
 using Newtonsoft.Json;
 using SimulFactory.Game.Event;
+using SimulFactory.Manager;
 /// <summary>
 /// 데이터 보낼 때 사용하는 클래스
 /// </summary>
@@ -186,6 +187,8 @@ namespace SimulFactory.WebSocket
             else
             {
                 Debug.Log("서버 연결 끊김");
+                m_disconnect = false;
+                Managers.GetInstance().LoadScene("Logo");
             }
         }
 

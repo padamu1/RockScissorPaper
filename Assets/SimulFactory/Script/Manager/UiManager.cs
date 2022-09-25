@@ -74,6 +74,8 @@ namespace SimulFactory.Manager
             }
 
             Debug.Log("매칭 시작 성공");
+            startButton.SetActive(false);
+            stopButton.SetActive(false);
             gameUi.SetActive(true);
         }
         public void AcceptButtonClicked(bool isAccept)
