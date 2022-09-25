@@ -53,7 +53,9 @@ namespace SimulFactory.System.Common
             Scissor = 1,
             Paper = 2,
         }
-
+        public static readonly string ROCK_BUTTON = "Rock";
+        public static readonly string SCISSOR_BUTTON = "Scissor";
+        public static readonly string PAPER_BUTTON = "Paper";
         // PlayerPrefs ฐüทร
         public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
 
