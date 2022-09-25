@@ -12,7 +12,7 @@ namespace SimulFactory.Game.Event
     {
         public static void MatchingResponseS(Dictionary<byte, object> param)
         {
-            UiManager.GetInstance().MatchingReponse((int)param[0]);
+            UiManager.GetInstance().MatchingReponse(Convert.ToInt32(param[0]));
         }
     }
 }

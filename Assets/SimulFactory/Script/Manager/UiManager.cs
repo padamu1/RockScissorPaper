@@ -1,5 +1,8 @@
 ﻿using SimulFactory.Game.Event;
+using SimulFactory.Script.Util;
+using Slash.Unity.DataBind.Core.Presentation;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +15,36 @@ namespace SimulFactory.Manager
     {
         [SerializeField] private GameObject startButton; 
         [SerializeField] private GameObject stopButton;
-        [SerializeField] private GameObject MatchObj;
-
+        [SerializeField] private GameObject matchObj;
+        [SerializeField] private GameObject uiHolder;
+        private GameObject gameUi;
         private void Awake()
         {
             GetInstance();
         }
         public void Init()
         {
+            // 게임 ui 설정
+            gameUi = Instantiate(Resources.Load("Ui/GameUI") as GameObject,uiHolder.transform);
+            gameUi.SetActive(false);
+
+            CoroutineHelper.StartLogoStopCoroutine(SendPing());
+            // 컨텍스트 세팅
+            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
+            contextHolder.Context = Managers.GetInstance().GetMasterContext();
+
+            // 메인 ui 설정
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
-            MatchObj.SetActive(false);
+            matchObj.SetActive(false);
+        }
+        private IEnumerator SendPing()
+        {
+            while(true)
+            {
+                C_Ping.PingC();
+                yield return CoroutineHelper.GetWaitForSeconds(1f);
+            }
         }
         public void StartButtonClicked()
         {
@@ -38,7 +60,7 @@ namespace SimulFactory.Manager
         }
         public void MatchSuccess()
         {
-            MatchObj.SetActive(true);
+            matchObj.SetActive(true);
             Debug.Log("매칭 성공");
         }
         public void MatchingReponse(int result)
@@ -52,10 +74,13 @@ namespace SimulFactory.Manager
             }
 
             Debug.Log("매칭 시작 성공");
+            startButton.SetActive(false);
+            stopButton.SetActive(false);
+            gameUi.SetActive(true);
         }
         public void AcceptButtonClicked(bool isAccept)
         {
-            MatchObj.SetActive(false);
+            matchObj.SetActive(false);
             C_MatchingResponse.MatchingResponseC(isAccept);
         }
     }
