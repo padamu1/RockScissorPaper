@@ -20,6 +20,7 @@ public class UiLogin : MonoBehaviour
     }
     private void Start()
     {
+        SocketManager.GetInstance().Init();
         uiFrame.gameObject.SetActive(false);
         StartCoroutine(WaitForServer());
     }
