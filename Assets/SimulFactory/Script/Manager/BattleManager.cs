@@ -41,8 +41,8 @@ namespace SimulFactory.Manager
         /// <returns>RockScissorPaper</returns>
         private RockScissorPaper RockButtonSetting(RockScissorPaper rockScissorPaper)
         {
-            rockScissorPaper.SlotButtonAction = delegate { ButtonClicked(Define.ROCK_BUTTON); };
-            rockScissorPaper.SlotButtonText = Define.ROCK_BUTTON.ToString();
+            rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Rock); };
+            rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Rock.ToString();
             rockScissorPaper.SlotButtonImg = null;
             return rockScissorPaper;
         }
@@ -52,8 +52,8 @@ namespace SimulFactory.Manager
         /// <returns>RockScissorPaper</returns>
         private RockScissorPaper ScissorButtonSetting(RockScissorPaper rockScissorPaper)
         {
-            rockScissorPaper.SlotButtonAction = delegate { ButtonClicked(Define.SCISSOR_BUTTON); };
-            rockScissorPaper.SlotButtonText = Define.SCISSOR_BUTTON.ToString();
+            rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Scissor); };
+            rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Scissor.ToString();
             rockScissorPaper.SlotButtonImg = null;
             return rockScissorPaper;
         }
@@ -63,8 +63,8 @@ namespace SimulFactory.Manager
         /// <returns>RockScissorPaper</returns>
         private RockScissorPaper PaperButtonSetting(RockScissorPaper rockScissorPaper)
         {
-            rockScissorPaper.SlotButtonAction = delegate { ButtonClicked(Define.PAPER_BUTTON); };
-            rockScissorPaper.SlotButtonText = Define.PAPER_BUTTON.ToString();
+            rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Paper); };
+            rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Paper.ToString();
             rockScissorPaper.SlotButtonImg = null;
             return rockScissorPaper;
         }

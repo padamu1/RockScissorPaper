@@ -47,10 +47,12 @@ namespace SimulFactory.System.Common
 
         }
 
-        // 컨텍스트 관련
-        public static readonly int ROCK_BUTTON = 0;
-        public static readonly int SCISSOR_BUTTON = 1;
-        public static readonly int PAPER_BUTTON = 2;
+        public enum ROCK_SCISSOR_PAPER
+        {
+            Rock = 0,
+            Scissor = 1,
+            Paper = 2,
+        }
 
         // PlayerPrefs 관련
         public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
