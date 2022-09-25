@@ -52,6 +52,10 @@ namespace SimulFactory.WebSocket
         }
         private void Start()
         {
+            Init();
+        }
+        private void Init()
+        {
             m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 辑滚 ip林家
             //m_Socket = new WebSocketSharp.WebSocket("ws://127.0.0.1:80"); // 辑滚 ip林家
             m_Socket.OnMessage += Recv;
@@ -114,6 +118,7 @@ namespace SimulFactory.WebSocket
         /// <param name="e"></param>
         private void OnClose(object sender, CloseEventArgs e)
         {
+            Init();
             m_disconnect = true;
         }
         /// <summary>
