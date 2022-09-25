@@ -12,10 +12,10 @@ namespace SimulFactory.Context
 
     public class RockScissorPaperDic : ContextBase
     {
-        private readonly Property<DataDictionary<string, ContextBase>> RockScissorPaperDicValue =
-            new Property<DataDictionary<string, ContextBase>>();
+        private readonly Property<DataDictionary<string, Context>> RockScissorPaperDicValue =
+            new Property<DataDictionary<string, Context>>();
 
-        public DataDictionary<string, ContextBase> RockScissorPaper
+        public DataDictionary<string, Context> RockScissorPaper
         {
             get
             {
@@ -29,6 +29,10 @@ namespace SimulFactory.Context
         public override void Reset()
         {
             RockScissorPaper.Clear();
+        }
+        public RockScissorPaperDic()
+        {
+            RockScissorPaperDicValue.Value = new DataDictionary<string, Context>();
         }
     }
     public class RockScissorPaper : Context

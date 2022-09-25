@@ -407,6 +407,7 @@ MonoBehaviour:
   startButton: {fileID: 1971967517935070522}
   stopButton: {fileID: 1971967516520392999}
   matchObj: {fileID: 1971967516930215222}
+  uiHolder: {fileID: 1971967516438011774}
 --- !u!1 &1971967516438011774
 GameObject:
   m_ObjectHideFlags: 0

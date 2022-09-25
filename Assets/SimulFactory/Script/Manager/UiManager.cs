@@ -25,8 +25,8 @@ namespace SimulFactory.Manager
         public void Init()
         {
             // 게임 ui 설정
-            BattleManager.GetInstance().Init();
             gameUi = Instantiate(Resources.Load("Ui/GameUI") as GameObject,uiHolder.transform);
+            gameUi.SetActive(false);
 
             CoroutineHelper.StartLogoStopCoroutine(SendPing());
             // 컨텍스트 세팅
@@ -74,6 +74,7 @@ namespace SimulFactory.Manager
             }
 
             Debug.Log("매칭 시작 성공");
+            gameUi.SetActive(true);
         }
         public void AcceptButtonClicked(bool isAccept)
         {

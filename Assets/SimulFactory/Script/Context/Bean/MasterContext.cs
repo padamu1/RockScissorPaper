@@ -28,6 +28,10 @@ namespace SimulFactory.Context.Bean
                 data.Value.Reset();
             }
         }
+        public MasterContext()
+        {
+            MasterContextValue.Value = new DataDictionary<string, ContextBase>();
+        }
     }
 
     public class ContextBase : Context

@@ -14,6 +14,11 @@ namespace SimulFactory.Manager
     {
         private RockScissorPaperDic _rockScissorPaperDic;   // 컨텍스트 딕셔너리
         private string _selectButtonName;                   // 선택된 버튼 이름
+
+        private void Awake()
+        {
+            Init();
+        }
         /// <summary>
         /// 게임 입장 전 호출 되어야 함
         /// </summary>
@@ -31,16 +36,17 @@ namespace SimulFactory.Manager
         /// </summary>
         private void GameButtonSetting()
         {
-            _rockScissorPaperDic.RockScissorPaper.Add(Define.ROCK_BUTTON, RockButtonSetting(new RockScissorPaper()));
-            _rockScissorPaperDic.RockScissorPaper.Add(Define.SCISSOR_BUTTON, ScissorButtonSetting(new RockScissorPaper()));
-            _rockScissorPaperDic.RockScissorPaper.Add(Define.PAPER_BUTTON, PaperButtonSetting(new RockScissorPaper()));
+            _rockScissorPaperDic.RockScissorPaper.Add(Define.ROCK_BUTTON, RockButtonSetting());
+            _rockScissorPaperDic.RockScissorPaper.Add(Define.SCISSOR_BUTTON, ScissorButtonSetting());
+            _rockScissorPaperDic.RockScissorPaper.Add(Define.PAPER_BUTTON, PaperButtonSetting());
         }
         /// <summary>
         /// 바위 버튼 세팅
         /// </summary>
         /// <returns>RockScissorPaper</returns>
-        private RockScissorPaper RockButtonSetting(RockScissorPaper rockScissorPaper)
+        private RockScissorPaper RockButtonSetting()
         {
+            RockScissorPaper rockScissorPaper = new RockScissorPaper();
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Rock); };
             rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Rock.ToString();
             rockScissorPaper.SlotButtonImg = null;
@@ -50,8 +56,9 @@ namespace SimulFactory.Manager
         /// 가위 버튼 세팅
         /// </summary>
         /// <returns>RockScissorPaper</returns>
-        private RockScissorPaper ScissorButtonSetting(RockScissorPaper rockScissorPaper)
+        private RockScissorPaper ScissorButtonSetting()
         {
+            RockScissorPaper rockScissorPaper = new RockScissorPaper();
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Scissor); };
             rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Scissor.ToString();
             rockScissorPaper.SlotButtonImg = null;
@@ -61,8 +68,9 @@ namespace SimulFactory.Manager
         /// 보자기 버튼 세팅
         /// </summary>
         /// <returns>RockScissorPaper</returns>
-        private RockScissorPaper PaperButtonSetting(RockScissorPaper rockScissorPaper)
+        private RockScissorPaper PaperButtonSetting()
         {
+            RockScissorPaper rockScissorPaper = new RockScissorPaper();
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Paper); };
             rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Paper.ToString();
             rockScissorPaper.SlotButtonImg = null;
