@@ -89,7 +89,7 @@ public class CardManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             AddCard(true);
-            Debug.Log("11");
+            Debug.Log("press Z");
         }
     }
 
@@ -204,10 +204,12 @@ public class CardManager : MonoBehaviour
 
     public void CardMouseOver(Card card)
     {
+        /*
         if (eCardState == ECardState.Nothing)
             return;
 
         selectCard = card;
+        */
         EnlargeCard(true, card);
     }
 
@@ -260,7 +262,7 @@ public class CardManager : MonoBehaviour
     {
         if (isEnlarge)
         {
-            Vector3 enlargePos = new Vector3(card.originPRS.pos.x, -4.8f, -10f);
+            Vector3 enlargePos = new Vector3(card.originPRS.pos.x, card.originPRS.pos.y + 2.0f, -10f);
             card.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 3.5f), false);
         }
         else

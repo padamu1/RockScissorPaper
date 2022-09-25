@@ -19,6 +19,8 @@ public class Card : MonoBehaviour
     bool isFront;
     public PRS originPRS;
 
+    private bool isLarge = false;
+
 
     public void Setup(Item item, bool isFront)
     {
@@ -41,18 +43,21 @@ public class Card : MonoBehaviour
         }
     }
 
+    /*
     void OnMouseOver()
     {
         if (isFront)
             CardManager.Inst.CardMouseOver(this);
+        print("마우스오버");
     }
 
     void OnMouseExit()
     {
         if (isFront)
             CardManager.Inst.CardMouseExit(this);
+        print("마우스엑시트");
     }
-
+    
     void OnMouseDown()
     {
         if (isFront)
@@ -63,6 +68,22 @@ public class Card : MonoBehaviour
     {
         if (isFront)
             CardManager.Inst.CardMouseUp();
+    }
+    */
+
+    void OnMouseUpAsButton()
+    {
+        if (isFront && !isLarge)
+        {
+            CardManager.Inst.CardMouseOver(this);
+            isLarge = true;
+        }
+        else if (isFront && isLarge)
+        {
+            CardManager.Inst.CardMouseExit(this);
+            isLarge = false;
+        }
+
     }
 
     public void MoveTransform(PRS prs, bool useDotween, float dotweenTime = 0)
