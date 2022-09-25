@@ -1,5 +1,6 @@
 ﻿using SimulFactory.Context;
 using SimulFactory.Context.Bean;
+using SimulFactory.Game.Event;
 using SimulFactory.System.Common;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace SimulFactory.Manager
         private RockScissorPaper RockButtonSetting(RockScissorPaper rockScissorPaper)
         {
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked(Define.ROCK_BUTTON); };
-            rockScissorPaper.SlotButtonText = Define.ROCK_BUTTON;
+            rockScissorPaper.SlotButtonText = Define.ROCK_BUTTON.ToString();
             rockScissorPaper.SlotButtonImg = null;
             return rockScissorPaper;
         }
@@ -52,7 +53,7 @@ namespace SimulFactory.Manager
         private RockScissorPaper ScissorButtonSetting(RockScissorPaper rockScissorPaper)
         {
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked(Define.SCISSOR_BUTTON); };
-            rockScissorPaper.SlotButtonText = Define.SCISSOR_BUTTON;
+            rockScissorPaper.SlotButtonText = Define.SCISSOR_BUTTON.ToString();
             rockScissorPaper.SlotButtonImg = null;
             return rockScissorPaper;
         }
@@ -63,7 +64,7 @@ namespace SimulFactory.Manager
         private RockScissorPaper PaperButtonSetting(RockScissorPaper rockScissorPaper)
         {
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked(Define.PAPER_BUTTON); };
-            rockScissorPaper.SlotButtonText = Define.PAPER_BUTTON;
+            rockScissorPaper.SlotButtonText = Define.PAPER_BUTTON.ToString();
             rockScissorPaper.SlotButtonImg = null;
             return rockScissorPaper;
         }
@@ -71,9 +72,9 @@ namespace SimulFactory.Manager
         /// 버튼이 눌렸을 때 수행될 동작
         /// </summary>
         /// <param name="buttonName"></param>
-        private void ButtonClicked(string buttonName)
+        private void ButtonClicked(int buttonNo)
         {
-            // 서버에 메시지 전송
+            C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonNo);
         }
     }
 }

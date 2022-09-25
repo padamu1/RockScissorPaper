@@ -7,10 +7,10 @@ namespace SimulFactory.Game.Event
 {
     public class C_UserBattleButtonClicked
     {
-        public static void UserBattleButtonClicked(string buttonName)
+        public static void UserBattleButtonClickedC(int buttonNo)
         {
             Dictionary<byte, object> dic = new Dictionary<byte, object>();
-            dic.Add(0, buttonName);
+            dic.Add(0, buttonNo);
             SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.UserBattleButtonClicked, dic);
         }
     }

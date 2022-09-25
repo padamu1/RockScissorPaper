@@ -26,6 +26,8 @@ namespace SimulFactory.System.Common
             MatchingResponseS = 4,  // 매칭 수락 응답에 대한 답변 -> 성공 / 실패
             MatchingCancelS = 5,    // 매칭 취소 요청 응답
             MatchingResultS = 6,    // 매칭 결과 전송
+            UserBattleResponseS = 7,// 상대편이 낸 결과를 받음
+            RoundResultS = 8,       // 라운드 결과 전송
         }
         public enum HAPTIC_EVET
         {
@@ -46,12 +48,13 @@ namespace SimulFactory.System.Common
         }
 
         // 컨텍스트 관련
-        public static readonly string ROCK_BUTTON = "Rock";
-        public static readonly string SCISSOR_BUTTON = "Scissor";
-        public static readonly string PAPER_BUTTON = "Paper";
+        public static readonly int ROCK_BUTTON = 0;
+        public static readonly int SCISSOR_BUTTON = 1;
+        public static readonly int PAPER_BUTTON = 2;
 
         // PlayerPrefs 관련
         public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
+
     }
 
 }

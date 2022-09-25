@@ -139,9 +139,14 @@ namespace SimulFactory.WebSocket
             switch (recvData.eventCode)
             {
                 case (byte)Define.EVENT_CODE.LoginS:
+                    // 로그인 처리
                     S_Login.LoginS(param);
                     break;
+                case (byte)Define.EVENT_CODE.UserInfoS:
+                    // 유저 정보를 받음
+                    break;
                 case (byte)Define.EVENT_CODE.StartMatchingS:
+                    // 매칭 시작을 알림
                     S_StartMatching.StartMatchingS(param);
                     break;
                 case (byte)Define.EVENT_CODE.MatchingSuccessS:
@@ -155,6 +160,14 @@ namespace SimulFactory.WebSocket
                     break;
                 case (byte)Define.EVENT_CODE.MatchingResultS:
                     S_MatchingResult.MatchingResultS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.UserBattleResponseS:
+                    // 상대편이 낸 결과를 받음
+                    S_UserBattleResponse.UserBattleResponseS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.RoundResultS:
+                    // 해당 라운드의 결과를 받음
+                    S_RoundResult.RoundResultS(param);
                     break;
                 default:
                     break;
