@@ -16,7 +16,7 @@ namespace SimulFactory.Game.Event
             // [0] 상대방이 낸 버튼
             // [1] 상대방이 낸 카드
             // UI 상에 바로 띄워짐
-            switch ((Define.ROCK_SCISSOR_PAPER)((int)param[0]))
+            switch ((Define.ROCK_SCISSOR_PAPER)Convert.ToInt32(param[0]))
             {
                 case Define.ROCK_SCISSOR_PAPER.Rock:
                     Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Rock.ToString());
