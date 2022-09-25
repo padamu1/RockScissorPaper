@@ -8,7 +8,7 @@ namespace SimulFactory.Game.Event
     {
         public static void LoginS(Dictionary<byte,object> param)
         {
-            Dictionary<string, object> message = new Dictionary<string, object>();
+            Dictionary<string, object> message = new Dictionary<string, object>(); // 주석
             message.Add("result", param[0]);
             if ((bool)param[0])
             {
