@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimulFactory.System.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,10 @@ namespace SimulFactory.Manager
 {
     public class PopupManager : MonoSingleton<PopupManager>
     {
+        private Dictionary<int, PopupBase> _popupDic;
         public PopupManager()
         {
-            // 임시 생성
+            _popupDic = new Dictionary<int, PopupBase>();
         }
         public class PopupInfo
         {

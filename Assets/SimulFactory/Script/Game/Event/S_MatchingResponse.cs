@@ -16,6 +16,7 @@ namespace SimulFactory.Game.Event
             {
                 case 0:
                     UiManager.GetInstance().MatchResultUiActivate();
+                    BattleManager.GetInstance().st
                     break;
                 case 1:
                     Debug.Log("매칭 시작 실패");
