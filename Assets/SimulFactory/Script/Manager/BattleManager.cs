@@ -14,7 +14,7 @@ namespace SimulFactory.Manager
     {
         private RockScissorPaperDic _rockScissorPaperDic;   // 컨텍스트 딕셔너리
         private string _selectButtonName;                   // 선택된 버튼 이름
-
+        private bool _isRoundReady;
         private void Awake()
         {
             Init();
@@ -82,7 +82,25 @@ namespace SimulFactory.Manager
         /// <param name="buttonName"></param>
         private void ButtonClicked(int buttonNo)
         {
-            C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonNo);
+            if(_isRoundReady)
+            {
+                C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonNo);
+                ButtonDeactivate();
+            }
+        }
+        /// <summary>
+        /// 버튼 클릭 준비
+        /// </summary>
+        public void ButtonActivate()
+        {
+            _isRoundReady = true;
+        }
+        /// <summary>
+        /// 버튼을 비활성화 시킴
+        /// </summary>
+        public void ButtonDeactivate()
+        {
+            _isRoundReady = false;
         }
     }
 }

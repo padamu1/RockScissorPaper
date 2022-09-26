@@ -63,6 +63,9 @@ public class UiLogin : MonoBehaviour
         uiManager.Init();
         Debug.Log("Login Success");
         Managers.GetInstance().LoadScene("GameMain");
+
+        // ui¡ÿ∫Ò
+        BattleManager.GetInstance().ButtonDeactivate();
     }
     public void LoadMain()
     {

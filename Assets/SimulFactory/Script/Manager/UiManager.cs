@@ -54,8 +54,7 @@ namespace SimulFactory.Manager
         }
         public void StopButtonClicked()
         {
-            startButton.gameObject.SetActive(true);
-            stopButton.gameObject.SetActive(false);
+            ResetGameStartButton();
             C_MatchingCancel.MatchingCancelC();
         }
         public void MatchSuccess()
@@ -63,16 +62,8 @@ namespace SimulFactory.Manager
             matchObj.SetActive(true);
             Debug.Log("매칭 성공");
         }
-        public void MatchingReponse(int result)
+        public void MatchResultUiActivate()
         {
-            if (result == 1)
-            {
-                Debug.Log("매칭 시작 실패");
-                startButton.gameObject.SetActive(true);
-                stopButton.gameObject.SetActive(false);
-                return;
-            }
-
             Debug.Log("매칭 시작 성공");
             startButton.SetActive(false);
             stopButton.SetActive(false);
@@ -82,6 +73,18 @@ namespace SimulFactory.Manager
         {
             matchObj.SetActive(false);
             C_MatchingResponse.MatchingResponseC(isAccept);
+        }
+        /// <summary>
+        /// 게임 시작 버튼 리셋
+        /// </summary>
+        public void ResetGameStartButton()
+        {
+            startButton.gameObject.SetActive(true);
+            stopButton.gameObject.SetActive(false);
+        }
+        public void StopGameUi()
+        {
+            gameUi.SetActive(false);
         }
     }
 }
