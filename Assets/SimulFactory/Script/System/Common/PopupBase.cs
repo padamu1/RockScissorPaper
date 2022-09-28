@@ -1,19 +1,57 @@
 ﻿using SimulFactory.Manager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 namespace SimulFactory.System.Common
 {
     public class PopupBase : BaseObject
     {
-
-        public virtual void SpawnPopup(PopupManager.PopupInfo popupInfo)
+        [SerializeField] protected Define.POPUP_TYPE popupType;
+        [SerializeField] protected RectTransform frame;
+        [SerializeField] private Text titleText;
+        [SerializeField] private Text descText;
+        [SerializeField] private Image block;
+        protected Sequence showAnimation;
+        protected Sequence hideAnimation;
+        private void Start()
         {
+            showAnimation = DOTween.Sequence();
+            showAnimation.Append(frame.DOScale(1f, 0.3f).SetEase(Ease.OutBack).From(0.3f)).OnComplete(LayoutRebuild);
+            showAnimation.SetAutoKill(false);
+            showAnimation.Pause();
 
-            gameObject.SetActive(true);
+            hideAnimation = DOTween.Sequence();
+            hideAnimation.Append(frame.DOScale(0.3f, 0.3f).SetEase(Ease.Linear).From(1f)).OnComplete(ClosePopup);
+            hideAnimation.SetAutoKill(false);
+            hideAnimation.Pause();
+        }
+        protected virtual void OnEnable()
+        {
+            showAnimation.Restart();
+        }
+        protected void LayoutRebuild()
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(frame);
+        }
+        public virtual void SetInfo(PopupManager.PopupInfo popupInfo)
+        {
+            if (titleText != null)
+            {
+                titleText.text = popupInfo.Title;
+            }
+            if (descText != null)
+            {
+                descText.text = popupInfo.Description;
+            }
+            if (block != null)
+            {
+                block.enabled = popupInfo.Block;
+            }
+        }
+        protected virtual void ClosePopup()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

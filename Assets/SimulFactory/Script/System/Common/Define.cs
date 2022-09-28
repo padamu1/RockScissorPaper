@@ -10,6 +10,11 @@ namespace SimulFactory.System.Common
         {
             Login = 0,
         }
+        public enum UNIT_PREFAB
+        {
+            MainPopup,
+        }
+
         public enum EVENT_CODE
         {
             LoginC = 0,                     // 로그인 요청
@@ -53,12 +58,22 @@ namespace SimulFactory.System.Common
             Scissor = 1,
             Paper = 2,
         }
+        public enum POPUP_TYPE
+        { 
+            YesNoPopup,
+            ToastPopup,
+        }
+
+
+        public static readonly int MAINPOPUP_SET_COUNT = 5;
+        public static readonly int TOASTPOPUP_SET_COUNT = 5;
         public static readonly string ROCK_BUTTON = "Rock";
         public static readonly string SCISSOR_BUTTON = "Scissor";
         public static readonly string PAPER_BUTTON = "Paper";
         // PlayerPrefs 관련
         public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
-
+        public static readonly int POPUP_TOP_START_ORDER = 100;
+        public static readonly int POPUP_TOP_END_ORDER = 400;
     }
 
 }

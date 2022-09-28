@@ -36,6 +36,7 @@ namespace SimulFactory.Manager
             ObjectPoolManager.GetInstance();
             LoadingManager.GetInstance();
             SocketManager.GetInstance();
+            WorldManager.GetInstance();
             //BattleManager.GetInstance(); -> 이거 오브젝트로 가져와야함
         }
         /// <summary>
