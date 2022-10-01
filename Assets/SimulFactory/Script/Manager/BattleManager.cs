@@ -7,18 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.U2D;
 
 namespace SimulFactory.Manager
 {
-    public class BattleManager : MonoSingleton<BattleManager>
+    public class BattleManager : MonoBehaviour
     {
+        [SerializeField] private GameObject contextHolder;
+        private Sprite rockImg;
+        private Sprite scissorImg;
+        private Sprite paperImg;
         private RockScissorPaperDic _rockScissorPaperDic;   // 컨텍스트 딕셔너리
         private string _selectButtonName;                   // 선택된 버튼 이름
         private bool _isRoundReady;
-        private void Awake()
-        {
-            Init();
-        }
         /// <summary>
         /// 게임 입장 전 호출 되어야 함
         /// </summary>
@@ -27,8 +29,12 @@ namespace SimulFactory.Manager
             MasterContext masterContext = Managers.GetInstance().GetMasterContext();
             _rockScissorPaperDic = new RockScissorPaperDic();
             masterContext.Master.Add(Define.CONTEXT_LIST.RockScissorPaper.ToString(), _rockScissorPaperDic);
-
+            rockImg = Resources.Load<Sprite>("Resources/Element/Hands/RockHand");
+            scissorImg = Resources.Load<Sprite>("Resources/Element/Hands/ScissorHand");
+            paperImg = Resources.Load<Sprite>("Resources/Element/Hands/PaperHand");
             GameButtonSetting();
+
+            ButtonDeactivate();
         }
 
         /// <summary>
@@ -49,7 +55,8 @@ namespace SimulFactory.Manager
             RockScissorPaper rockScissorPaper = new RockScissorPaper();
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Rock); };
             rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Rock.ToString();
-            rockScissorPaper.SlotButtonImg = null;
+            rockScissorPaper.SlotButtonImg = rockImg;
+            rockScissorPaper.SlotButtonState = false;
             return rockScissorPaper;
         }
         /// <summary>
@@ -61,7 +68,8 @@ namespace SimulFactory.Manager
             RockScissorPaper rockScissorPaper = new RockScissorPaper();
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Scissor); };
             rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Scissor.ToString();
-            rockScissorPaper.SlotButtonImg = null;
+            rockScissorPaper.SlotButtonImg = scissorImg;
+            rockScissorPaper.SlotButtonState = false;
             return rockScissorPaper;
         }
         /// <summary>
@@ -73,8 +81,14 @@ namespace SimulFactory.Manager
             RockScissorPaper rockScissorPaper = new RockScissorPaper();
             rockScissorPaper.SlotButtonAction = delegate { ButtonClicked((int)Define.ROCK_SCISSOR_PAPER.Paper); };
             rockScissorPaper.SlotButtonText = Define.ROCK_SCISSOR_PAPER.Paper.ToString();
-            rockScissorPaper.SlotButtonImg = null;
+            rockScissorPaper.SlotButtonImg = paperImg;
+            rockScissorPaper.SlotButtonState = false;
             return rockScissorPaper;
+        }
+        private void RebuildHolder()
+        {
+            contextHolder.SetActive(false);
+            contextHolder.SetActive(true);
         }
         /// <summary>
         /// 버튼이 눌렸을 때 수행될 동작
@@ -94,6 +108,8 @@ namespace SimulFactory.Manager
         public void ButtonActivate()
         {
             _isRoundReady = true;
+            ButtonStateChange(_isRoundReady);
+            RebuildHolder();
         }
         /// <summary>
         /// 버튼을 비활성화 시킴
@@ -101,6 +117,27 @@ namespace SimulFactory.Manager
         public void ButtonDeactivate()
         {
             _isRoundReady = false;
+            ButtonStateChange(_isRoundReady);
+            RebuildHolder();
+        }
+
+        public void ButtonStateChange(bool state)
+        {
+            _rockScissorPaperDic.RockScissorPaper[Define.ROCK_BUTTON].SlotButtonState = state;
+            _rockScissorPaperDic.RockScissorPaper[Define.SCISSOR_BUTTON].SlotButtonState = state;
+            _rockScissorPaperDic.RockScissorPaper[Define.PAPER_BUTTON].SlotButtonState = state;
+        }
+        public Sprite GetRockImg()
+        {
+            return rockImg;
+        }
+        public Sprite GetScissorImg()
+        {
+            return scissorImg;
+        }
+        public Sprite GetPaperImg()
+        {
+            return paperImg;
         }
     }
 }
