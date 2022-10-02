@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 236149237344104006}
   - component: {fileID: 2691255446482386046}
   - component: {fileID: 2731372121361423382}
+  - component: {fileID: 379353424096773466}
+  - component: {fileID: 499124663906757756}
   m_Layer: 0
   m_Name: MainButtonSlot
   m_TagString: Untagged
@@ -100,6 +102,44 @@ MonoBehaviour:
     Type: 0
   GameObjects:
   - {fileID: 6170367670307363295}
+--- !u!223 &379353424096773466
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401606509658296491}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &499124663906757756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401606509658296491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5593556471128776440
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +257,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 3337184634844185565}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

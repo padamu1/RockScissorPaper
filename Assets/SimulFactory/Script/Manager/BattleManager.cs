@@ -15,9 +15,9 @@ namespace SimulFactory.Manager
     public class BattleManager : MonoBehaviour
     {
         [SerializeField] private GameObject contextHolder;
-        private Sprite rockImg;
-        private Sprite scissorImg;
-        private Sprite paperImg;
+        [SerializeField] private Sprite rockImg;
+        [SerializeField] private Sprite scissorImg;
+        [SerializeField] private Sprite paperImg;
         private RockScissorPaperDic _rockScissorPaperDic;   // 컨텍스트 딕셔너리
         private string _selectButtonName;                   // 선택된 버튼 이름
         private bool _isRoundReady;
@@ -29,9 +29,9 @@ namespace SimulFactory.Manager
             MasterContext masterContext = Managers.GetInstance().GetMasterContext();
             _rockScissorPaperDic = new RockScissorPaperDic();
             masterContext.Master.Add(Define.CONTEXT_LIST.RockScissorPaper.ToString(), _rockScissorPaperDic);
-            rockImg = Resources.Load<Sprite>("Resources/Element/Hands/RockHand");
-            scissorImg = Resources.Load<Sprite>("Resources/Element/Hands/ScissorHand");
-            paperImg = Resources.Load<Sprite>("Resources/Element/Hands/PaperHand");
+            //rockImg = Resources.Load<Sprite>("Resources/Element/Hands/RockHand");
+            //scissorImg = Resources.Load<Sprite>("Resources/Element/Hands/ScissorHand");
+            //paperImg = Resources.Load<Sprite>("Resources/Element/Hands/PaperHand");
             GameButtonSetting();
 
             ButtonDeactivate();
