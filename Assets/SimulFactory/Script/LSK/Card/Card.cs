@@ -21,6 +21,7 @@ public class Card : MonoBehaviour
 
     private bool isLarge = false;
 
+    public GameObject button;
 
     public void Setup(Item item, bool isFront)
     {
@@ -76,14 +77,15 @@ public class Card : MonoBehaviour
         if (isFront && !isLarge)
         {
             CardManager.Inst.CardMouseOver(this);
+            button.SetActive(true);
             isLarge = true;
         }
         else if (isFront && isLarge)
         {
             CardManager.Inst.CardMouseExit(this);
+            button.SetActive(false);
             isLarge = false;
         }
-
     }
 
     public void MoveTransform(PRS prs, bool useDotween, float dotweenTime = 0)
