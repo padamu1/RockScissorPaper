@@ -12,10 +12,10 @@ namespace SimulFactory.Context
 
     public class RockScissorPaperDic : ContextBase
     {
-        private readonly Property<DataDictionary<string, Context>> RockScissorPaperDicValue =
-            new Property<DataDictionary<string, Context>>();
+        private readonly Property<DataDictionary<string, RockScissorPaper>> RockScissorPaperDicValue =
+            new Property<DataDictionary<string, RockScissorPaper>>();
 
-        public DataDictionary<string, Context> RockScissorPaper
+        public DataDictionary<string, RockScissorPaper> RockScissorPaper
         {
             get
             {
@@ -32,14 +32,13 @@ namespace SimulFactory.Context
         }
         public RockScissorPaperDic()
         {
-            RockScissorPaperDicValue.Value = new DataDictionary<string, Context>();
+            RockScissorPaperDicValue.Value = new DataDictionary<string, RockScissorPaper>();
         }
     }
     public class RockScissorPaper : Context
     {
         private readonly Property<Action> SlotButtonActionValue =
             new Property<Action>();
-
         public Action SlotButtonAction
         {
             get
@@ -79,6 +78,21 @@ namespace SimulFactory.Context
             set
             {
                 SlotButtonImgValue.Value = value;
+            }
+        }
+
+        private readonly Property<bool> SlotButtonStateValue =
+            new Property<bool>();
+
+        public bool SlotButtonState
+        {
+            get
+            {
+                return SlotButtonStateValue.Value;
+            }
+            set
+            {
+                SlotButtonStateValue.Value = value;
             }
         }
     }

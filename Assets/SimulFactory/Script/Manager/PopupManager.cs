@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SimulFactory.System.Common;
+using SimulFactory.Ui.Popup;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +11,22 @@ namespace SimulFactory.Manager
 {
     public class PopupManager : MonoSingleton<PopupManager>
     {
+        private Dictionary<int, PopupBase> _popupDic;
+        private int _topStartOrder;
+        private int _topEndOrder;
+        private int _order;
+        private PopupInfo _popupInfo;
         public PopupManager()
         {
-            // 임시 생성
+            _popupDic = new Dictionary<int, PopupBase>();
+            _topStartOrder = Define.POPUP_TOP_START_ORDER;
+            _topEndOrder = Define.POPUP_TOP_END_ORDER;
+            _order = _topStartOrder;
+            _popupInfo = new PopupInfo();
         }
         public class PopupInfo
         {
+            public Define.POPUP_TYPE Type;
             public string Title;
             public string Description;
             public string YesButtonText;
@@ -37,8 +49,35 @@ namespace SimulFactory.Manager
         }
         public virtual void CreatePopup(PopupInfo popupInfo)
         {
-            GameObject obj = ObjectPoolManager.GetInstance().SpawnFromPool("YesNoPopup");
-            obj.name = popupInfo.Title;
+            switch (popupInfo.Type)
+            {
+                case Define.POPUP_TYPE.YesNoPopup:
+                    GameObject obj = ObjectPoolManager.GetInstance().SpawnFromPool(Define.UNIT_PREFAB.MainPopup.ToString());
+                    if (popupInfo.Top)
+                    {
+                        obj.GetComponent<Canvas>().sortingOrder = GetOrder();
+                    }
+                    MainPopup mainPopup = obj.GetComponent<MainPopup>();
+                    mainPopup.SetInfo(popupInfo);
+                    break;
+                case Define.POPUP_TYPE.ToastPopup:
+                    break;
+
+            }
+
+        }
+        private int GetOrder()
+        {
+            if(_order > _topEndOrder)
+            {
+                _order = _topStartOrder;
+            }
+            return _order++;
+        }
+        public PopupInfo GetPopupInfo()
+        {
+            _popupInfo.Reset();
+            return _popupInfo;
         }
     }
 }

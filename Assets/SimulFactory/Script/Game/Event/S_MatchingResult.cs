@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimulFactory.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace SimulFactory.Game.Event
         public static void MatchingResultS(Dictionary<byte,object> param)
         {
             Debug.Log("매칭 결과 도착");
+            UiManager.GetInstance().StopGameUi();
+            UiManager.GetInstance().ResetGameStartButton();
+            UiManager.GetInstance().GetBattleManager().ButtonDeactivate();
         }
     }
 }

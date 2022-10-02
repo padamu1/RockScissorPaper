@@ -11,9 +11,14 @@ namespace SimulFactory.Game.Event
     {
         public static void StartMatchingS(Dictionary<byte,object> param)
         {
-            if ((bool)param[0])
+            bool isMatchStarted = (bool)param[0];
+            if (isMatchStarted)
             {
                 Debug.Log("매칭 시작 성공");
+            }
+            else
+            {
+                Debug.Log("매칭 시작 실패");
             }
         }
     }

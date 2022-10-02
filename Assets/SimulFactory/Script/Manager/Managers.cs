@@ -28,14 +28,13 @@ namespace SimulFactory.Manager
             _masterContext = new MasterContext();
             contextHolder.Context = _masterContext;
 
-            // 필수 요소 세팅
-            BattleManager.GetInstance();
             EventManager.GetInstance();
             WorldManager.GetInstance();
             UserData.GetInstance();
             ObjectPoolManager.GetInstance();
             LoadingManager.GetInstance();
             SocketManager.GetInstance();
+            WorldManager.GetInstance();
             //BattleManager.GetInstance(); -> 이거 오브젝트로 가져와야함
         }
         /// <summary>

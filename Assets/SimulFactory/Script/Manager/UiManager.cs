@@ -17,17 +17,13 @@ namespace SimulFactory.Manager
         [SerializeField] private GameObject stopButton;
         [SerializeField] private GameObject matchObj;
         [SerializeField] private GameObject uiHolder;
-        private GameObject gameUi;
+        [SerializeField] private BattleManager battleManager;
         private void Awake()
         {
             GetInstance();
         }
         public void Init()
         {
-            // 게임 ui 설정
-            gameUi = Instantiate(Resources.Load("Ui/GameUI") as GameObject,uiHolder.transform);
-            gameUi.SetActive(false);
-
             CoroutineHelper.StartLogoStopCoroutine(SendPing());
             // 컨텍스트 세팅
             ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
@@ -54,34 +50,53 @@ namespace SimulFactory.Manager
         }
         public void StopButtonClicked()
         {
-            startButton.gameObject.SetActive(true);
-            stopButton.gameObject.SetActive(false);
+            ResetGameStartButton();
             C_MatchingCancel.MatchingCancelC();
         }
         public void MatchSuccess()
         {
-            matchObj.SetActive(true);
+            PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+            popupInfo.Type = System.Common.Define.POPUP_TYPE.YesNoPopup;
+            popupInfo.Title = "매칭 성공";
+            popupInfo.Description = "매칭을 수락하시겠습니까?";
+            popupInfo.Block = true;
+            popupInfo.Top = true;
+            popupInfo.NoButtonText = "거절";
+            popupInfo.YesButtonText = "수락";
+            popupInfo.NoButtonAction = delegate { AcceptButtonClicked(false); };
+            popupInfo.YesButtonAction = delegate { AcceptButtonClicked(true); };
+            PopupManager.GetInstance().CreatePopup(popupInfo);
+            //matchObj.SetActive(true);
             Debug.Log("매칭 성공");
         }
-        public void MatchingReponse(int result)
+        public void MatchResultUiActivate()
         {
-            if (result == 1)
-            {
-                Debug.Log("매칭 시작 실패");
-                startButton.gameObject.SetActive(true);
-                stopButton.gameObject.SetActive(false);
-                return;
-            }
-
             Debug.Log("매칭 시작 성공");
             startButton.SetActive(false);
             stopButton.SetActive(false);
-            gameUi.SetActive(true);
+            battleManager.gameObject.SetActive(true);
+            battleManager.ButtonActivate();
         }
         public void AcceptButtonClicked(bool isAccept)
         {
             matchObj.SetActive(false);
             C_MatchingResponse.MatchingResponseC(isAccept);
+        }
+        /// <summary>
+        /// 게임 시작 버튼 리셋
+        /// </summary>
+        public void ResetGameStartButton()
+        {
+            startButton.gameObject.SetActive(true);
+            stopButton.gameObject.SetActive(false);
+        }
+        public void StopGameUi()
+        {
+            battleManager.gameObject.SetActive(false);
+        }
+        public BattleManager GetBattleManager()
+        {
+            return battleManager;
         }
     }
 }

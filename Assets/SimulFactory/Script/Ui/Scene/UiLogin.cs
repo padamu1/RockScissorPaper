@@ -58,11 +58,14 @@ public class UiLogin : MonoBehaviour
         }
         UserData.GetInstance().UserNo = (long)message["userNo"];
         PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Ui/TempUi"));
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
         UiManager uiManager = obj.GetComponent<UiManager>();
         uiManager.Init();
         Debug.Log("Login Success");
         Managers.GetInstance().LoadScene("GameMain");
+
+        // ui¡ÿ∫Ò
+        UiManager.GetInstance().GetBattleManager().Init();
     }
     public void LoadMain()
     {
