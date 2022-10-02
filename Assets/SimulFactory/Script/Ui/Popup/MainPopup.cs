@@ -24,6 +24,8 @@ namespace SimulFactory.Ui.Popup
             }
             noButtonText.text = popupInfo.NoButtonText;
             noButtonAction = popupInfo.NoButtonAction;
+
+            showAnimation.Restart();
         }
         public void YesButtonClicked()
         {
