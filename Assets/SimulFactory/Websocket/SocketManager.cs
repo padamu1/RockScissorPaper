@@ -126,6 +126,11 @@ namespace SimulFactory.WebSocket
         {
             m_Socket.Close();
             Debug.Log("¼­¹ö ¿¬°á ²÷À½");
+
+            Managers.GetInstance().GetMasterContext().Reset();
+
+            // ·Î°í¾ÀÀ¸·Î ÀÌµ¿
+            Managers.GetInstance().LoadScene("Logo");
         }
         public WebSocketState GetWebSocketState()
         {
@@ -205,7 +210,7 @@ namespace SimulFactory.WebSocket
             {
                 Debug.Log("¼­¹ö ¿¬°á ²÷±è");
                 m_disconnect = false;
-                Managers.GetInstance().LoadScene("Logo");
+                Disconnect();
             }
         }
 
