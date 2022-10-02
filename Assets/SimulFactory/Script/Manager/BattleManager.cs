@@ -123,9 +123,9 @@ namespace SimulFactory.Manager
 
         public void ButtonStateChange(bool state)
         {
-            _rockScissorPaperDic.RockScissorPaper[Define.ROCK_BUTTON].SlotButtonState = state;
-            _rockScissorPaperDic.RockScissorPaper[Define.SCISSOR_BUTTON].SlotButtonState = state;
-            _rockScissorPaperDic.RockScissorPaper[Define.PAPER_BUTTON].SlotButtonState = state;
+            _rockScissorPaperDic.RockScissorPaper[Define.ROCK_BUTTON].SlotButtonState = !state;
+            _rockScissorPaperDic.RockScissorPaper[Define.SCISSOR_BUTTON].SlotButtonState = !state;
+            _rockScissorPaperDic.RockScissorPaper[Define.PAPER_BUTTON].SlotButtonState = !state;
         }
         public Sprite GetRockImg()
         {
