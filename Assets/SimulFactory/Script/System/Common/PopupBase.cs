@@ -17,7 +17,8 @@ namespace SimulFactory.System.Common
         private void Start()
         {
             showAnimation = DOTween.Sequence();
-            showAnimation.Append(frame.DOScale(1f, 0.3f).SetEase(Ease.OutBack).From(0.3f)).OnComplete(LayoutRebuild);
+            showAnimation.OnPlay(LayoutRebuild);
+            showAnimation.Append(frame.DOScale(1f, 0.3f).SetEase(Ease.OutBack).From(0.3f));
             showAnimation.SetAutoKill(false);
             showAnimation.Pause();
 
