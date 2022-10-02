@@ -75,6 +75,7 @@ namespace SimulFactory.Manager
             startButton.SetActive(false);
             stopButton.SetActive(false);
             battleManager.gameObject.SetActive(true);
+            battleManager.ButtonActivate();
         }
         public void AcceptButtonClicked(bool isAccept)
         {
