@@ -6,6 +6,7 @@ using SimulFactory.System.Common;
 using Newtonsoft.Json;
 using SimulFactory.Game.Event;
 using SimulFactory.Manager;
+using System;
 /// <summary>
 /// 데이터 보낼 때 사용하는 클래스
 /// </summary>
@@ -43,12 +44,14 @@ namespace SimulFactory.WebSocket
         private ReceivedPacketData m_recvData;
         private Queue<ReceivedPacketData> m_receivedPacketDatas = new Queue<ReceivedPacketData>();
         private bool m_disconnect = false;
+        private Dictionary<int,Action<Dictionary<byte,object>>> _callbackDic;
         private void Awake()
         {
             m_recvData = new ReceivedPacketData();
             m_recvData.data = new Dictionary<byte, object>();
             m_reqData = new RequestPacketData();
             m_reqData.data = new Dictionary<byte, object>();
+            _callbackDic = new Dictionary<int,Action<Dictionary<byte,object>>>();
         }
         public void Init()
         {
@@ -133,10 +136,24 @@ namespace SimulFactory.WebSocket
             return m_Socket.ReadyState;
         }
         #endregion
-
+        private bool CheckCallBack(ReceivedPacketData recvData)
+        {
+            if(_callbackDic.ContainsKey(recvData.eventCode))
+            {
+                _callbackDic[recvData.eventCode].Invoke(recvData.data);
+                return true;
+            }
+            return false;
+        }
         private void DataProcess(ReceivedPacketData recvData)
         {
             Dictionary<byte, object> param = recvData.data;
+            
+            if(CheckCallBack(recvData))
+            {
+                return;
+            }
+
             switch (recvData.eventCode)
             {
                 case (byte)Define.EVENT_CODE.LoginS:
