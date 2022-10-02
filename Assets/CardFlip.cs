@@ -15,18 +15,47 @@ public class CardFlip : MonoBehaviour
     public float duration = 1.0f;
 
     RectTransform rect;
-    Sequence mySequence;
+    Sequence mySequence1;
+    Sequence mySequence2;
 
+    private Vector3 startRotateVector = new Vector3(0, 90.1f, 0);
+    private Vector3 endRotateVector = new Vector3(0, 0.01f, 0);
     private void Start()
     {
-        mySequence = DOTween.Sequence();
+        // 애니메이션 설정
         rect = transform.GetComponent<RectTransform>();
-        //StartCoroutine(FlippingCard());
+
+        mySequence1 = DOTween.Sequence();
+        mySequence1.Append(rect.DOLocalRotate(startRotateVector, duration));
+        mySequence1.AppendCallback(CardOn);
+        mySequence1.Append(rect.DOLocalRotate(endRotateVector, duration));
+        mySequence1.SetAutoKill(false);
+        mySequence1.Pause();
+
+        mySequence2 = DOTween.Sequence();
+        mySequence2.Append(rect.DOLocalRotate(startRotateVector, duration));
+        mySequence2.AppendCallback(CardOff);
+        mySequence2.Append(rect.DOLocalRotate(endRotateVector, duration));
+        mySequence2.SetAutoKill(false);
+        mySequence2.Pause();
+
         //init
-        isFront = frontCard.active;
+        isFront = frontCard.activeSelf;
         preFlip = isFront;
+
+        //StartCoroutine(FlippingCard());
     }
 
+    private void CardOff()
+    {
+        frontCard.SetActive(false);
+        backCard.SetActive(true);
+    }
+    private void CardOn()
+    {
+        frontCard.SetActive(true);
+        backCard.SetActive(false);
+    }
     IEnumerator FlippingCard()
     {
         while(true)
@@ -35,40 +64,9 @@ public class CardFlip : MonoBehaviour
         if(preFlip != isFront)
             {
                 preFlip = isFront;
-                if (isFront) { FlipForward(); };
-                if (!isFront) { FlipBackward(); };
+                if (isFront) { mySequence1.Restart(); };
+                if (!isFront) { mySequence2.Restart(); };
             }
         }
     }
-
-    public void FlipForward()
-    {
-        rect.DOLocalRotate(new Vector3(0, 90.1f, 0), duration).OnComplete(() =>
-        {
-            frontCard.SetActive(true);
-            backCard.SetActive(false);
-            rect.DOLocalRotate(new Vector3(0, 0.01f, 0), duration);
-        });
-    }
-
-    public void FlipBackward()
-    {
-        rect.DOLocalRotate(new Vector3(0, -90.1f, 0), duration).OnComplete(() =>
-        {
-            backCard.SetActive(true);
-            frontCard.SetActive(false);
-            rect.DOLocalRotate(new Vector3(0, -0.01f, 0), duration);
-        });
-    }
 }
-
-
-/*
-  mySequence.OnPlay(  );
-  mySequence.Append(rect.DOLocalRotate(new Vector3(0, 90.1f, 0), duration));
-        mySequence.Pause();
-        backCard.SetActive(true);
-        frontCard.SetActive(false);
-       
-        mySequence.Append(rect.DOLocalRotate(new Vector3(0, 0, 0), duration));
- */
