@@ -23,6 +23,7 @@ namespace SimulFactory.Manager
             for(int count = 0; count < setObjCount; count++)
             {
                 GameObject tempObj = Instantiate(obj);
+                DontDestroyOnLoad(tempObj);
                 tempObj.name = obj.name;
                 tempObj.SetActive(false);
             }
@@ -39,7 +40,6 @@ namespace SimulFactory.Manager
             else
             {
                 obj = poolDic[objectName].Dequeue();
-                obj.gameObject.SetActive(true);
             }
             return obj;
         }
