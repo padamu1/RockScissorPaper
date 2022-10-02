@@ -18,12 +18,12 @@ namespace SimulFactory.System.Common
         {
             showAnimation = DOTween.Sequence();
             showAnimation.OnPlay(LayoutRebuild);
-            showAnimation.Append(frame.DOScale(1f, 0.3f).SetEase(Ease.OutBack).From(0.3f));
+            showAnimation.Append(frame.DOScale(1f, 0.5f).From(0.3f).SetEase(Ease.OutBounce));
             showAnimation.SetAutoKill(false);
             showAnimation.Pause();
 
             hideAnimation = DOTween.Sequence();
-            hideAnimation.Append(frame.DOScale(0.3f, 0.3f).SetEase(Ease.Linear).From(1f)).OnComplete(ClosePopup);
+            hideAnimation.Append(frame.DOScale(0.3f, 0.5f).From(1f).SetEase(Ease.Linear)).OnComplete(ClosePopup);
             hideAnimation.SetAutoKill(false);
             hideAnimation.Pause();
         }
