@@ -55,7 +55,18 @@ namespace SimulFactory.Manager
         }
         public void MatchSuccess()
         {
-            matchObj.SetActive(true);
+            PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+            popupInfo.Type = System.Common.Define.POPUP_TYPE.YesNoPopup;
+            popupInfo.Title = "매칭 성공";
+            popupInfo.Description = "매칭을 수락하시겠습니까?";
+            popupInfo.Block = true;
+            popupInfo.Top = true;
+            popupInfo.NoButtonText = "거절";
+            popupInfo.YesButtonText = "수락";
+            popupInfo.NoButtonAction = delegate { AcceptButtonClicked(false); };
+            popupInfo.YesButtonAction = delegate { AcceptButtonClicked(true); };
+            PopupManager.GetInstance().CreatePopup(popupInfo);
+            //matchObj.SetActive(true);
             Debug.Log("매칭 성공");
         }
         public void MatchResultUiActivate()

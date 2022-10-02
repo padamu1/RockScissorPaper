@@ -15,13 +15,14 @@ namespace SimulFactory.Manager
         private int _topStartOrder;
         private int _topEndOrder;
         private int _order;
-
+        private PopupInfo _popupInfo;
         public PopupManager()
         {
             _popupDic = new Dictionary<int, PopupBase>();
             _topStartOrder = Define.POPUP_TOP_START_ORDER;
             _topEndOrder = Define.POPUP_TOP_END_ORDER;
             _order = _topStartOrder;
+            _popupInfo = new PopupInfo();
         }
         public class PopupInfo
         {
@@ -72,6 +73,11 @@ namespace SimulFactory.Manager
                 _order = _topStartOrder;
             }
             return _order++;
+        }
+        public PopupInfo GetPopupInfo()
+        {
+            _popupInfo.Reset();
+            return _popupInfo;
         }
     }
 }
