@@ -36,10 +36,12 @@ namespace SimulFactory.Manager
             if (poolDic[objectName].Count == 0)
             {
                 obj = Instantiate(objectDic[objectName]);
+                DontDestroyOnLoad(obj);
             }
             else
             {
                 obj = poolDic[objectName].Dequeue();
+                obj.SetActive(true);
             }
             return obj;
         }
