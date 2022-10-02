@@ -18,7 +18,7 @@ public class UiLogin : MonoBehaviour
     {
         Managers.GetInstance();
     }
-    private void Start()
+    private void OnEnable()
     {
         SocketManager.GetInstance().Init();
         uiFrame.gameObject.SetActive(false);

@@ -23,10 +23,7 @@ namespace SimulFactory.Context.Bean
         }
         public void Reset()
         {
-            foreach (KeyValuePair<string, ContextBase> data in MasterContextValue.Value)
-            {
-                data.Value.Reset();
-            }
+            Master.Clear();
         }
         public MasterContext()
         {
