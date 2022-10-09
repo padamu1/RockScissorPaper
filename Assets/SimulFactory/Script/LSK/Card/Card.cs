@@ -27,7 +27,7 @@ public class Card : MonoBehaviour
     {
         this.item = item;
         this.isFront = isFront;
-
+        
         if (this.isFront)
         {
             character.sprite = this.item.sprite;
