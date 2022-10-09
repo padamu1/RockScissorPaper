@@ -17,6 +17,8 @@ namespace SimulFactory.Ui.Logo
 
         private void Awake()
         {
+            Managers.GetInstance();
+
             showAnimation = DOTween.Sequence();
             showAnimation.Append(logoImage.DOFade(1f, 2f).From(0f));
             showAnimation.Insert(0f, logoFrame.DOFade(1f, 2f).From(0f));

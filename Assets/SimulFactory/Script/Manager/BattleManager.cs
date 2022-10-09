@@ -98,8 +98,8 @@ namespace SimulFactory.Manager
         {
             if(_isRoundReady)
             {
-                C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonNo);
                 ButtonDeactivate();
+                C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonNo);
             }
         }
         /// <summary>
