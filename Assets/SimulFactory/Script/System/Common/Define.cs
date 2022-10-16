@@ -21,8 +21,9 @@ namespace SimulFactory.System.Common
             StartMatchingC = 1,             // 매칭 요청
             MatchingResponseC = 2,          // 매칭 응답
             MatchingCancelC = 3,            // 매칭 취소 요청
-            PingC = 4,                      // 서버에 주기적으로 접속 확인을 위한 핑을 보냄 -> 안보내면 끊어지게 설정
-            UserBattleButtonClicked = 5,    // 배틀 중 유저가 클릭한 버튼을 보냄
+            PingC = 4,                      // 서버에 주기적으로 접속 확인을 위한 핑을 보냄
+            UserBattleButtonClickedC = 5,   // 배틀 중 유저가 클릭한 버튼을 보냄
+            UserNameC = 6,                  // 유저 닉네임 변경 요청
 
             LoginS = 0,             // 로그인 응답
             UserInfoS = 1,          // 유저 정보 내려줌
@@ -33,7 +34,9 @@ namespace SimulFactory.System.Common
             MatchingResultS = 6,    // 매칭 결과 전송
             UserBattleResponseS = 7,// 상대편이 낸 결과를 받음
             RoundResultS = 8,       // 라운드 결과 전송
+            UserNameS = 9,          // 유저 닉네임 변경 요청 응답
         }
+
         public enum HAPTIC_EVET
         {
             ShortHaptic,

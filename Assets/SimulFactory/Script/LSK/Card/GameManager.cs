@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     WaitForSeconds delay2 = new WaitForSeconds(2);
 
-
     void Start()
     {
         UISetup();

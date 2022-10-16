@@ -21,7 +21,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform otherCardLeft;
     [SerializeField] Transform otherCardRight;
     [SerializeField] ECardState eCardState;
-    
+
     List<Item> itemBuffer;
     Card selectCard;
     bool isMyCardDrag;
@@ -29,6 +29,7 @@ public class CardManager : MonoBehaviour
     enum ECardState { Nothing, CanMouseOver, CanMouseDrag }
     int myPutCount;
 
+    public static List<int> cardUIDList = new List<int>();
 
     public Item PopItem()
     {

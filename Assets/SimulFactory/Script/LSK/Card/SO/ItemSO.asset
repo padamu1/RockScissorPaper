@@ -22,9 +22,9 @@ MonoBehaviour:
     attack: 2
     health: 2
     sprite: {fileID: 21300000, guid: f19fafc23593ebd4faeb5516a68ec3ae, type: 3}
-    percent: 2
+    percent: 1
   - name: Scissor
     attack: 3
     health: 3
     sprite: {fileID: 21300000, guid: 296a7427d97eae943aeef02d780e85d3, type: 3}
-    percent: 3
+    percent: 1
