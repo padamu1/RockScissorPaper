@@ -67,6 +67,11 @@ public class UiLogin : MonoBehaviour
         // ui¡ÿ∫Ò
         UiManager.GetInstance().GetBattleManager().Init();
     }
+    public void ResetBUttonClicked()
+    {
+        PlayerPrefs.DeleteAll();
+        SocketManager.GetInstance().Disconnect();
+    }
     public void LoadMain()
     {
         Managers.GetInstance().LoadScene("GameMain");
