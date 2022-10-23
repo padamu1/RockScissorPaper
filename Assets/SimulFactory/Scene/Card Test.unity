@@ -2320,6 +2320,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 572486891}
     m_Modifications:
+    - target: {fileID: 3943731105094731591, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 131.9185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943731105094731591, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 68.3087
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943731105094731591, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27.355606
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943731105094731591, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7.1544
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138696331832985604, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138696331832985604, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606751939949555877, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6606751940085655910, guid: aa6d8d7ab22498d46879e27d66e77a44, type: 3}
       propertyPath: m_Name
       value: Card2 1
