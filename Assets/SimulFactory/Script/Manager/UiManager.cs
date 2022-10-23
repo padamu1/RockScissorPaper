@@ -33,6 +33,9 @@ namespace SimulFactory.Manager
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
             matchObj.SetActive(false);
+
+            // 로그인 완료 보냄
+            C_LoginComplete.LoginCompleteC();
         }
         private IEnumerator SendPing()
         {
