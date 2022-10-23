@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SimulFactory/Resources/Game.meta
+guid: 548a710086aba5a4286c46492e224b6f
+========
 guid: 74df1162f2227fc48846b8f3717579f0
+>>>>>>>> develop:Assets/SimulFactory/Resources/Element/Hands.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

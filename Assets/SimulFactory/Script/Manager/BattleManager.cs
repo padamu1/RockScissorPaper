@@ -14,6 +14,7 @@ namespace SimulFactory.Manager
 {
     public class BattleManager : MonoBehaviour
     {
+        public ShowCard showCard;
         [SerializeField] private GameObject contextHolder;
         [SerializeField] private Sprite rockImg;
         [SerializeField] private Sprite scissorImg;

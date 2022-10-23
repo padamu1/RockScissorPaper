@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SimulFactory/Scene/CardInventory.unity.meta
+guid: 82c5ed285047b7749984f519cf39f5aa
+========
 guid: fc42180719bf2b54fadf5c4c46f5fa14
+>>>>>>>> develop:Assets/SimulFactory/Scene/Admob.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

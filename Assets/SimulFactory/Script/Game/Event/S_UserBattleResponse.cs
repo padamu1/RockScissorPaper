@@ -1,4 +1,5 @@
-﻿using SimulFactory.System.Common;
+﻿using SimulFactory.Manager;
+using SimulFactory.System.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,15 @@ namespace SimulFactory.Game.Event
             switch ((Define.ROCK_SCISSOR_PAPER)Convert.ToInt32(param[0]))
             {
                 case Define.ROCK_SCISSOR_PAPER.Rock:
+                    ShowCard.GetInstance().EnemyCard("rock");
                     Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Rock.ToString());
                     break;
                 case Define.ROCK_SCISSOR_PAPER.Scissor:
+                    UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("scissor");
                     Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
                     break;
                 case Define.ROCK_SCISSOR_PAPER.Paper:
+                    UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("paper");
                     Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Paper.ToString());
                     break;
             }

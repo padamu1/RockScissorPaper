@@ -11,7 +11,7 @@ namespace SimulFactory.Game.Event
         {
             Dictionary<byte, object> dic = new Dictionary<byte, object>();
             dic.Add(0, buttonNo);
-            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.UserBattleButtonClicked, dic);
+            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.UserBattleButtonClickedC, dic);
         }
     }
 }
