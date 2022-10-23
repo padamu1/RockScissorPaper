@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1971967516408710712}
   - component: {fileID: 1971967516408710713}
   - component: {fileID: 2656121489268252933}
+  - component: {fileID: 9166830823528937589}
   m_Layer: 5
   m_Name: BattleCanvas
   m_TagString: Untagged
@@ -57,7 +58,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -113,10 +114,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed7e9c62d558f444b012d246266cd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showCard: {fileID: 9166830823528937589}
   contextHolder: {fileID: 7539807121572719268}
   rockImg: {fileID: 21300000, guid: f19fafc23593ebd4faeb5516a68ec3ae, type: 3}
   scissorImg: {fileID: 21300000, guid: 296a7427d97eae943aeef02d780e85d3, type: 3}
   paperImg: {fileID: 21300000, guid: 9ac080e8b0545e140ae8b6854439e8ac, type: 3}
+--- !u!114 &9166830823528937589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971967516408710714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27b77990e236f742aee38fcbfd1f946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rock: {fileID: 8205272983445232618, guid: b37ef7066bc5c924f926e63f8808e88c, type: 3}
+  scissor: {fileID: 2750241357132880725, guid: 5be42421f46d9ad479366ed05119ac88, type: 3}
+  paper: {fileID: 9222683183795199923, guid: 2fc7fc8c62b51c847977984d672c3d0d, type: 3}
 --- !u!1 &1971967516438011774
 GameObject:
   m_ObjectHideFlags: 0
