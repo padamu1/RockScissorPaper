@@ -166,6 +166,7 @@ namespace SimulFactory.WebSocket
                     S_Login.LoginS(param);
                     break;
                 case (byte)Define.EVENT_CODE.UserInfoS:
+                    S_UserInfo.UserInfoS(param);
                     // 유저 정보를 받음
                     break;
                 case (byte)Define.EVENT_CODE.StartMatchingS:
