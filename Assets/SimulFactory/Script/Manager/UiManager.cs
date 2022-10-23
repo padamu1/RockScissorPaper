@@ -1,5 +1,6 @@
 ﻿using SimulFactory.Game.Event;
 using SimulFactory.Script.Util;
+using SimulFactory.System.Common;
 using Slash.Unity.DataBind.Core.Presentation;
 using System;
 using System.Collections;
@@ -13,6 +14,7 @@ namespace SimulFactory.Manager
 {
     public class UiManager : MonoSingleton<UiManager>
     {
+        [SerializeField] private GameObject lobbyCanvas; 
         [SerializeField] private GameObject startButton; 
         [SerializeField] private GameObject stopButton;
         [SerializeField] private GameObject matchObj;
@@ -33,7 +35,7 @@ namespace SimulFactory.Manager
             startButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
             matchObj.SetActive(false);
-
+            //lobbyCanvas.SetActive(true);
             // 로그인 완료 보냄
             C_LoginComplete.LoginCompleteC();
         }

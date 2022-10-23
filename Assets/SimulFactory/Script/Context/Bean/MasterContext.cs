@@ -7,18 +7,18 @@ namespace SimulFactory.Context.Bean
 
     public class MasterContext : Context
     {
-        private readonly Property<DataDictionary<string, ContextBase>> MasterContextValue =
-            new Property<DataDictionary<string, ContextBase>>();
+        private readonly Property<DataDictionary<string, Context>> MasterProperty =
+            new Property<DataDictionary<string, Context>>();
 
-        public DataDictionary<string, ContextBase> Master
+        public DataDictionary<string, Context> Master
         {
             get
             {
-                return MasterContextValue.Value;
+                return MasterProperty.Value;
             }
             set
             {
-                MasterContextValue.Value = value;
+                MasterProperty.Value = value;
             }
         }
         public void Reset()
@@ -27,7 +27,7 @@ namespace SimulFactory.Context.Bean
         }
         public MasterContext()
         {
-            MasterContextValue.Value = new DataDictionary<string, ContextBase>();
+            MasterProperty.Value = new DataDictionary<string, Context>();
         }
     }
 

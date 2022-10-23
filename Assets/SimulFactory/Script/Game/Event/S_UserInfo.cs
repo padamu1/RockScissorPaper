@@ -11,11 +11,11 @@ namespace SimulFactory.Game.Event
     {
         public static void UserInfoS(Dictionary<byte,object> param)
         {
-            UserData.GetInstance().UserName = (string)param[0]; // 유저 닉네임
+            UserData.GetInstance().SetUserName((string)param[0]); // 유저 닉네임
             UserData.GetInstance().UpdateUserInfoContext();
-            UserData.GetInstance().pvpInfo.Rating = Convert.ToInt32(param[1]);
-            UserData.GetInstance().pvpInfo.WinCount = Convert.ToInt32(param[2]);
-            UserData.GetInstance().pvpInfo.DefeatCount = Convert.ToInt32(param[3]);
+            UserData.GetInstance().GetPvpInfo().Rating = Convert.ToInt32(param[1]);
+            UserData.GetInstance().GetPvpInfo().WinCount = Convert.ToInt32(param[2]);
+            UserData.GetInstance().GetPvpInfo().DefeatCount = Convert.ToInt32(param[3]);
             UserData.GetInstance().UpdateMatchInfoContext();
         }
     }

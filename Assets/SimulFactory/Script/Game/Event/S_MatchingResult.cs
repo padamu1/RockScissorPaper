@@ -14,9 +14,9 @@ namespace SimulFactory.Game.Event
         public static void MatchingResultS(Dictionary<byte,object> param)
         {
             // [0] -> true 승리 , false 패배
-            UserData.GetInstance().pvpInfo.Rating = Convert.ToInt32(param[1]);
-            UserData.GetInstance().pvpInfo.WinCount = Convert.ToInt32(param[2]);
-            UserData.GetInstance().pvpInfo.DefeatCount = Convert.ToInt32(param[3]);
+            UserData.GetInstance().GetPvpInfo().Rating = Convert.ToInt32(param[1]);
+            UserData.GetInstance().GetPvpInfo().WinCount = Convert.ToInt32(param[2]);
+            UserData.GetInstance().GetPvpInfo().DefeatCount = Convert.ToInt32(param[3]);
             UserData.GetInstance().UpdateMatchInfoContext();
             Debug.Log("매칭 결과 도착");
             UiManager.GetInstance().StopGameUi();

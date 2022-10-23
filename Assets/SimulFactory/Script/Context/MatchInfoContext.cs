@@ -1,38 +1,38 @@
-﻿using SimulFactory.Context.Bean;
-using Slash.Unity.DataBind.Core.Data;
-using UnityEngine;
-
-namespace SimulFactory.Context
+﻿namespace SimulFactory.Context
 {
-    public class MatchInfoContext : ContextBase
+    using SimulFactory.Context.Bean;
+    using Slash.Unity.DataBind.Core.Data;
+    using UnityEngine;
+
+    public class MatchInfoContext : Context
     {
-        private readonly Property<string> UserRatingValue =
+        private readonly Property<string> UserRatingProperty =
             new Property<string>();
 
         public string UserRating
         {
             get
             {
-                return UserRatingValue.Value;
+                return UserRatingProperty.Value;
             }
             set
             {
-                UserRatingValue.Value = value;
+                UserRatingProperty.Value = value;
             }
         }
 
-        private readonly Property<string> UserWinDefeatValue =
+        private readonly Property<string> UserWinDefeatProperty =
             new Property<string>();
 
         public string UserWinDefeat
         {
             get
             {
-                return UserWinDefeatValue.Value;
+                return UserWinDefeatProperty.Value;
             }
             set
             {
-                UserWinDefeatValue.Value = value;
+                UserWinDefeatProperty.Value = value;
             }
         }
     }

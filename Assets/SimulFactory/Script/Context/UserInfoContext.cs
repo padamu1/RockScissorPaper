@@ -1,52 +1,52 @@
-﻿using SimulFactory.Context.Bean;
-using Slash.Unity.DataBind.Core.Data;
-using UnityEngine;
-
-namespace SimulFactory.Context
+﻿namespace SimulFactory.Context
 {
-    public class UserInfoContext : ContextBase
+    using SimulFactory.Context.Bean;
+    using Slash.Unity.DataBind.Core.Data;
+    using UnityEngine;
+
+    public class UserInfoContext : Context
     {
-        private readonly Property<string> UserNameValue =
+        private readonly Property<string> UserNameProperty =
             new Property<string>();
 
         public string UserName
         {
             get
             {
-                return UserNameValue.Value;
+                return UserNameProperty.Value;
             }
             set
             {
-                UserNameValue.Value = value;
+                UserNameProperty.Value = value;
             }
         }
 
-        private readonly Property<string> UserGoldValue =
+        private readonly Property<string> UserGoldProperty =
             new Property<string>();
 
         public string UserGold
         {
             get
             {
-                return UserGoldValue.Value;
+                return UserGoldProperty.Value;
             }
             set
             {
-                UserGoldValue.Value = value;
+                UserGoldProperty.Value = value;
             }
         }
-        private readonly Property<Sprite> UserProfileValue =
+        private readonly Property<Sprite> UserProfileProperty =
             new Property<Sprite>();
 
         public Sprite UserProfile
         {
             get
             {
-                return UserProfileValue.Value;
+                return UserProfileProperty.Value;
             }
             set
             {
-                UserProfileValue.Value = value;
+                UserProfileProperty.Value = value;
             }
         }
     }
