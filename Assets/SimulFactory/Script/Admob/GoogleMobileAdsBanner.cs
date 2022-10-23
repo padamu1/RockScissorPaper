@@ -7,12 +7,31 @@ using System;
 
 public class GoogleMobileAdsBanner: MonoBehaviour
 {
+    static GoogleMobileAdsBanner AD;
+    static GoogleMobileAdsBanner GetAd() { Init();  return AD; }
     private BannerView bannerView;
 
     public void Start()
     {
-        this.RequestBanner();
+        //AD = this;
+        Init();
+        AD.RequestBanner();
     }
+
+    static void Init()
+    {
+
+        GameObject go = GameObject.Find("@GoogleMobileAdsBanner");
+        if(go == null)
+        {
+            go = new GameObject { name = "@GoogleMobileAdsBanner" };
+            go.AddComponent<GoogleMobileAdsBanner>();
+        }
+
+        DontDestroyOnLoad(go);
+        AD = go.GetComponent<GoogleMobileAdsBanner>();
+    }
+
 
     private void RequestBanner()
     {
@@ -33,19 +52,19 @@ public class GoogleMobileAdsBanner: MonoBehaviour
         this.bannerView = new BannerView(adUnitId, adaptiveSize, AdPosition.Bottom);
 
         // Called when an ad request has successfully loaded.
-        this.bannerView.OnAdLoaded += this.HandleOnAdLoaded;
+        AD.bannerView.OnAdLoaded += AD.HandleOnAdLoaded;
         // Called when an ad request failed to load.
-        this.bannerView.OnAdFailedToLoad += this.HandleOnAdFailedToLoad;
+        AD.bannerView.OnAdFailedToLoad += AD.HandleOnAdFailedToLoad;
         // Called when an ad is clicked.
-        this.bannerView.OnAdOpening += this.HandleOnAdOpened;
+        AD.bannerView.OnAdOpening += AD.HandleOnAdOpened;
         // Called when the user returned from the app after an ad click.
-        this.bannerView.OnAdClosed += this.HandleOnAdClosed;
+        AD.bannerView.OnAdClosed += AD.HandleOnAdClosed;
 
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
 
         // Load the banner with the request.
-        this.bannerView.LoadAd(request);
+        AD.bannerView.LoadAd(request);
     }
 
     public void HandleOnAdLoaded(object sender, EventArgs args)
@@ -71,16 +90,22 @@ public class GoogleMobileAdsBanner: MonoBehaviour
 
 
 
-    public void OnDisable()
+    public void OnDisable2()
 
     {
-        this.bannerView.Hide();
+            AD.bannerView.Hide();
     }
 
-    public void OnEnable()
+    
+    public void OnEnable2()   //아마 사용 안할 메서드
 
     {
-        this.bannerView.Show();
+        //AdRequest request = new AdRequest.Builder().Build();
+        //AD.bannerView.LoadAd(request);
+        if (GameObject.Find("ADAPTIVE(Clone)") == null)
+            AD.bannerView.Show();
     }
+
+    
 
 }
