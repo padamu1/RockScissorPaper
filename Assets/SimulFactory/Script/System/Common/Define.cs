@@ -21,9 +21,16 @@ namespace SimulFactory.System.Common
             StartMatchingC = 1,             // 매칭 요청
             MatchingResponseC = 2,          // 매칭 응답
             MatchingCancelC = 3,            // 매칭 취소 요청
+<<<<<<< HEAD
             PingC = 4,                      // 서버에 주기적으로 접속 확인을 위한 핑을 보냄
             UserBattleButtonClickedC = 5,   // 배틀 중 유저가 클릭한 버튼을 보냄
             UserNameC = 6,                  // 유저 닉네임 변경 요청
+=======
+            PingC = 4,                      // 서버에 주기적으로 접속 확인을 위한 핑을 보냄 -> 안보내면 끊어지게 설정
+            UserBattleButtonClicked = 5,    // 배틀 중 유저가 클릭한 버튼을 보냄
+            UserNameC = 6,                  // 유저 닉네임 변경 요청
+            LoginCompleteC = 7,             // 로그인이 완료가 된 경우 요청
+>>>>>>> develop
 
             LoginS = 0,             // 로그인 응답
             UserInfoS = 1,          // 유저 정보 내려줌
@@ -51,8 +58,9 @@ namespace SimulFactory.System.Common
         }
         public enum CONTEXT_LIST
         {
+            UserInfo,
+            MatchInfo,
             RockScissorPaper,
-
         }
 
         public enum ROCK_SCISSOR_PAPER
