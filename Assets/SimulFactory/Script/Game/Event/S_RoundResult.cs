@@ -1,4 +1,5 @@
 ﻿using SimulFactory.Manager;
+using SimulFactory.System.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,10 @@ namespace SimulFactory.Game.Event
     {
         public static void RoundResultS(Dictionary<byte,object> param)
         {
-            Debug.Log("팀 넘버 : " + Convert.ToInt32(param[0]) + " 가 이김");
+            Define.ROCK_SCISSOR_PAPER winUserResult = (Define.ROCK_SCISSOR_PAPER)Convert.ToInt32(param[0]);
+            Debug.LogFormat("결과 : {0}",winUserResult.ToString());
+
+            UiManager.GetInstance().GetBattleManager().CompareResult(winUserResult);
             UiManager.GetInstance().GetBattleManager().ButtonActivate();
             // 라운드 결과가 들어옴
             // [0] : 승패 여부 각 팀 넘버 비겼을 경우 3

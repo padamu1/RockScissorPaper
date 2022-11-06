@@ -59,9 +59,12 @@ namespace SimulFactory.System.Common
 
         public enum ROCK_SCISSOR_PAPER
         {
+            Break = -2,
+            None = -1,
             Rock = 0,
             Scissor = 1,
             Paper = 2,
+            Tie = 3,   // 무승부일때
         }
         public enum POPUP_TYPE
         { 

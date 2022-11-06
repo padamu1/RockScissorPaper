@@ -10,9 +10,11 @@ namespace SimulFactory.Game.Event
 {
     public class C_StartMatching
     {
-        public static void StartMatchingC()
+        public static void StartMatchingC(int type = 1)
         {
-            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.StartMatchingC);
+            Dictionary<byte, object> dic = new Dictionary<byte, object>();
+            dic.Add(0, type);
+            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.StartMatchingC, dic);
         }
     }
 }

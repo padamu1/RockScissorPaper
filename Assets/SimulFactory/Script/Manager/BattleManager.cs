@@ -22,6 +22,7 @@ namespace SimulFactory.Manager
         private RockScissorPaperDic _rockScissorPaperDic;   // 컨텍스트 딕셔너리
         private string _selectButtonName;                   // 선택된 버튼 이름
         private bool _isRoundReady;
+        private Define.ROCK_SCISSOR_PAPER clickedButton;
         /// <summary>
         /// 게임 입장 전 호출 되어야 함
         /// </summary>
@@ -100,6 +101,7 @@ namespace SimulFactory.Manager
             if(_isRoundReady)
             {
                 ButtonDeactivate();
+                clickedButton = (Define.ROCK_SCISSOR_PAPER)buttonNo;
                 C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonNo);
             }
         }
@@ -139,6 +141,21 @@ namespace SimulFactory.Manager
         public Sprite GetPaperImg()
         {
             return paperImg;
+        }
+        public void CompareResult(Define.ROCK_SCISSOR_PAPER winUserResult)
+        {
+            if(winUserResult == clickedButton)
+            {
+                Debug.Log("내가 이김");
+            }
+            else if(winUserResult == Define.ROCK_SCISSOR_PAPER.Tie)
+            {
+                Debug.Log(" 비김 ");
+            }
+            else
+            {
+                Debug.Log(" 내가 짐 ");
+            }
         }
     }
 }
