@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using WebSocketSharp;
-using SimulFactory.System.Common;
 using Newtonsoft.Json;
+using SimulFactory.System.Common;
 using SimulFactory.Game.Event;
 using SimulFactory.Manager;
 using System;
@@ -85,6 +85,7 @@ namespace SimulFactory.WebSocket
         /// </summary
         private void Recv(object sender, MessageEventArgs e)
         {
+            Console.WriteLine(e.Data);
             m_recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
             m_receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = m_recvData.eventCode, data = m_recvData.data});
         }
