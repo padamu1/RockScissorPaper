@@ -52,13 +52,14 @@ namespace SimulFactory.System.Common
             Effect,
             BackGround,
             Voice,
-            Nature
+            Nature,
         }
         public enum CONTEXT_LIST
         {
             UserInfo,
             MatchInfo,
             RockScissorPaper,
+            Setting,
         }
 
         public enum ROCK_SCISSOR_PAPER

@@ -1,4 +1,5 @@
-﻿using SimulFactory.Game.Event;
+﻿using SimulFactory.Context.Bean;
+using SimulFactory.Game.Event;
 using SimulFactory.Script.Util;
 using SimulFactory.System.Common;
 using Slash.Unity.DataBind.Core.Presentation;
@@ -20,6 +21,8 @@ namespace SimulFactory.Manager
         [SerializeField] private GameObject matchObj;
         [SerializeField] private GameObject uiHolder;
         [SerializeField] private BattleManager battleManager;
+
+        private MasterContext masterContext;
         private void Awake()
         {
             GetInstance();
@@ -29,7 +32,10 @@ namespace SimulFactory.Manager
             CoroutineHelper.StartLogoStopCoroutine(SendPing());
             // 컨텍스트 세팅
             ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
-            contextHolder.Context = Managers.GetInstance().GetMasterContext();
+
+            masterContext = Managers.GetInstance().GetMasterContext();
+            contextHolder.Context = masterContext;
+
 
             // 메인 ui 설정
             startButton.gameObject.SetActive(true);
