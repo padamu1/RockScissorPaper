@@ -1122,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1971967516408710717}
+    - target: {fileID: 438172129667598973, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1240221126453888776, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
       propertyPath: m_Name
       value: LobbyCanvas
@@ -1339,7 +1343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1971967516408710714, guid: 100bc298db499e544b943ae6dd43d06c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1971967516408710718, guid: 100bc298db499e544b943ae6dd43d06c, type: 3}
       propertyPath: m_Pivot.x
@@ -1427,11 +1431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1971967516438011773, guid: 100bc298db499e544b943ae6dd43d06c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1971967516438011773, guid: 100bc298db499e544b943ae6dd43d06c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1971967516438011773, guid: 100bc298db499e544b943ae6dd43d06c, type: 3}
       propertyPath: m_AnchorMin.y
