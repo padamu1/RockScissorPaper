@@ -1,4 +1,5 @@
-﻿using SimulFactory.Manager;
+﻿using Newtonsoft.Json;
+using SimulFactory.Manager;
 using SimulFactory.System.Common;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace SimulFactory.Game.Event
             // [0] 상대방이 낸 버튼
             // [1] 상대방이 낸 카드
             // UI 상에 바로 띄워짐
-            Dictionary<string, long> UserResult = (Dictionary<string,long>)param[0];
+            Dictionary<string, long> UserResult = JsonConvert.DeserializeObject<Dictionary<string,long>>(param[0].ToString());
             foreach(KeyValuePair<string, long> result in UserResult)
             {
                 switch ((Define.ROCK_SCISSOR_PAPER)result.Value)
