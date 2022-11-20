@@ -17,20 +17,24 @@ namespace SimulFactory.Game.Event
             // [0] 상대방이 낸 버튼
             // [1] 상대방이 낸 카드
             // UI 상에 바로 띄워짐
-            switch ((Define.ROCK_SCISSOR_PAPER)Convert.ToInt32(param[0]))
+            Dictionary<string, long> UserResult = (Dictionary<string,long>)param[0];
+            foreach(KeyValuePair<string, long> result in UserResult)
             {
-                case Define.ROCK_SCISSOR_PAPER.Rock:
-                    ShowCard.GetInstance().EnemyCard("rock");
-                    Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Rock.ToString());
-                    break;
-                case Define.ROCK_SCISSOR_PAPER.Scissor:
-                    UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("scissor");
-                    Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
-                    break;
-                case Define.ROCK_SCISSOR_PAPER.Paper:
-                    UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("paper");
-                    Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Paper.ToString());
-                    break;
+                switch ((Define.ROCK_SCISSOR_PAPER)result.Value)
+                {
+                    case Define.ROCK_SCISSOR_PAPER.Rock:
+                        ShowCard.GetInstance().EnemyCard("rock");
+                        Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Rock.ToString());
+                        break;
+                    case Define.ROCK_SCISSOR_PAPER.Scissor:
+                        UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("scissor");
+                        Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
+                        break;
+                    case Define.ROCK_SCISSOR_PAPER.Paper:
+                        UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("paper");
+                        Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Paper.ToString());
+                        break;
+                }
             }
         }
     }
