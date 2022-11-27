@@ -105,6 +105,11 @@ namespace SimulFactory.Manager
         {
             battleManager.gameObject.SetActive(false);
         }
+        // 친구신청 버튼클릭
+        public void FriendRequestButtonClicked(string userName)
+        {
+            C_FriendRequest.FriendRequestC(userName);
+        }
         public BattleManager GetBattleManager()
         {
             return battleManager;

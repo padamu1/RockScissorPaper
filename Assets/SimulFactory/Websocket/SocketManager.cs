@@ -194,6 +194,9 @@ namespace SimulFactory.WebSocket
                     // 해당 라운드의 결과를 받음
                     S_RoundResult.RoundResultS(param);
                     break;
+                case (byte)Define.EVENT_CODE.FriendRequestS:
+                    S_FriendRequest.S_FriendRequestS(param);
+                    break;
                 default:
                     break;
             }
