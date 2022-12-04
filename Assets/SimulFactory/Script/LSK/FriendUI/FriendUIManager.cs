@@ -49,5 +49,16 @@ namespace SimulFactory.Game.Event
         {
             AddFriend(UserData.GetInstance().GetFriendRequestDto(friendName));
         }
+
+        // 친구요청 왔을때 수락버튼 클릭
+        public void FriendReceiveButtonClicked(bool isReceived, string friendName)
+        {
+            C_FriendReceive.FriendReceiveC(isReceived, friendName);
+        }
+        // 친구 삭제버튼 클릭
+        public void FriendRemoveButtonClicked(string userName)
+        {
+            C_FriendRemove.FriendRemoveC(userName);
+        }
     }
 }
