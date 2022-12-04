@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "805579027645",
-    "project_id": "rockscissorpaper-d85a3",
-    "storage_bucket": "rockscissorpaper-d85a3.appspot.com"
+    "project_number": "336395972395",
+    "project_id": "rockscissorpapergame",
+    "storage_bucket": "rockscissorpapergame.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:805579027645:android:38e5ae6994f4b59482f3d4",
+        "mobilesdk_app_id": "1:336395972395:android:f205bfde1bf5a317f25f6e",
         "android_client_info": {
           "package_name": "com.DefaultCompany.RockScissorPaper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "805579027645-fvch6tdkbnqjcjl27s2amaltnobpfn4a.apps.googleusercontent.com",
+          "client_id": "336395972395-p114k6mbfvpma2od6bnk1emr4rn1rp0u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjLc9jRpWegwT81gEgM45XX1seCiXBj_Y"
+          "current_key": "AIzaSyCzz2MpoOz3W44oiru4zDR9_rCEXHFZBDE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "805579027645-fvch6tdkbnqjcjl27s2amaltnobpfn4a.apps.googleusercontent.com",
+              "client_id": "336395972395-p114k6mbfvpma2od6bnk1emr4rn1rp0u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
