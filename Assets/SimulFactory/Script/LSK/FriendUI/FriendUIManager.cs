@@ -31,7 +31,7 @@ namespace SimulFactory.Game.Event
         {
             GameObject obj = Instantiate(friendSlot, friendRequestParentObject.transform, false);
             friendSlotDic.Add(friendDto.FriendName, obj);
-            obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
+            obj.GetComponent<FriendRequestSlot>().SetFriendRequestDto(friendDto);
         }
 
         public void SetFriendSlot()
