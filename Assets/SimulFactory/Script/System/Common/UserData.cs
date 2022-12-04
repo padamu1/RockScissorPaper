@@ -26,10 +26,12 @@ namespace SimulFactory.System.Common
         {
             sb = new StringBuilder();
         }
-        public void Reset()
+        public void ResetUserData()
         {
             friends = new Dictionary<string, FriendDto>();
             friendRequests = new Dictionary<string, FriendRequestDto>();
+            pvpInfo = new PvpInfo();
+            InitUserDataContext();
         }
         //친구목록 받아오기
         public void AddFriend(FriendDto data)
@@ -100,11 +102,6 @@ namespace SimulFactory.System.Common
         public PvpInfo GetPvpInfo()
         {
             return pvpInfo;
-        }
-        public void ResetUserData()
-        {
-            pvpInfo = new PvpInfo();
-            InitUserDataContext();
         }
         /// <summary>
         /// 컨텍스트 초기화
