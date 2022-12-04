@@ -15,27 +15,36 @@ namespace SimulFactory.Game.Event
     {
         public static void FriendReceiveS(Dictionary<byte, object> param)
         {
-            Define.FRIEND_RECEIVE_DATA_TYPE type = (Define.FRIEND_RECEIVE_DATA_TYPE)(long)param[0];
+            Define.RECEIVE_DATA_TYPE type = (Define.RECEIVE_DATA_TYPE)(long)param[0];
             switch (type)
             {
-                case Define.FRIEND_RECEIVE_DATA_TYPE.Me:
-                    bool isReceived = (bool)param[1];
-                    if (isReceived)
+                case Define.RECEIVE_DATA_TYPE.Me:
                     {
-                        Debug.Log("模备 夸没 荐遏");
+                        bool isReceived = (bool)param[1];
+                        if (isReceived)
+                        {
+                            Debug.Log("模备 夸没 荐遏");
+                        }
+                        else
+                        {
+                            Debug.Log("模备 夸没 芭例");
+                        }
+                        break;
                     }
-                    else
+                case Define.RECEIVE_DATA_TYPE.Other:
                     {
-                        Debug.Log("模备 夸没 芭例");
+                        string userName = (string)param[1];
+                        bool isReceived = (bool)param[2];
+                        if (isReceived)
+                        {
+                            Debug.LogFormat("{0} 模备 夸没 荐遏",userName);
+                        }
+                        else
+                        {
+                            Debug.LogFormat("{0} 模备 夸没 芭例",userName);
+                        }
+                        break;
                     }
-                    break;
-                case Define.FRIEND_RECEIVE_DATA_TYPE.Other:
-                    List<FriendRequestDto> friendRequestDtoList = JsonConvert.DeserializeObject<List<FriendRequestDto>>((string)param[1]);
-                    foreach (FriendRequestDto data in friendRequestDtoList)
-                    {
-                        Debug.Log("模备夸没荐遏窃");
-                    }
-                    break;
             }
         }
     }

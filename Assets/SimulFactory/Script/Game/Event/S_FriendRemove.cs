@@ -15,10 +15,10 @@ namespace SimulFactory.Game.Event
     {
         public static void FriendRemoveS(Dictionary<byte, object> param)
         {
-            Define.FRIEND_RECEIVE_DATA_TYPE type = (Define.FRIEND_RECEIVE_DATA_TYPE)(long)param[0];
+            Define.RECEIVE_DATA_TYPE type = (Define.RECEIVE_DATA_TYPE)(long)param[0];
             switch (type)
             {
-                case Define.FRIEND_RECEIVE_DATA_TYPE.Me:
+                case Define.RECEIVE_DATA_TYPE.Me:
                     bool isRequested = (bool)param[1];
                     if (isRequested)
                     {
@@ -29,12 +29,11 @@ namespace SimulFactory.Game.Event
                         Debug.Log("친구 삭제 실패");
                     }
                     break;
-                case Define.FRIEND_RECEIVE_DATA_TYPE.Other:
-                    List<FriendRequestDto> friendRequestDtoList = JsonConvert.DeserializeObject<List<FriendRequestDto>>((string)param[1]);
-                    foreach (FriendRequestDto data in friendRequestDtoList)
-                    {
-                        Debug.Log("상대방이 친구삭제함");
-                    }
+                case Define.RECEIVE_DATA_TYPE.Other:
+                    string friendName = (string)param[1];
+                    UserData.GetInstance().RemoveFriend(friendName);
+
+                    // 친구삭제됨 UI 갱신 필요
                     break;
             }
         }

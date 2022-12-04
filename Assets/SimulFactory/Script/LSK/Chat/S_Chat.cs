@@ -15,10 +15,10 @@ namespace SimulFactory.Game.Event
     {
         public static void ChatS(Dictionary<byte, object> param)
         {
-            Define.FRIEND_RECEIVE_DATA_TYPE type = (Define.FRIEND_RECEIVE_DATA_TYPE)(long)param[0];
+            Define.RECEIVE_DATA_TYPE type = (Define.RECEIVE_DATA_TYPE)(long)param[0];
             switch (type)
             {
-                case Define.FRIEND_RECEIVE_DATA_TYPE.Me:
+                case Define.RECEIVE_DATA_TYPE.Me:
                     bool isReceived = (bool)param[1];
                     if (isReceived)
                     {
@@ -29,7 +29,7 @@ namespace SimulFactory.Game.Event
                         Debug.Log("친구 요청 거절");
                     }
                     break;
-                case Define.FRIEND_RECEIVE_DATA_TYPE.Other:
+                case Define.RECEIVE_DATA_TYPE.Other:
                     List<FriendRequestDto> friendRequestDtoList = JsonConvert.DeserializeObject<List<FriendRequestDto>>((string)param[1]);
                     foreach (FriendRequestDto data in friendRequestDtoList)
                     {

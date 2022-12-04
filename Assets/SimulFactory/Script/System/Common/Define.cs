@@ -92,7 +92,7 @@ namespace SimulFactory.System.Common
             Card = 2,
         }
 
-        public enum FRIEND_RECEIVE_DATA_TYPE
+        public enum RECEIVE_DATA_TYPE
         {
             Me = 0,
             Other = 1,

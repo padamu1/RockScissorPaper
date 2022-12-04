@@ -33,7 +33,7 @@ namespace SimulFactory.System.Common
             friends.Add(data.FriendName, data);
         }
 
-        public Dictionary<string, FriendDto> getFriends()
+        public Dictionary<string, FriendDto> GetFriends()
         {
             return friends;
         }
@@ -46,7 +46,13 @@ namespace SimulFactory.System.Common
             return null;
         }
 
-
+        public void RemoveFriend(string friendName)
+        {
+            if (friends.ContainsKey(friendName))
+            {
+                friends.Remove(friendName);
+            }
+        }
         private void Awake()
         {
             sb = new StringBuilder();
