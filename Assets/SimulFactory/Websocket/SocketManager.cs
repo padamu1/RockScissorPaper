@@ -195,7 +195,20 @@ namespace SimulFactory.WebSocket
                     S_RoundResult.RoundResultS(param);
                     break;
                 case (byte)Define.EVENT_CODE.FriendRequestS:
+                    // 模备 夸没
                     S_FriendRequest.S_FriendRequestS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.FriendRemoveS:
+                    // 模备 昏力
+                    S_FriendRemove.FriendRemoveS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.FriendReceiveS:
+                    // 模备 夸没 荐遏
+                    S_FriendReceive.FriendReceiveS(param);
+                    break;
+                case (byte)Define.EVENT_CODE.FriendDataS:
+                    // 模备 单捞磐 罐扁
+                    S_FriendData.FriendDataS(param);
                     break;
                 default:
                     break;

@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace SimulFactory.Game.Event
 {
-    public class C_FriendRequest
+    public class C_FriendReceive
     {
-        public static void FriendRequestC(string userName)
+        public static void FriendReceiveC(bool isReceived)
         {
             Dictionary<byte, object> dic = new Dictionary<byte, object>();
-            dic.Add(0, userName);
-            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.FriendRequestC, dic);
+            dic.Add(0, isReceived);
+            SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.FriendReceiveC, dic);
         }
     }
 }

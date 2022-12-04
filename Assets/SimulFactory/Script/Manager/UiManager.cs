@@ -105,10 +105,20 @@ namespace SimulFactory.Manager
         {
             battleManager.gameObject.SetActive(false);
         }
-        // 친구신청 버튼클릭
+        // 친구요청 버튼클릭
         public void FriendRequestButtonClicked(string userName)
         {
             C_FriendRequest.FriendRequestC(userName);
+        }
+        // 친구요청 왔을때 수락버튼 클릭
+        public void FriendReceiveButtonClicked(bool isReceived)
+        {
+            C_FriendReceive.FriendReceiveC(isReceived);
+        }
+        // 친구 삭제버튼 클릭
+        public void FriendRemoveButtonClicked(string userName)
+        {
+            C_FriendRemove.FriendRemoveC(userName);
         }
         public BattleManager GetBattleManager()
         {

@@ -2,6 +2,7 @@
 using SimulFactory.Context.Bean;
 using SimulFactory.Manager;
 using SimulFactory.System.Common.Bean;
+using System.Collections.Generic;
 using System.Text;
 
 namespace SimulFactory.System.Common
@@ -17,6 +18,20 @@ namespace SimulFactory.System.Common
         public long UserNo { get; set; }
         private string userName;
         private PvpInfo pvpInfo;
+
+        //친구목록
+        private Dictionary<byte, object> friends;
+
+        //친구목록 받아오기
+        public void SetUserFriendList(FriendDto data)
+        {
+            friends.Add(0, data);
+        }
+
+        public Dictionary<byte, object> getFriends()
+        {
+            return friends;
+        }
 
         private void Awake()
         {

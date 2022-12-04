@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using SimulFactory.Game.Event;
+
 namespace SimulFactory.Game.Event
 {
-    public class S_FriendRequest
+    public class S_FriendRemove
     {
-        public static void S_FriendRequestS(Dictionary<byte, object> param)
+        public static void FriendRemoveS(Dictionary<byte, object> param)
         {
             Define.FRIEND_RECEIVE_DATA_TYPE type = (Define.FRIEND_RECEIVE_DATA_TYPE)(long)param[0];
             switch (type)
@@ -22,20 +22,18 @@ namespace SimulFactory.Game.Event
                     bool isRequested = (bool)param[1];
                     if (isRequested)
                     {
-                        Debug.Log("模备 夸没 己傍");
+                        Debug.Log("模备 昏力 己傍");
                     }
                     else
                     {
-                        Debug.Log("模备 夸没 角菩");
+                        Debug.Log("模备 昏力 角菩");
                     }
                     break;
                 case Define.FRIEND_RECEIVE_DATA_TYPE.Other:
                     List<FriendRequestDto> friendRequestDtoList = JsonConvert.DeserializeObject<List<FriendRequestDto>>((string)param[1]);
-                    foreach(FriendRequestDto data in friendRequestDtoList)
+                    foreach (FriendRequestDto data in friendRequestDtoList)
                     {
-                        //模备夸没芒 剁框
-                        FriendRequestPopup.GetInstance().GetPopup();
-                        Debug.Log("模备夸没单捞磐甸绢咳");
+                        Debug.Log("惑措规捞 模备昏力窃");
                     }
                     break;
             }
