@@ -33,8 +33,13 @@ namespace SimulFactory.Game.Event
                     List<FriendRequestDto> friendRequestDtoList = JsonConvert.DeserializeObject<List<FriendRequestDto>>((string)param[1]);
                     foreach(FriendRequestDto data in friendRequestDtoList)
                     {
+                        PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+                        popupInfo.Type = Define.POPUP_TYPE.ToastPopup;
+                        popupInfo.Description = "친구 요청 들어옴";
+                        popupInfo.Top = true;
+                        PopupManager.GetInstance().CreatePopup(popupInfo);
                         //친구요청창 띄움
-                        FriendRequestPopup.GetInstance().GetPopup();
+                        //FriendRequestPopup.GetInstance().GetPopup();
                         Debug.Log("친구요청데이터들어옴");
                     }
                     break;
