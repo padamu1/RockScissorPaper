@@ -12,6 +12,7 @@ namespace SimulFactory.Game.Event
     {
         public GameObject friendSlot;
         public GameObject parentObject;
+        public GameObject friendRequestParentObject;
 
         Dictionary<string, GameObject> friendSlotDic;
 
@@ -28,7 +29,7 @@ namespace SimulFactory.Game.Event
         }
         public void AddFriend(FriendRequestDto friendDto)
         {
-            GameObject obj = Instantiate(friendSlot, parentObject.transform, false);
+            GameObject obj = Instantiate(friendSlot, friendRequestParentObject.transform, false);
             friendSlotDic.Add(friendDto.FriendName, obj);
             obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
         }
