@@ -85,8 +85,10 @@ namespace SimulFactory.Manager
                     S_Chat.ChatS(param);
                     break;
                 case (byte)Define.EVENT_CODE.InviteUserS:
+                    S_InviteUser.InviteUserS(param);
                     break;
                 case (byte)Define.EVENT_CODE.InviteReceiveS:
+                    S_InviteReceive.InviteReceiveS(param);
                     break;
                 default:
                     break;
