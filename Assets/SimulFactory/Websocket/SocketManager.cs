@@ -142,7 +142,7 @@ namespace SimulFactory.WebSocket
             return m_Socket.ReadyState;
         }
         #endregion
-        private bool CheckCallBack(ReceivedPacketData recvData)
+        public bool CheckCallBack(ReceivedPacketData recvData)
         {
             if(_callbackDic.ContainsKey(recvData.eventCode))
             {
@@ -151,53 +151,6 @@ namespace SimulFactory.WebSocket
             }
             return false;
         }
-        private void DataProcess(ReceivedPacketData recvData)
-        {
-            Dictionary<byte, object> param = recvData.data;
-            
-            if(CheckCallBack(recvData))
-            {
-                return;
-            }
-
-            switch (recvData.eventCode)
-            {
-                case (byte)Define.EVENT_CODE.LoginS:
-                    // 로그인 처리
-                    S_Login.LoginS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.UserInfoS:
-                    S_UserInfo.UserInfoS(param);
-                    // 유저 정보를 받음
-                    break;
-                case (byte)Define.EVENT_CODE.StartMatchingS:
-                    // 매칭 시작을 알림
-                    S_StartMatching.StartMatchingS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.MatchingSuccessS:
-                    S_MatchingSuccess.MatchingSuccessS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.MatchingResponseS:
-                    S_MatchingResponse.MatchingResponseS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.MatchingCancelS:
-                    S_MatchingCancel.MatchingCancelS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.MatchingResultS:
-                    S_MatchingResult.MatchingResultS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.UserBattleResponseS:
-                    // 상대편이 낸 결과를 받음
-                    S_UserBattleResponse.UserBattleResponseS(param);
-                    break;
-                case (byte)Define.EVENT_CODE.RoundResultS:
-                    // 해당 라운드의 결과를 받음
-                    S_RoundResult.RoundResultS(param);
-                    break;
-                default:
-                    break;
-            }
-        }
 
         private void Update()
         {
@@ -205,7 +158,7 @@ namespace SimulFactory.WebSocket
             {
                 if (m_receivedPacketDatas.Count > 0)
                 {
-                    DataProcess(m_receivedPacketDatas.Dequeue());
+                    WorldManager.GetInstance().DataProcess(m_receivedPacketDatas.Dequeue());
                 }
             }
             else
