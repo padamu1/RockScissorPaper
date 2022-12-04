@@ -16,9 +16,4 @@ public class FriendRequestInput : MonoBehaviour
         UiManager.GetInstance().FriendRequestButtonClicked(userName);
         Debug.Log("send userName : " + userName);
     }
-
-    public void FriendReceiveButtonClicked(bool isReceived)
-    {
-        UiManager.GetInstance().FriendReceiveButtonClicked(isReceived);
-    }
 }

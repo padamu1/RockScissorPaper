@@ -8,7 +8,7 @@ namespace SimulFactory.Game.Event
 {
     public class C_FriendReceive
     {
-        public static void FriendReceiveC(bool isReceived,string friendName)
+        public static void FriendReceiveC(bool isReceived, string friendName)
         {
             Dictionary<byte, object> dic = new Dictionary<byte, object>();
             dic.Add(0, isReceived);
