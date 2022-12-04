@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace SimulFactory.Game.Event
 {
@@ -25,15 +26,13 @@ namespace SimulFactory.Game.Event
                     }
                     break;
                 case Define.CHAT_TYPE.None:
-                    //param.Add(1, sendUser);
-                    //param.Add(2, chatText);
-                    //PcListInstance.GetInstance().SendPacket(new EventData((int)Define.EVENT_CODE.ChatS, param));
-                    //break;
                 case Define.CHAT_TYPE.Whisper:
-                    //param.Add(1, sendUser);
-                    //param.Add(2, chatText);
-                    //param.Add(3, targetName);
-                    //PcListInstance.GetInstance().SendPacket(new EventData((int)Define.EVENT_CODE.ChatS, param));
+                    {
+                        string sendUser = (string)param[1];
+                        string chatText = (string)param[2];
+
+                        Debug.LogFormat("{0}  :  {1}",sendUser,chatText);
+                    }
                     break;
             }
         }
