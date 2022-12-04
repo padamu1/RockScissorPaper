@@ -1,51 +1,52 @@
+using SimulFactory.System.Common.Bean;
+using SimulFactory.System.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class FriendUIManager : MonoBehaviour
+namespace SimulFactory.Game.Event
 {
-    public GameObject gameObject;
-    public GameObject parentObject;
-    private GameObject temp;
-    public Sprite profileImage;
-    //Image defaultImage;
-
-    List<string> friends = new List<string>();
-
-    public void AddFriend()
+    public class FriendUIManager : MonoSingleton<FriendUIManager>
     {
-        friends.Add("aa");
-        friends.Add("bb");
-    }
+        public GameObject friendSlot;
+        public GameObject parentObject;
 
-    //模备 浇吩 积己
-    public void MakeObject()
-    {
-        temp = Instantiate(gameObject);
-        temp.transform.SetParent(parentObject.transform);
-        //defaultImage.sprite = profileImage;
-    }
+        Dictionary<string, GameObject> friendSlotDic;
 
-    /*
-    private void Update()
-    {
-        if (friendRequest)
+        private void Awake()
         {
-            MakeObject();
+            friendSlotDic = new Dictionary<string, GameObject>();
         }
-    }
-    */
 
-    private void Start()
-    {
-        //defaultImage = GetComponent<Image>();
-        AddFriend();
-
-        //格废 积己
-        foreach (string friend in friends)
+        public void AddFriend(FriendDto friendDto)
         {
-            MakeObject();
+            GameObject obj = Instantiate(friendSlot, parentObject.transform, false);
+            friendSlotDic.Add(friendDto.FriendName, obj);
+            obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
+        }
+        public void AddFriend(FriendRequestDto friendDto)
+        {
+            GameObject obj = Instantiate(friendSlot, parentObject.transform, false);
+            friendSlotDic.Add(friendDto.FriendName, obj);
+            obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
+        }
+
+        public void SetFriendSlot()
+        {
+            if (UserData.GetInstance().GetFriends() != null)
+            {
+                foreach (KeyValuePair<string, FriendDto> data in UserData.GetInstance().GetFriends())
+                {
+                    AddFriend(data.Value);
+                }
+            }
+        }
+
+        public void SetFriendRequestSlot(string friendName)
+        {
+            AddFriend(UserData.GetInstance().GetFriendRequestDto(friendName));
         }
     }
 }

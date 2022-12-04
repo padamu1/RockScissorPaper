@@ -196,7 +196,7 @@ namespace SimulFactory.WebSocket
                     break;
                 case (byte)Define.EVENT_CODE.FriendRequestS:
                     // 模备 夸没
-                    S_FriendRequest.S_FriendRequestS(param);
+                    S_FriendRequest.FriendRequestS(param);
                     break;
                 case (byte)Define.EVENT_CODE.FriendRemoveS:
                     // 模备 昏力
