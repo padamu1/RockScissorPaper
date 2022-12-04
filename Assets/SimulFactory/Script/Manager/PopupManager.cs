@@ -52,15 +52,26 @@ namespace SimulFactory.Manager
             switch (popupInfo.Type)
             {
                 case Define.POPUP_TYPE.YesNoPopup:
-                    GameObject obj = ObjectPoolManager.GetInstance().SpawnFromPool(Define.UNIT_PREFAB.MainPopup.ToString());
-                    if (popupInfo.Top)
                     {
-                        obj.GetComponent<Canvas>().sortingOrder = GetOrder();
+                        GameObject obj = ObjectPoolManager.GetInstance().SpawnFromPool(Define.UNIT_PREFAB.MainPopup.ToString());
+                        if (popupInfo.Top)
+                        {
+                            obj.GetComponent<Canvas>().sortingOrder = GetOrder();
+                        }
+                        MainPopup mainPopup = obj.GetComponent<MainPopup>();
+                        mainPopup.SetInfo(popupInfo);
                     }
-                    MainPopup mainPopup = obj.GetComponent<MainPopup>();
-                    mainPopup.SetInfo(popupInfo);
                     break;
                 case Define.POPUP_TYPE.ToastPopup:
+                    {
+                        GameObject obj = ObjectPoolManager.GetInstance().SpawnFromPool(Define.UNIT_PREFAB.ToastPopup.ToString());
+                        if (popupInfo.Top)
+                        {
+                            obj.GetComponent<Canvas>().sortingOrder = GetOrder();
+                        }
+                        ToastPopup mainPopup = obj.GetComponent<ToastPopup>();
+                        mainPopup.SetInfo(popupInfo);
+                    }
                     break;
 
             }

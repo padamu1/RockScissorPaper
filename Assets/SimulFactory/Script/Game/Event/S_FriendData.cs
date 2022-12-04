@@ -19,7 +19,7 @@ namespace SimulFactory.Game.Event
 
             foreach(FriendDto data in friendDtoList)
             {
-                UserData.GetInstance().SetUserFriendList(data);
+                UserData.GetInstance().AddFriend(data);
             }
         }
     }

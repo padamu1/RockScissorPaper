@@ -21,9 +21,18 @@ namespace SimulFactory.System.Common
 
         //친구목록
         private Dictionary<string, FriendDto> friends;
-
+        private Dictionary<string, FriendRequestDto> friendRequests;
+        private void Awake()
+        {
+            sb = new StringBuilder();
+        }
+        public void Reset()
+        {
+            friends = new Dictionary<string, FriendDto>();
+            friendRequests = new Dictionary<string, FriendRequestDto>();
+        }
         //친구목록 받아오기
-        public void SetUserFriendList(FriendDto data)
+        public void AddFriend(FriendDto data)
         {
             if (friends.ContainsKey(data.FriendName))
             {
@@ -53,9 +62,32 @@ namespace SimulFactory.System.Common
                 friends.Remove(friendName);
             }
         }
-        private void Awake()
+        public FriendRequestDto GetFriendRequestDto(string friendName)
         {
-            sb = new StringBuilder();
+            if (friendRequests.ContainsKey(friendName))
+            {
+                return friendRequests[friendName];
+            }
+            return null;
+        }    
+        public void AddFriendRequestDto(FriendRequestDto friendRequestDto)
+        {
+            if (friendRequests.ContainsKey(friendRequestDto.FriendName))
+            {
+                return;
+            }
+            friendRequests.Add(friendRequestDto.FriendName, friendRequestDto);
+        }
+        public Dictionary<string, FriendRequestDto> GetFriendReuqests()
+        {
+            return friendRequests;
+        }
+        public void RemoveFriendRequest(string friendName)
+        {
+            if (friendRequests.ContainsKey(friendName))
+            {
+                friendRequests.Remove(friendName);
+            }
         }
         public void SetUserName(string userName)
         {
@@ -115,6 +147,5 @@ namespace SimulFactory.System.Common
             sb.AppendFormat("{0:D} %", winRate.ToString());
             _matchInfoContext.SetValue("UserWinDefeat", sb.ToString());
         }
-
     }
 }

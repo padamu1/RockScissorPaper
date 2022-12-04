@@ -13,6 +13,7 @@ namespace SimulFactory.System.Common
         public enum UNIT_PREFAB
         {
             MainPopup,
+            ToastPopup,
         }
 
         public enum EVENT_CODE

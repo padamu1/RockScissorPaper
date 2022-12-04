@@ -22,6 +22,7 @@ namespace SimulFactory.Game.Event
                     bool isRequested = (bool)param[1];
                     if (isRequested)
                     {
+                        UserData.GetInstance().RemoveFriend((string)param[2]);
                         Debug.Log("模备 昏力 己傍");
                     }
                     else
