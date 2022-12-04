@@ -20,18 +20,32 @@ namespace SimulFactory.System.Common
         private PvpInfo pvpInfo;
 
         //친구목록
-        private Dictionary<byte, object> friends;
+        private Dictionary<string, FriendDto> friends;
 
         //친구목록 받아오기
         public void SetUserFriendList(FriendDto data)
         {
-            friends.Add(0, data);
+            if (friends.ContainsKey(data.FriendName))
+            {
+                return;
+            }
+
+            friends.Add(data.FriendName, data);
         }
 
-        public Dictionary<byte, object> getFriends()
+        public Dictionary<string, FriendDto> getFriends()
         {
             return friends;
         }
+        public FriendDto GetFriendDto(string friendName)
+        {
+            if(friends.ContainsKey(friendName))
+            {
+                return friends[friendName];
+            }
+            return null;
+        }
+
 
         private void Awake()
         {
