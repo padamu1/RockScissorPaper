@@ -55,6 +55,7 @@ namespace SimulFactory.Game.Event
         {
             C_FriendReceive.FriendReceiveC(isReceived, friendName);
         }
+
         // 친구 삭제버튼 클릭
         public void FriendRemoveButtonClicked(string userName)
         {
