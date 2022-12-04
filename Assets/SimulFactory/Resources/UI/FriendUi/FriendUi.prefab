@@ -584,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendSlot: {fileID: 5275180711445823594, guid: aa3bfa7a348fbfe4a982ff82b149928b, type: 3}
   parentObject: {fileID: 7092886775345690178}
+  friendRequestParentObject: {fileID: 9195439585425386274}
 --- !u!114 &6899965610705509633
 MonoBehaviour:
   m_ObjectHideFlags: 0

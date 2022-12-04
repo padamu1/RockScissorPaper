@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 4342488270674327787}
   - component: {fileID: 4674821374231031892}
   - component: {fileID: 8934438322362528666}
-  - component: {fileID: 6258103823620027685}
-  - component: {fileID: 366443374225171306}
-  - component: {fileID: 7936627213912688613}
   m_Layer: 0
   m_Name: UserName
   m_TagString: Untagged
@@ -137,76 +134,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6258103823620027685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594996662348683149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f43aa6fdff01db143a34a5880e9134cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultValue: 
-  Dictionary:
-    Constant: 
-    Path: Master
-    Provider: {fileID: 0}
-    Reference: {fileID: 0}
-    Type: 0
-  Key:
-    Constant: UserInfo
-    Path: 
-    Provider: {fileID: 0}
-    Reference: {fileID: 0}
-    Type: 2
---- !u!114 &366443374225171306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594996662348683149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d39cada982bc1418044e2b5d673eaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Context:
-    Constant: 
-    Path: 
-    Provider: {fileID: 6258103823620027685}
-    Reference: {fileID: 0}
-    Type: 1
-  ContextType: 
-  Path: UserName
---- !u!114 &7936627213912688613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594996662348683149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6f7d60aeeb83f948a81d02fa890d96c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Data:
-    Constant: 
-    Path: 
-    Provider: {fileID: 366443374225171306}
-    Reference: {fileID: 0}
-    Type: 1
-  TargetBinding:
-    Constant: 
-    Path: 
-    Provider: {fileID: 0}
-    Reference: {fileID: 8934438322362528666}
-    Type: 3
-  constantTarget: {fileID: 0}
 --- !u!1 &5275180711445823594
 GameObject:
   m_ObjectHideFlags: 0
