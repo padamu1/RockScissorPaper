@@ -98,6 +98,13 @@ namespace SimulFactory.System.Common
             Me = 0,
             Other = 1,
         }
+        public enum CHAT_TYPE
+        {
+            Toast = 0,   // 토스트 팝업 -> 시스템 메시지
+            None = 1,    // 일반 채팅
+            Whisper = 2, // 귓속말
+        }
+
 
         public static readonly int MAINPOPUP_SET_COUNT = 5;
         public static readonly int TOASTPOPUP_SET_COUNT = 5;
