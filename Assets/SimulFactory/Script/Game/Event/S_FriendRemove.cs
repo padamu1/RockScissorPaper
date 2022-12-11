@@ -34,8 +34,8 @@ namespace SimulFactory.Game.Event
                 case Define.RECEIVE_DATA_TYPE.Other:
                     string friendName = (string)param[1];
                     UserData.GetInstance().RemoveFriend(friendName);
-
                     // 친구삭제됨 UI 갱신 필요
+                    FriendUIManager.GetInstance().RemoveFriendSlot(friendName);
                     break;
             }
         }

@@ -127,5 +127,16 @@ namespace SimulFactory.Manager
         {
             return battleManager;
         }
+        public void CreateUserInvitePopup()
+        {
+            PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+            popupInfo.Type = Define.POPUP_TYPE.InputPopup;
+            popupInfo.Title = "유저 초대";
+            popupInfo.WarningText = "현재 접속중인 유저만 초대 가능합니다.";
+            popupInfo.InputAction = C_InviteUser.InviteUserC;
+            popupInfo.Top = true;
+            popupInfo.Block = true;
+            PopupManager.GetInstance().CreatePopup(popupInfo);
+        }
     }
 }

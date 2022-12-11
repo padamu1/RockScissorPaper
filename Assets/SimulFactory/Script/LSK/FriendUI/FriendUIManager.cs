@@ -56,7 +56,7 @@ namespace SimulFactory.Game.Event
             }
         }
 
-        public void RemoveFriendRequesSlot(string friendName)
+        public void RemoveFriendRequestSlot(string friendName)
         {
             if (friendRequestSlotDic.TryGetValue(friendName, out GameObject obj))
             {

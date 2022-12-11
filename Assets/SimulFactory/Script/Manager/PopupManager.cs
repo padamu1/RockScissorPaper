@@ -35,6 +35,8 @@ namespace SimulFactory.Manager
             public Action NoButtonAction;
             public bool Top;
             public bool Block;
+            public string WarningText;
+            public Action<string> InputAction;
             public void Reset()
             {
                 Title = "";
@@ -45,12 +47,15 @@ namespace SimulFactory.Manager
                 NoButtonAction = null;
                 Top = false;
                 Block = false;
+                InputAction = null;
+                WarningText = String.Empty;
             }
         }
         public virtual void CreatePopup(PopupInfo popupInfo)
         {
             switch (popupInfo.Type)
             {
+                case Define.POPUP_TYPE.InputPopup:
                 case Define.POPUP_TYPE.YesNoPopup:
                     {
                         GameObject obj = ObjectPoolManager.GetInstance().SpawnFromPool(Define.UNIT_PREFAB.MainPopup.ToString());

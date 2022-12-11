@@ -85,6 +85,7 @@ namespace SimulFactory.System.Common
         { 
             YesNoPopup,
             ToastPopup,
+            InputPopup,
         }
 
         public enum MATCH_TYPE
