@@ -43,6 +43,13 @@ namespace SimulFactory.Manager
             matchObj.SetActive(false);
             //lobbyCanvas.SetActive(true);
             // 로그인 완료 보냄
+            StartCoroutine(SetUi());
+        }
+        private IEnumerator SetUi()
+        {
+            yield return null;
+            GetBattleManager().Init();
+            yield return null;
             C_LoginComplete.LoginCompleteC();
         }
         private IEnumerator SendPing()

@@ -24,6 +24,7 @@ namespace SimulFactory.Game.Event
                     {
                         UserData.GetInstance().RemoveFriend((string)param[2]);
                         Debug.Log("模备 昏力 己傍");
+                        FriendUIManager.GetInstance().RemoveFriendSlot((string)param[2]);
                     }
                     else
                     {

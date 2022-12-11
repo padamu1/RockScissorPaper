@@ -16,10 +16,12 @@ namespace SimulFactory.Game.Event
         public GameObject friendRequestParentObject;
 
         Dictionary<string, GameObject> friendSlotDic;
+        Dictionary<string, GameObject> friendRequestSlotDic;
 
         private void Awake()
         {
             friendSlotDic = new Dictionary<string, GameObject>();
+            friendRequestSlotDic = new Dictionary<string, GameObject>();
         }
 
         public void AddFriend(FriendDto friendDto)
@@ -31,7 +33,7 @@ namespace SimulFactory.Game.Event
         public void AddFriend(FriendRequestDto friendDto)
         {
             GameObject obj = Instantiate(friendRequestSlot, friendRequestParentObject.transform, false);
-            friendSlotDic.Add(friendDto.FriendName, obj);
+            friendRequestSlotDic.Add(friendDto.FriendName, obj);
             obj.GetComponent<FriendRequestSlot>().SetFriendRequestDto(friendDto);
         }
 
@@ -43,6 +45,22 @@ namespace SimulFactory.Game.Event
                 {
                     AddFriend(data.Value);
                 }
+            }
+        }
+
+        public void RemoveFriendSlot(string friendName)
+        {
+            if (friendSlotDic.TryGetValue(friendName, out GameObject obj))
+            {
+                Destroy(obj);
+            }
+        }
+
+        public void RemoveFriendRequesSlot(string friendName)
+        {
+            if (friendRequestSlotDic.TryGetValue(friendName, out GameObject obj))
+            {
+                Destroy(obj);
             }
         }
 
