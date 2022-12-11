@@ -12,8 +12,8 @@ namespace SimulFactory.Game.Event
         private string friendName;
         public void SetFriendRequestDto(FriendRequestDto friendDto)
         {
-            nameText.text = friendName;
             this.friendName = friendDto.FriendName;
+            nameText.text = friendName;
         }
         public void YesButtonClicked()
         {

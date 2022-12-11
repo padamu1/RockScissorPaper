@@ -479,7 +479,6 @@ GameObject:
   - component: {fileID: 710853855924525375}
   - component: {fileID: 9000118664583722997}
   - component: {fileID: 457354849570490254}
-  - component: {fileID: 6899965610705509633}
   m_Layer: 0
   m_Name: FriendUi
   m_TagString: Untagged
@@ -586,19 +585,6 @@ MonoBehaviour:
   friendRequestSlot: {fileID: 5275180711445823594, guid: aa3bfa7a348fbfe4a982ff82b149928b, type: 3}
   parentObject: {fileID: 7092886775345690178}
   friendRequestParentObject: {fileID: 9195439585425386274}
---- !u!114 &6899965610705509633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4152240691283157264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb04af27b03dd6b4cafd55cd8e3d2f88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
 --- !u!1 &5375528708604995487
 GameObject:
   m_ObjectHideFlags: 0
