@@ -11,6 +11,7 @@ namespace SimulFactory.Game.Event
     public class FriendUIManager : MonoSingleton<FriendUIManager>
     {
         public GameObject friendSlot;
+        public GameObject friendRequestSlot;
         public GameObject parentObject;
         public GameObject friendRequestParentObject;
 
@@ -29,9 +30,9 @@ namespace SimulFactory.Game.Event
         }
         public void AddFriend(FriendRequestDto friendDto)
         {
-            GameObject obj = Instantiate(friendSlot, friendRequestParentObject.transform, false);
+            GameObject obj = Instantiate(friendRequestSlot, friendRequestParentObject.transform, false);
             friendSlotDic.Add(friendDto.FriendName, obj);
-            obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
+            obj.GetComponent<FriendRequestSlot>().SetFriendRequestDto(friendDto);
         }
 
         public void SetFriendSlot()
@@ -55,6 +56,7 @@ namespace SimulFactory.Game.Event
         {
             C_FriendReceive.FriendReceiveC(isReceived, friendName);
         }
+
         // 친구 삭제버튼 클릭
         public void FriendRemoveButtonClicked(string userName)
         {
