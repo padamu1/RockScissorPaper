@@ -1,4 +1,5 @@
 using SimulFactory.System.Common.Bean;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,10 +19,17 @@ namespace SimulFactory.Game.Event
         public void YesButtonClicked()
         {
             C_FriendReceive.FriendReceiveC(true, friendName);
+            FriendUIManager.GetInstance().RemoveFriendRequesSlot(friendName);
         }
         public void NoButtonClicked()
         {
             C_FriendReceive.FriendReceiveC(false, friendName);
+            FriendUIManager.GetInstance().RemoveFriendRequesSlot(friendName);
+        }
+
+        internal static void GetInstance()
+        {
+            throw new NotImplementedException();
         }
     }
 }
