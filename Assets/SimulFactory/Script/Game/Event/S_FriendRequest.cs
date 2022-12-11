@@ -35,7 +35,7 @@ namespace SimulFactory.Game.Event
                     foreach(FriendRequestDto data in friendRequestDtoList)
                     {
                         UserData.GetInstance().AddFriendRequestDto(data);
-                        FriendUIManager.GetInstance().SetFriendRequestSlot(data.FriendName);
+                        UiManager.GetInstance().GetFriendUiManager().SetFriendRequestSlot(data.FriendName);
                         if(isList == false)
                         {
                             PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();

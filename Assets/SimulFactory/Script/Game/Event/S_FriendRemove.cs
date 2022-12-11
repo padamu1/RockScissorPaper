@@ -24,7 +24,7 @@ namespace SimulFactory.Game.Event
                     {
                         UserData.GetInstance().RemoveFriend((string)param[2]);
                         Debug.Log("친구 삭제 성공");
-                        FriendUIManager.GetInstance().RemoveFriendSlot((string)param[2]);
+                        UiManager.GetInstance().GetFriendUiManager().RemoveFriendSlot((string)param[2]);
                     }
                     else
                     {
@@ -35,7 +35,7 @@ namespace SimulFactory.Game.Event
                     string friendName = (string)param[1];
                     UserData.GetInstance().RemoveFriend(friendName);
                     // 친구삭제됨 UI 갱신 필요
-                    FriendUIManager.GetInstance().RemoveFriendSlot(friendName);
+                    UiManager.GetInstance().GetFriendUiManager().RemoveFriendSlot(friendName);
                     break;
             }
         }

@@ -21,6 +21,7 @@ namespace SimulFactory.Manager
         [SerializeField] private GameObject matchObj;
         [SerializeField] private GameObject uiHolder;
         [SerializeField] private BattleManager battleManager;
+        [SerializeField] private FriendUIManager friendUIManager;
 
         private MasterContext masterContext;
         private void Awake()
@@ -47,6 +48,7 @@ namespace SimulFactory.Manager
         }
         private IEnumerator SetUi()
         {
+            friendUIManager.Init();
             yield return null;
             GetBattleManager().Init();
             yield return null;
@@ -126,6 +128,10 @@ namespace SimulFactory.Manager
         public BattleManager GetBattleManager()
         {
             return battleManager;
+        }
+        public FriendUIManager GetFriendUiManager()
+        {
+            return friendUIManager;
         }
         public void CreateUserInvitePopup()
         {

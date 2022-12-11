@@ -8,7 +8,7 @@ using TMPro;
 
 namespace SimulFactory.Game.Event
 {
-    public class FriendUIManager : MonoSingleton<FriendUIManager>
+    public class FriendUIManager : MonoBehaviour
     {
         public GameObject friendSlot;
         public GameObject friendRequestSlot;
@@ -18,7 +18,7 @@ namespace SimulFactory.Game.Event
         Dictionary<string, GameObject> friendSlotDic;
         Dictionary<string, GameObject> friendRequestSlotDic;
 
-        private void Awake()
+        public void Init()
         {
             friendSlotDic = new Dictionary<string, GameObject>();
             friendRequestSlotDic = new Dictionary<string, GameObject>();

@@ -23,7 +23,7 @@ namespace SimulFactory.Game.Event
             }
 
             //模备 格废 技泼
-            FriendUIManager.GetInstance().SetFriendSlot();
+            UiManager.GetInstance().GetFriendUiManager().SetFriendSlot();
         }
     }
 }

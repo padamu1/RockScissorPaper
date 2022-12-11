@@ -1,3 +1,4 @@
+using SimulFactory.Manager;
 using SimulFactory.System.Common.Bean;
 using System;
 using System.Collections;
@@ -19,7 +20,7 @@ namespace SimulFactory.Game.Event
         public void RemoveButtonClicked()
         {
             C_FriendRemove.FriendRemoveC(friendName);
-            FriendUIManager.GetInstance().RemoveFriendSlot(friendName);
+            UiManager.GetInstance().GetFriendUiManager().RemoveFriendSlot(friendName);
         }
         internal static void GetInstance()
         {
