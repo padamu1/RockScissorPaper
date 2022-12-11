@@ -33,7 +33,7 @@ namespace SimulFactory.Manager
         {
             try
             {
-                //C_Chat.ChatC(chatType, chatText, targetName);
+                C_Chat.ChatC(chatType, chatText, targetName);
             }
             catch (Exception e)
             {
