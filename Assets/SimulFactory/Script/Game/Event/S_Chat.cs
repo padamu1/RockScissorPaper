@@ -26,6 +26,12 @@ namespace SimulFactory.Game.Event
                     }
                     break;
                 case Define.CHAT_TYPE.None:
+                    /*
+                    {
+                        ChattingManager.GetInstance().MakeOtherMessage((string)param[2]);
+                    }
+                    break;
+                    */
                 case Define.CHAT_TYPE.Whisper:
                     {
                         string sendUser = (string)param[1];

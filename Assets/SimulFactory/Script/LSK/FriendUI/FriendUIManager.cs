@@ -11,6 +11,7 @@ namespace SimulFactory.Game.Event
     public class FriendUIManager : MonoSingleton<FriendUIManager>
     {
         public GameObject friendSlot;
+        public GameObject friendRequestSlot;
         public GameObject parentObject;
         public GameObject friendRequestParentObject;
 
@@ -29,7 +30,7 @@ namespace SimulFactory.Game.Event
         }
         public void AddFriend(FriendRequestDto friendDto)
         {
-            GameObject obj = Instantiate(friendSlot, friendRequestParentObject.transform, false);
+            GameObject obj = Instantiate(friendRequestSlot, friendRequestParentObject.transform, false);
             friendSlotDic.Add(friendDto.FriendName, obj);
             obj.GetComponent<FriendRequestSlot>().SetFriendRequestDto(friendDto);
         }
