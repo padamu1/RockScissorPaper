@@ -7,26 +7,20 @@ using UnityEngine;
 
 namespace SimulFactory.Game.Event
 {
-    public class FriendRequestSlot : MonoBehaviour
+    public class FriendSlot : MonoBehaviour
     {
         [SerializeField] TMP_Text nameText;
         private string friendName;
-        public void SetFriendRequestDto(FriendRequestDto friendDto)
+        public void SetFriendDto(FriendDto friendDto)
         {
             this.friendName = friendDto.FriendName;
             nameText.text = friendName;
         }
-        public void YesButtonClicked()
+        public void RemoveButtonClicked()
         {
-            C_FriendReceive.FriendReceiveC(true, friendName);
-            FriendUIManager.GetInstance().RemoveFriendRequestSlot(friendName);
+            C_FriendRemove.FriendRemoveC(friendName);
+            FriendUIManager.GetInstance().RemoveFriendSlot(friendName);
         }
-        public void NoButtonClicked()
-        {
-            C_FriendReceive.FriendReceiveC(false, friendName);
-            FriendUIManager.GetInstance().RemoveFriendRequestSlot(friendName);
-        }
-
         internal static void GetInstance()
         {
             throw new NotImplementedException();
