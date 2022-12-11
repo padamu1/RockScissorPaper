@@ -44,6 +44,7 @@ namespace SimulFactory.System.Common
             if (descText != null)
             {
                 descText.text = popupInfo.Description;
+                descText.gameObject.SetActive(popupInfo.Description != "");
             }
             if (block != null)
             {
