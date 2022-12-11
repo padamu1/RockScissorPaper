@@ -45,7 +45,7 @@ namespace SimulFactory.Ui.Popup
         }
         public void YesButtonClicked()
         {
-            if(inputField.gameObject.activeSelf)
+            if(inputField.gameObject.activeSelf == false)
             {
                 yesButtonAction?.Invoke();
             }
