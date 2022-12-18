@@ -44,40 +44,54 @@ namespace SimulFactory.WebSocket
         private ReceivedPacketData m_recvData;
         private Queue<ReceivedPacketData> m_receivedPacketDatas = new Queue<ReceivedPacketData>();
         private bool m_disconnect = false;
-        private Dictionary<int,Action<Dictionary<byte,object>>> _callbackDic;
+        private Dictionary<int, Action<Dictionary<byte, object>>> _callbackDic;
         private void Awake()
         {
             m_recvData = new ReceivedPacketData();
             m_recvData.data = new Dictionary<byte, object>();
             m_reqData = new RequestPacketData();
             m_reqData.data = new Dictionary<byte, object>();
-            _callbackDic = new Dictionary<int,Action<Dictionary<byte,object>>>();
+            _callbackDic = new Dictionary<int, Action<Dictionary<byte, object>>>();
         }
-        public void Init()
+        public void Init(Action action)
         {
             m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 서버 ip주소
             //m_Socket = new WebSocketSharp.WebSocket("ws://127.0.0.1:80"); // 서버 ip주소
             m_Socket.OnMessage += Recv;
             m_Socket.OnClose += OnClose;
-            Connect();
+            Connect(action);
         }
 
         #region 기본 로직
         /// <summary>
         /// 서버와 연결을 시도하는 함수
         /// </summary>
-        public void Connect()
+        public void Connect(Action action)
         {
-            m_Socket.Connect();
-            StartCoroutine(CheckServer());
+            StartCoroutine(CheckServer(action));
         }
-        IEnumerator CheckServer()
+        IEnumerator CheckServer(Action action)
         {
+            WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+            int waitCount = 0;
+            m_Socket.ConnectAsync();
             while (m_Socket.ReadyState != WebSocketState.Open)
             {
-                yield return new WaitForSeconds(0.01f);
+                if (waitCount++ > 5f)
+                {
+                    yield break;
+                }
+                yield return waitForSeconds;
             }
-            Debug.Log("Websocket Connected");
+            if (m_Socket.ReadyState != WebSocketState.Open)
+            {
+                Disconnect();
+            }
+            else
+            {
+                action.Invoke();
+                Debug.Log("Websocket Connected");
+            }
         }
 
         /// <summary>
@@ -87,7 +101,7 @@ namespace SimulFactory.WebSocket
         {
             Console.WriteLine(e.Data);
             m_recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
-            m_receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = m_recvData.eventCode, data = m_recvData.data});
+            m_receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = m_recvData.eventCode, data = m_recvData.data });
         }
         /// <summary>
         /// 서버에 메시지 보낼 때 사용
@@ -125,6 +139,7 @@ namespace SimulFactory.WebSocket
         /// </summary>
         public void Disconnect()
         {
+            UiManager.GetInstance().gameObject.SetActive(false);
             m_Socket.Close();
             Debug.Log("서버 연결 끊음");
 
@@ -144,7 +159,7 @@ namespace SimulFactory.WebSocket
         #endregion
         public bool CheckCallBack(ReceivedPacketData recvData)
         {
-            if(_callbackDic.ContainsKey(recvData.eventCode))
+            if (_callbackDic.ContainsKey(recvData.eventCode))
             {
                 _callbackDic[recvData.eventCode].Invoke(recvData.data);
                 return true;
@@ -154,7 +169,7 @@ namespace SimulFactory.WebSocket
 
         private void Update()
         {
-            if(!m_disconnect)
+            if (!m_disconnect)
             {
                 if (m_receivedPacketDatas.Count > 0)
                 {

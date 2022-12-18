@@ -21,21 +21,16 @@ public class UiLogin : MonoBehaviour
     private void Start()
     {
         GameObject obj = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
+        obj.SetActive(false);
         UiManager uiManager = obj.GetComponent<UiManager>();
     }
     private void OnEnable()
     {
-        SocketManager.GetInstance().Init();
+        SocketManager.GetInstance().Init(LoginToServer);
         uiFrame.gameObject.SetActive(false);
-        StartCoroutine(WaitForServer());
     }
-    private IEnumerator WaitForServer()
+    private void LoginToServer()
     {
-        WaitForSeconds waitTime = new WaitForSeconds(1f);
-        while(SocketManager.GetInstance().GetWebSocketState() != WebSocketSharp.WebSocketState.Open)
-        {
-            yield return waitTime;
-        }
         //uiFrame.gameObject.SetActive(true);
         isLoginClicked = false;
         LoginButtonClicked();
@@ -61,7 +56,7 @@ public class UiLogin : MonoBehaviour
             isLoginClicked = false;
             return;
         }
-
+        UiManager.GetInstance().gameObject.SetActive(true);
         UserData.GetInstance().ResetUserData();
         UserData.GetInstance().UserNo = (long)message["userNo"];
         PlayerPrefs.SetString(Define.PLAYERPREFS_USER_NO, UserData.GetInstance().UserNo.ToString());
