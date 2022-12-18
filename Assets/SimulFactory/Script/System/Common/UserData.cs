@@ -94,6 +94,8 @@ namespace SimulFactory.System.Common
         public void SetUserName(string userName)
         {
             this.userName = userName;
+            _userInfoContext.SetValue("UserName",userName);
+
         }
         public string GetUserName()
         {

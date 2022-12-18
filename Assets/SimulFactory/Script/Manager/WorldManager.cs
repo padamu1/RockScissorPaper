@@ -90,6 +90,9 @@ namespace SimulFactory.Manager
                 case (byte)Define.EVENT_CODE.InviteReceiveS:
                     S_InviteReceive.InviteReceiveS(param);
                     break;
+                case (byte)Define.EVENT_CODE.UserNameS:
+                    S_UserName.UserNameS(param);
+                    break;
                 default:
                     break;
             }
