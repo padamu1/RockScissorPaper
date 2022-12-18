@@ -28,21 +28,15 @@ namespace SimulFactory.Manager
         {
             GetInstance();
         }
-        private void Start()
-        {
-            // 컨텍스트 세팅
-            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
-            masterContext = Managers.GetInstance().GetMasterContext();
-            contextHolder.Context = masterContext;
-        }
         public void Init()
         {
             CoroutineHelper.StartLogoStopCoroutine(SendPing());
+            // 컨텍스트 세팅
+            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
 
-            if(masterContext != null)
-            {
-                masterContext.Reset();
-            }
+            masterContext = Managers.GetInstance().GetMasterContext();
+            contextHolder.Context = masterContext;
+
 
             // 메인 ui 설정
             startButton.gameObject.SetActive(true);
@@ -145,6 +139,7 @@ namespace SimulFactory.Manager
             popupInfo.Type = Define.POPUP_TYPE.InputPopup;
             popupInfo.Title = "유저 초대";
             popupInfo.WarningText = "현재 접속중인 유저만 초대 가능합니다.";
+            popupInfo.NoButtonText = "취소";
             popupInfo.InputAction = C_InviteUser.InviteUserC;
             popupInfo.Top = true;
             popupInfo.Block = true;

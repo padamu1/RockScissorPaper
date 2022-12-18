@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
+using SimulFactory.Manager;
 
 public class Profile : MonoBehaviour
 {

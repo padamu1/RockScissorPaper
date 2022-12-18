@@ -1324,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -270.135
       objectReference: {fileID: 0}
+    - target: {fileID: 5752013194658514502, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeUserNamePopup
+      objectReference: {fileID: 0}
     - target: {fileID: 5847420911282735885, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
