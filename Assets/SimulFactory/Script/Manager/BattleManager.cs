@@ -146,6 +146,7 @@ namespace SimulFactory.Manager
         {
             if(winUserResult == clickedButton)
             {
+                DOTweenManager.GetInstance().StartDOTween();
                 Debug.Log("내가 이김");
             }
             else if(winUserResult == Define.ROCK_SCISSOR_PAPER.Tie)
