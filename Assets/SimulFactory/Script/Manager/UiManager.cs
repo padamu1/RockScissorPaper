@@ -28,15 +28,21 @@ namespace SimulFactory.Manager
         {
             GetInstance();
         }
+        private void Start()
+        {
+            // 컨텍스트 세팅
+            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
+            masterContext = Managers.GetInstance().GetMasterContext();
+            contextHolder.Context = masterContext;
+        }
         public void Init()
         {
             CoroutineHelper.StartLogoStopCoroutine(SendPing());
-            // 컨텍스트 세팅
-            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
 
-            masterContext = Managers.GetInstance().GetMasterContext();
-            contextHolder.Context = masterContext;
-
+            if(masterContext != null)
+            {
+                masterContext.Reset();
+            }
 
             // 메인 ui 설정
             startButton.gameObject.SetActive(true);
