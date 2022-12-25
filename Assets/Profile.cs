@@ -7,7 +7,7 @@ using SimulFactory.Manager;
 
 public class Profile : MonoBehaviour
 {
-
+    [SerializeField] private Image profileImage;
     private GameObject profileSettingPopup;
     private Button button;
     void Start()
