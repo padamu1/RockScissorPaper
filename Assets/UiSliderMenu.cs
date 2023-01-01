@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace SimulFactory.Ui
         Up,
         Down,
     }
+
     public class UiSliderMenu : MonoBehaviour
     {
         // Serialized Field
@@ -23,32 +25,41 @@ namespace SimulFactory.Ui
         private ScrollRect scrollRect;
         private RectTransform content;
         private EventTrigger trigger;
-        // Parent Member Field
-        private Transform parentTransform;
-        private float parentSizeX = -1;
-        private float parentSizeY = -1;
 
         // Child Member Field
         private RectTransform childRect;
         private float childSizeX = -1;           // 기본 값은 -1
         private float childSizeY = -1;           // 기본 값은 -1
 
-        private void Awake()
+        // Base Member Field
+        protected Vector2[] SLIDER_POS_BASE_VALUE = new Vector2[]
         {
-            SetScrollRect();
-            SetParentSize();
-            SetChildSize();
-        }
+            new Vector2(1,0),
+            new Vector2(1,0),
+            new Vector2(0,1),
+            new Vector2(0,1),
+        };
         private void Start()
         {
+            SetScrollRect();
+            SetChildSize();
+
+            // On Pointer Up 이벤트
             trigger = this.gameObject.AddComponent<EventTrigger>();
             EventTrigger.Entry pointerUpEvent = new EventTrigger.Entry()
             {
                 eventID = EventTriggerType.PointerUp,
             };
             pointerUpEvent.callback.AddListener(delegate { OnPointerUp();});
-            
             trigger.triggers.Add(pointerUpEvent);
+
+            // On Pointer Down 이벤트
+            EventTrigger.Entry pointerDownEvent = new EventTrigger.Entry()
+            {
+                eventID = EventTriggerType.PointerDown,
+            };
+            pointerDownEvent.callback.AddListener(delegate { OnPointerDown(); });
+            trigger.triggers.Add(pointerDownEvent);
         }
         /// <summary>
         /// ScrollRect 초기화
@@ -57,15 +68,6 @@ namespace SimulFactory.Ui
         {
             scrollRect = gameObject.GetComponent<ScrollRect>();
             content = scrollRect.content;
-        }
-        /// <summary>
-        /// Parent 사이즈 초기화
-        /// </summary>
-        private void SetParentSize()
-        {
-            parentSizeX = content.rect.width;
-            parentSizeY = content.rect.height;
-            parentTransform = content.transform;
         }
         /// <summary>
         /// Child 사이즈 초기화
@@ -82,28 +84,49 @@ namespace SimulFactory.Ui
             childSizeY = childRect.rect.height;
         }
         /// <summary>
-        /// Pointer가 올라올 때 수행될 동작
+        /// 마우스 클릭이 해제될 때 수행될 동작
         /// </summary>
         public void OnPointerUp()
         {
+            Vector2 baseValue;
+            float childBaseSize;
+            float currentPos;
             switch(direction)
             {
                 case SLIDER_DIRECTION.Right:
-
+                    baseValue = SLIDER_POS_BASE_VALUE[0];
+                    currentPos = content.anchoredPosition.x;
+                    childBaseSize = childSizeX;
                     break;
                 case SLIDER_DIRECTION.Left:
-
+                    baseValue = SLIDER_POS_BASE_VALUE[1];
+                    currentPos = content.anchoredPosition.x;
+                    childBaseSize = childSizeX;
                     break;
                 case SLIDER_DIRECTION.Up:
-
+                    baseValue = SLIDER_POS_BASE_VALUE[2];
+                    currentPos = content.anchoredPosition.y;
+                    childBaseSize = childSizeY;
                     break;
                 case SLIDER_DIRECTION.Down:
-
+                    baseValue = SLIDER_POS_BASE_VALUE[3];
+                    currentPos = content.anchoredPosition.y;
+                    childBaseSize = childSizeY;
                     break;
                 default:
                     Debug.LogError(" Direction Not Set ");
-                    break;
+                    return;
             }
+            baseValue *= (childBaseSize * Mathf.Round(currentPos / childBaseSize));
+
+            content.DOAnchorPos(baseValue, 0.5f);
+        }
+        /// <summary>
+        /// 마우스 클릭이 시작될 때 수행될 동작
+        /// </summary>
+        public void OnPointerDown()
+        {
+            content.DOPause();
         }
     }
 }
