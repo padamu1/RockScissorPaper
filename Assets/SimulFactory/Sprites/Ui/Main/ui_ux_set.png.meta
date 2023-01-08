@@ -23,6 +23,24 @@ TextureImporter:
   - first:
       213: -6719890989495481767
     second: yellow_frame
+  - first:
+      213: -4509582400639933733
+    second: toggle_group_frame
+  - first:
+      213: 6569243115195119150
+    second: toggle_group_down_button
+  - first:
+      213: -3454728487530982581
+    second: info_button
+  - first:
+      213: -8322949349241212742
+    second: invite_button
+  - first:
+      213: 3965222287507805287
+    second: friend_button
+  - first:
+      213: 8371268472272480960
+    second: toggle_group_up_button
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -282,7 +300,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 3, z: 3, w: 3}
       outline: []
       physicsShape: []
@@ -290,6 +308,132 @@ TextureImporter:
       bones: []
       spriteID: 95a06c1afb62eb2a0800000000000000
       internalID: -6719890989495481767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toggle_group_frame
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 371
+        width: 96
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 35, z: 8, w: 16}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2e08c03beba61c0800000000000000
+      internalID: -4509582400639933733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toggle_group_down_button
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 389
+        width: 48
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26b264dec3aa2b50800000000000000
+      internalID: 6569243115195119150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: info_button
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b431b499eb65e00d0800000000000000
+      internalID: -3454728487530982581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: invite_button
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 93
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab0b8eae9a1fe7c80800000000000000
+      internalID: -8322949349241212742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: friend_button
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 304
+        width: 105
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7645d5e69ac470730800000000000000
+      internalID: 3965222287507805287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toggle_group_up_button
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 342
+        width: 48
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca6a399258bc2470800000000000000
+      internalID: 8371268472272480960
       vertices: []
       indices: 
       edges: []
