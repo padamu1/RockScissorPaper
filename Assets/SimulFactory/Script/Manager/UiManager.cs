@@ -56,23 +56,11 @@ namespace SimulFactory.Manager
         }
         private IEnumerator SendPing()
         {
-            while(true)
+            while (true)
             {
                 C_Ping.PingC();
                 yield return CoroutineHelper.GetWaitForSeconds(1f);
             }
-        }
-        public void StartNormalButtonClicked()
-        {
-            startButton.gameObject.SetActive(false);
-            stopButton.gameObject.SetActive(true);
-            C_StartMatching.StartMatchingC((int)Define.MATCH_TYPE.Normal);
-        }
-        public void StartMultiButtonClicked()
-        {
-            startButton.gameObject.SetActive(false);
-            stopButton.gameObject.SetActive(true);
-            C_StartMatching.StartMatchingC((int)Define.MATCH_TYPE.Multi);
         }
         public void StopButtonClicked()
         {
