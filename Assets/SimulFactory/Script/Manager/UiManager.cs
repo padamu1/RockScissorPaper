@@ -27,6 +27,7 @@ namespace SimulFactory.Manager
         private void Awake()
         {
             GetInstance();
+            this.gameObject.SetActive(false);
         }
         public void Init()
         {

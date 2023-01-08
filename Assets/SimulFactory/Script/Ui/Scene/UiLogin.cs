@@ -22,11 +22,10 @@ public class UiLogin : MonoBehaviour
     {
         // GameUi 로드
         GameObject gameUi = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
-        gameUi.SetActive(false);
         UiManager uiManager = gameUi.GetComponent<UiManager>();
 
         // HelperMenu 로드
-        Instantiate(Resources.Load<GameObject>("Ui/MainCanvas/HelperMenu")).SetActive(false);
+        Instantiate(Resources.Load<GameObject>("Ui/MainCanvas/HelperMenu"),uiManager.gameObject.transform,false);
     }
     private void OnEnable()
     {
