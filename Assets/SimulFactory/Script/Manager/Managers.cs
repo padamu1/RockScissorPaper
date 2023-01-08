@@ -10,6 +10,9 @@ namespace SimulFactory.Manager
     using Slash.Unity.DataBind.Core.Presentation;
     using Slash.Unity.DataBind.Core.Data;
     using SimulFactory.Context.Bean;
+    using global::System;
+    using UnityEngine.Events;
+    using SimulFactory.Game.Event;
 
     public class Managers : MonoSingleton<Managers>
     {

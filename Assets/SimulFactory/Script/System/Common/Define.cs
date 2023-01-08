@@ -70,6 +70,8 @@ namespace SimulFactory.System.Common
             MatchInfo,
             RockScissorPaper,
             Setting,
+            GameModeSelectAction,
+            GameMode,
         }
 
         public enum ROCK_SCISSOR_PAPER
@@ -106,7 +108,12 @@ namespace SimulFactory.System.Common
             None = 1,    // 일반 채팅
             Whisper = 2, // 귓속말
         }
+        public enum HELP_MENU
+        {
+            NormalGameMode = 0,
+            MultiGameMode = 1,
 
+        }
 
         public static readonly int MAINPOPUP_SET_COUNT = 5;
         public static readonly int TOASTPOPUP_SET_COUNT = 5;
