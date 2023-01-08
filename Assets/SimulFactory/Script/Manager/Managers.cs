@@ -38,6 +38,8 @@ namespace SimulFactory.Manager
             LoadingManager.GetInstance();
             SocketManager.GetInstance();
             WorldManager.GetInstance();
+            SpriteAtlasManager.GetInstance();
+
             //BattleManager.GetInstance(); -> 이거 오브젝트로 가져와야함
         }
         /// <summary>
