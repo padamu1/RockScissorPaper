@@ -357,6 +357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinPopop
       objectReference: {fileID: 0}
+    - target: {fileID: 5779369762111418497, guid: b8943d94d6061a44e9473eef631423fc, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7652262436219032105, guid: b8943d94d6061a44e9473eef631423fc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
