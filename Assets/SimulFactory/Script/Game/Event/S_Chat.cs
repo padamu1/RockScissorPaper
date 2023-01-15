@@ -29,11 +29,11 @@ namespace SimulFactory.Game.Event
                     {
                         if ((string)param[1] == UserData.GetInstance().GetUserName())
                         {
-                            ChattingManager.GetInstance().MakeMyMessage((string)param[2]);
+                            ChattingManager.GetInstance().MakeMyMessage((string)param[1], (string)param[2]);
                         }
                         else
                         {
-                            ChattingManager.GetInstance().MakeOtherMessage((string)param[2]);
+                            ChattingManager.GetInstance().MakeOtherMessage((string)param[1], (string)param[2]);
                         }
                     }
                     break;

@@ -29,8 +29,9 @@ namespace SimulFactory.Manager
             C_Chat.ChatC((long)Define.CHAT_TYPE.None, GetInputText(), "");
         }
 
-        public void MakeMyMessage(string chatText)
+        public void MakeMyMessage(string userName, string chatText)
         {
+            myMessagePref.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = userName;
             myMessagePref.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = chatText;
             if (messagePrefParent.transform.childCount >= maxMessageCount)
             {
@@ -39,9 +40,10 @@ namespace SimulFactory.Manager
             Instantiate(myMessagePref, messagePrefParent.transform);
         }
 
-        public void MakeOtherMessage(string chatText)
+        public void MakeOtherMessage(string userName, string chatText)
         {
-            otherMessagePref.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = chatText;
+            otherMessagePref.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = userName;
+            otherMessagePref.transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = chatText;
             if (messagePrefParent.transform.childCount >= maxMessageCount)
             {
                 Destroy(messagePrefParent.transform.GetChild(0).gameObject);

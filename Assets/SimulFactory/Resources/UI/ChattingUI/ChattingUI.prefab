@@ -780,7 +780,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &399464017841622647
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1019,11 +1019,11 @@ RectTransform:
   m_Father: {fileID: 8774076194974838437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000045776367, y: -0.000030517578}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &8740042089378664527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47fb0657f8bef74488c39ce7565418fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messagePref: {fileID: 4585692816752345713, guid: 6232d094450eb1345ad27403944540ea, type: 3}
+  myMessagePref: {fileID: 4585692816752345713, guid: 6232d094450eb1345ad27403944540ea, type: 3}
+  otherMessagePref: {fileID: 1056099641042058990, guid: c2bffd8d159d8ee4d805e853ad916c30, type: 3}
   messagePrefParent: {fileID: 7363583940813469217}
   inputField: {fileID: 5636787535499454938}
   maxMessageCount: 12
