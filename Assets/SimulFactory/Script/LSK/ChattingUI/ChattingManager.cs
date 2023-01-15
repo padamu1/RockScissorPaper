@@ -26,23 +26,13 @@ namespace SimulFactory.Manager
 
         public void SendButtonClicked()
         {
-            MakeMyMessage((long)Define.CHAT_TYPE.None, GetInputText(),"");
+            C_Chat.ChatC((long)Define.CHAT_TYPE.None, GetInputText(), "");
         }
 
-        public void MakeMyMessage(long chatType, string chatText, string targetName = "")
+        public void MakeMyMessage(string userName, string chatText)
         {
-            try
-            {
-                C_Chat.ChatC(chatType, chatText, targetName);
-            }
-            catch (Exception e)
-            {
-                print(e);
-            }
-
-            myMessagePref.GetComponent<TMP_Text>().text = chatText;
-
-            //채팅창에 최근 12개 메세지까지 표시
+            myMessagePref.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = userName;
+            myMessagePref.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = chatText;
             if (messagePrefParent.transform.childCount >= maxMessageCount)
             {
                 Destroy(messagePrefParent.transform.GetChild(0).gameObject);
@@ -50,9 +40,10 @@ namespace SimulFactory.Manager
             Instantiate(myMessagePref, messagePrefParent.transform);
         }
 
-        public void MakeOtherMessage(string chatText)
+        public void MakeOtherMessage(string userName, string chatText)
         {
-            otherMessagePref.GetComponent<TMP_Text>().text = chatText;
+            otherMessagePref.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = userName;
+            otherMessagePref.transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = chatText;
             if (messagePrefParent.transform.childCount >= maxMessageCount)
             {
                 Destroy(messagePrefParent.transform.GetChild(0).gameObject);

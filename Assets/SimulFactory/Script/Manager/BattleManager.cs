@@ -96,7 +96,7 @@ namespace SimulFactory.Manager
         /// 버튼이 눌렸을 때 수행될 동작
         /// </summary>
         /// <param name="buttonName"></param>
-        private void ButtonClicked(int buttonNo)
+        public void ButtonClicked(int buttonNo)
         {
             if(_isRoundReady)
             {

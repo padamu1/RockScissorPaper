@@ -39,6 +39,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 3654121716396994305, guid: 64748850107f543408d291094e27354a, type: 3}
   - {fileID: 2214635113781427610, guid: 64748850107f543408d291094e27354a, type: 3}
+<<<<<<< Updated upstream
   - {fileID: 6569243115195119150, guid: 64748850107f543408d291094e27354a, type: 3}
   - {fileID: -6719890989495481767, guid: 64748850107f543408d291094e27354a, type: 3}
   - {fileID: 3965222287507805287, guid: 64748850107f543408d291094e27354a, type: 3}
@@ -49,6 +50,12 @@ SpriteAtlas:
   - {fileID: 8371268472272480960, guid: 64748850107f543408d291094e27354a, type: 3}
   - {fileID: -2831614949989120784, guid: 64748850107f543408d291094e27354a, type: 3}
   - {fileID: -8322949349241212742, guid: 64748850107f543408d291094e27354a, type: 3}
+=======
+  - {fileID: -6719890989495481767, guid: 64748850107f543408d291094e27354a, type: 3}
+  - {fileID: -3753968746265764056, guid: 64748850107f543408d291094e27354a, type: 3}
+  - {fileID: 4331553754869195311, guid: 64748850107f543408d291094e27354a, type: 3}
+  - {fileID: -2831614949989120784, guid: 64748850107f543408d291094e27354a, type: 3}
+>>>>>>> Stashed changes
   - {fileID: 6888063138750674707, guid: 64748850107f543408d291094e27354a, type: 3}
   - {fileID: 21300000, guid: c62d7b60463bdd64ea7bff00854177c5, type: 3}
   - {fileID: 21300000, guid: eb8845b0bed04f340894f2697f52ba84, type: 3}
@@ -84,6 +91,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - no_button_bottom
   - yes_button_bottom
+<<<<<<< Updated upstream
   - toggle_group_down_button
   - yellow_frame
   - friend_button
@@ -94,6 +102,12 @@ SpriteAtlas:
   - toggle_group_up_button
   - yes_button_color
   - invite_button
+=======
+  - yellow_frame
+  - white_frame
+  - no_button_color
+  - yes_button_color
+>>>>>>> Stashed changes
   - black_frame
   - Red outline gradient
   - Blue outline gradient

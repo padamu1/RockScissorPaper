@@ -2,6 +2,7 @@
 using SimulFactory.Game.Event;
 using SimulFactory.Script.Util;
 using SimulFactory.System.Common;
+using SimulFactory.Ui.Battle;
 using Slash.Unity.DataBind.Core.Presentation;
 using System;
 using System.Collections;
@@ -22,6 +23,9 @@ namespace SimulFactory.Manager
         [SerializeField] private GameObject uiHolder;
         [SerializeField] private BattleManager battleManager;
         [SerializeField] private FriendUIManager friendUIManager;
+        private UiPlayerResultPanel uiPlayerResultPanel;
+        private UiPlayerControlPanel uiPlayerControlPanel;
+        private UiPlayerTotalResultPanel uiPlayerTotalResultPanel;
 
         private MasterContext masterContext;
         private void Awake()
@@ -63,6 +67,19 @@ namespace SimulFactory.Manager
                 yield return CoroutineHelper.GetWaitForSeconds(1f);
             }
         }
+
+        #region Regist Panel
+        public void RegistUiPlayerResultPanel(UiPlayerResultPanel uiPlayerResultPanel) => this.uiPlayerResultPanel = uiPlayerResultPanel;
+        public void RegistUiPlayerControlPanel(UiPlayerControlPanel uiPlayerControlPanel) => this.uiPlayerControlPanel = uiPlayerControlPanel;
+        public void RegistUiPlayerTotalResultPanel(UiPlayerTotalResultPanel uiPlayerTotalResultPanel) => this.uiPlayerTotalResultPanel = uiPlayerTotalResultPanel;
+        #endregion
+
+        #region Get Registed Panel
+        public UiPlayerResultPanel GetUiPlayerResultPanel() => this.uiPlayerResultPanel;
+        public UiPlayerControlPanel GetUiPlayerControlPanel() => this.uiPlayerControlPanel;
+        public UiPlayerTotalResultPanel GetUiPlayerTotalResultPanel() => this.uiPlayerTotalResultPanel;
+        #endregion
+
         public void StopButtonClicked()
         {
             ResetGameStartButton();
