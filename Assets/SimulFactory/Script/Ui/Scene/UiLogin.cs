@@ -20,9 +20,12 @@ public class UiLogin : MonoBehaviour
     }
     private void Start()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
-        obj.SetActive(false);
-        UiManager uiManager = obj.GetComponent<UiManager>();
+        // GameUi 로드
+        GameObject gameUi = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
+        UiManager uiManager = gameUi.GetComponent<UiManager>();
+
+        // HelperMenu 로드
+        Instantiate(Resources.Load<GameObject>("Ui/MainCanvas/HelperMenu"),uiManager.gameObject.transform,false);
     }
     private void OnEnable()
     {
