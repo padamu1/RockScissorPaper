@@ -106,6 +106,7 @@ namespace SimulFactory.Manager
             Debug.Log("매칭 시작 성공");
             startButton.SetActive(false);
             stopButton.SetActive(false);
+            this.gameObject.SetActive(false);
             Managers.GetInstance().LoadScene("Battle");
         }
         public void AcceptButtonClicked(bool isAccept)
@@ -123,6 +124,7 @@ namespace SimulFactory.Manager
         }
         public void StopGameUi()
         {
+            this.gameObject.SetActive(true);
             Managers.GetInstance().LoadScene("GameMain");
         }
         // 친구요청 버튼클릭
