@@ -28,10 +28,10 @@ namespace SimulFactory.Manager
         public void SendButtonClicked()
         {
             string[] mytext = GetInputText().Split(' ');
-            if (mytext.Length == 3 && mytext[0] == "/w")
+            if (mytext.Length >= 3 && mytext[0] == "/w")
             {
                 string name = mytext[1];
-                string text = mytext[2];
+                string text = GetInputText().Replace(String.Format("/w {0} ", name), "");
 
                 C_Chat.ChatC((long)Define.CHAT_TYPE.Whisper, text, name);
             }
