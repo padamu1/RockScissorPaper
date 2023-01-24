@@ -39,7 +39,7 @@ namespace SimulFactory.Ui.Battle
                     continue;
                 }
 
-                uiRSPButton.GetButton().onClick.AddListener(delegate { ButtonClicked(uiRSPButton.GetRSPType()); });
+                uiRSPButton.SetAction(ButtonClicked);
                 uiRSPButtons.Add(uiRSPButton);
             }
         }
