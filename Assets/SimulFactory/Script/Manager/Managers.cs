@@ -21,6 +21,10 @@ namespace SimulFactory.Manager
         {
             Init();
         }
+        private void OnApplicationQuit()
+        {
+            SocketManager.GetInstance().Disconnect();
+        }
         /// <summary>
         /// 초기 설정
         /// </summary>

@@ -4,6 +4,7 @@ using UnityEngine;
 using SimulFactory.System.Common;
 using SimulFactory.WebSocket;
 using SimulFactory.Game.Event;
+using SimulFactory.PacketSerializer.Model;
 
 namespace SimulFactory.Manager
 {    
@@ -21,16 +22,16 @@ namespace SimulFactory.Manager
         /// 서버에서 받은 메시지 처리
         /// </summary>
         /// <param name="recvData"></param>
-        public void DataProcess(ReceivedPacketData recvData)
+        public void DataProcess(PacketData recvData)
         {
-            Dictionary<byte, object> param = recvData.data;
+            Dictionary<byte, object> param = recvData.Data;
 
             if (SocketManager.GetInstance().CheckCallBack(recvData))
             {
                 return;
             }
 
-            switch (recvData.eventCode)
+            switch (recvData.EvCode)
             {
                 case (byte)Define.EVENT_CODE.LoginS:
                     // 로그인 처리
