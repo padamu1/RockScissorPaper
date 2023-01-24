@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SimulFactory/Scene/GameMain.unity
     guid: 38f91a0d726a9474eb42958d64274f87
+  - enabled: 1
+    path: Assets/SimulFactory/Scene/Battle.unity
+    guid: c5fcb4c93f62c5444a6b536134e7e37f
   m_configObjects: {}

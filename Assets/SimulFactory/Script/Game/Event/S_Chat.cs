@@ -13,7 +13,7 @@ namespace SimulFactory.Game.Event
     {
         public static void ChatS(Dictionary<byte,object> param)
         {
-            Define.CHAT_TYPE chatType = (Define.CHAT_TYPE)(long)param[0];
+            Define.CHAT_TYPE chatType = (Define.CHAT_TYPE)(int)param[0];
             switch (chatType)
             {
                 case Define.CHAT_TYPE.Toast:
