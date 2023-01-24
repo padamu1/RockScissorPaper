@@ -23,11 +23,15 @@ namespace SimulFactory.Ui.Battle
             uiPlayerTotalResultSlots[0].SetName(UserData.GetInstance().GetUserName());
             userTotalResultDic.Add(UserData.GetInstance().GetUserName(), uiPlayerTotalResultSlots[0]);
             List<string> userInfos = BattleManager.GetInstance().GetMatchUserInfos();
-            for (int count = 1; count < userInfos.Count; count++)
+            for (int count = 1; count <= userInfos.Count; count++)
             {
                 uiPlayerTotalResultSlots[count].gameObject.SetActive(true);
-                uiPlayerTotalResultSlots[count].SetName(userInfos[count]);
-                userTotalResultDic.Add(userInfos[count], uiPlayerTotalResultSlots[count]);
+                uiPlayerTotalResultSlots[count].SetName(userInfos[count - 1]);
+                userTotalResultDic.Add(userInfos[count - 1], uiPlayerTotalResultSlots[count]);
+            }
+            for (int count = userInfos.Count + 1; count < uiPlayerTotalResultSlots.Length; count++)
+            {
+                uiPlayerTotalResultSlots[count].gameObject.SetActive(false);
             }
         }
         

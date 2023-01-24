@@ -39,6 +39,10 @@ namespace SimulFactory.Ui.Battle
                 uiPlayerResultSlots[count].SetName(userInfos[count]);
                 playerResultDic.Add(userInfos[count], uiPlayerResultSlots[count]);
             }
+            for(int count = userInfos.Count; count < uiPlayerResultSlots.Length; count++)
+            {
+                uiPlayerResultSlots[count].gameObject.SetActive(false);
+            }
         }
         private Sprite GetResultSprite(int resultCode) => resultSprites[resultCode];
         /// <summary>
