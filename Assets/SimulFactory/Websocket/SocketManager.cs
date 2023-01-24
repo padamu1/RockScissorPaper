@@ -29,8 +29,8 @@ namespace SimulFactory.WebSocket
         }
         public void Init(Action action)
         {
-            //m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 辑滚 ip林家
-            m_Socket = new WebSocketSharp.WebSocket("ws://timinetprinter.iptime.org:3000");
+            m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 辑滚 ip林家
+            //m_Socket = new WebSocketSharp.WebSocket("ws://timinetprinter.iptime.org:3000");
             //m_Socket = new WebSocketSharp.WebSocket("ws://127.0.0.1:80"); // 辑滚 ip林家
             m_Socket.OnMessage += Recv;
             m_Socket.OnClose += OnClose;
