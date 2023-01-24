@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimulFactory.PacketSerializer.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,6 +23,7 @@ namespace PacketSerializer
         public const short Double = 6;
         public const short List = 8;
         public const short Dictionary = 9;
+        public const short PacketData = 10;
     }
     public static class Serializer
     {
@@ -36,6 +38,7 @@ namespace PacketSerializer
             {typeof(double), TypeCode.Double },
             {typeof(List<object>), TypeCode.List },
             {typeof(Dictionary<byte,object>), TypeCode.Dictionary },
+            {typeof(PacketData), TypeCode.PacketData },
         };
         private static Dictionary<Type, byte[]> TYPE_BYTE_DICT = new Dictionary<Type, byte[]>()
         {
@@ -48,6 +51,7 @@ namespace PacketSerializer
             {typeof(double), new byte[] { 6, 0 } },
             {typeof(List<object>), new byte[] { 8, 0 } },
             {typeof(Dictionary<byte,object>), new byte[] { 9, 0 } },
+            {typeof(PacketData), new byte[] { 10, 0 } },
         };
 
         public static byte[] Serialize(object value)
@@ -82,6 +86,9 @@ namespace PacketSerializer
                     break;
                 case TypeCode.Dictionary:
                     data = DictionaryToBytes((Dictionary<byte, object>)value);
+                    break;
+                case TypeCode.PacketData:
+                    data = PacketDataToBytes((PacketData)value);
                     break;
                 default:
                     data = Config.EMPTY_BYTES;
@@ -140,7 +147,10 @@ namespace PacketSerializer
                     result = BytesToList(dataBytes);
                     break;
                 case TypeCode.Dictionary:
-                    result = BytesToDictionary((dataBytes));
+                    result = BytesToDictionary(dataBytes);
+                    break;
+                case TypeCode.PacketData:
+                    result = BytesToPacketData(dataBytes);
                     break;
                 default:
                     break;
@@ -214,6 +224,22 @@ namespace PacketSerializer
                 result.Add(resultKey, ByteToObjectByIndex(value, ref lengthBytes, ref typeBytes, ref nextIdx));
             }
             return result;
+        }
+        private static byte[] PacketDataToBytes(PacketData value)
+        {
+            byte[] bytes = Config.EMPTY_BYTES;
+            byte evCode = value.EvCode;
+            byte[] data = Serialize(value.Data);
+            bytes = new byte[1 + data.Length];
+            bytes[0] = evCode;
+            Array.Copy(data, 0, bytes, 1, data.Length);
+            return bytes;
+        }
+        private static object BytesToPacketData(byte[] value)
+        {
+            byte[] dataBytes = new byte[value.Length - 1];
+            Array.Copy(value, 1, dataBytes, 0, dataBytes.Length);
+            return new PacketData(value[0], (Dictionary<byte, object>)Deserialize(dataBytes));
         }
         private static object ByteToObjectByIndex(byte[] value,ref byte[] lengthBytes, ref byte[] typeBytes, ref int nextIdx)
         {

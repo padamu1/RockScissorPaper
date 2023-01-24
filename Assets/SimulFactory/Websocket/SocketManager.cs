@@ -7,30 +7,8 @@ using SimulFactory.System.Common;
 using SimulFactory.Game.Event;
 using SimulFactory.Manager;
 using System;
-/// <summary>
-/// 데이터 보낼 때 사용하는 클래스
-/// </summary>
-[System.Serializable]
-public class RequestPacketData
-{
-    public byte eventCode;
-    public Dictionary<byte, object> data;
-    public void Clear()
-    {
-        eventCode = 0;
-        data.Clear();
-    }
-}
-
-/// <summary>
-/// 데이터 받을 때 사용하는 클래스
-/// </summary>
-[System.Serializable]
-public class ReceivedPacketData
-{
-    public byte eventCode;
-    public Dictionary<byte, object> data;
-}
+using SimulFactory.PacketSerializer.Model;
+using PacketSerializer;
 
 namespace SimulFactory.WebSocket
 {
@@ -40,18 +18,14 @@ namespace SimulFactory.WebSocket
     public class SocketManager : MonoSingleton<SocketManager>
     {
         private WebSocketSharp.WebSocket m_Socket = null;
-        private RequestPacketData m_reqData;
-        private ReceivedPacketData m_recvData;
-        private Queue<ReceivedPacketData> m_receivedPacketDatas = new Queue<ReceivedPacketData>();
+        private PacketData sendPacketData;
+        private Queue<PacketData> receivedPacketQueue = new Queue<PacketData>();
         private bool m_disconnect = false;
-        private Dictionary<int, Action<Dictionary<byte, object>>> _callbackDic;
+        private Dictionary<byte, Action<Dictionary<byte, object>>> _callbackDic;
         private void Awake()
         {
-            m_recvData = new ReceivedPacketData();
-            m_recvData.data = new Dictionary<byte, object>();
-            m_reqData = new RequestPacketData();
-            m_reqData.data = new Dictionary<byte, object>();
-            _callbackDic = new Dictionary<int, Action<Dictionary<byte, object>>>();
+            sendPacketData = new PacketData(0,new Dictionary<byte, object>());
+            _callbackDic = new Dictionary<byte, Action<Dictionary<byte, object>>>();
         }
         public void Init(Action action)
         {
@@ -101,8 +75,7 @@ namespace SimulFactory.WebSocket
         private void Recv(object sender, MessageEventArgs e)
         {
             Console.WriteLine(e.Data);
-            m_recvData = JsonConvert.DeserializeObject<ReceivedPacketData>(e.Data);
-            m_receivedPacketDatas.Enqueue(new ReceivedPacketData() { eventCode = m_recvData.eventCode, data = m_recvData.data });
+            receivedPacketQueue.Enqueue((PacketData)Serializer.Deserialize(e.RawData));
         }
         /// <summary>
         /// 서버에 메시지 보낼 때 사용
@@ -110,9 +83,9 @@ namespace SimulFactory.WebSocket
         /// <param name="eventCode"></param>
         public void SendPacket(byte eventCode)
         {
-            m_reqData.Clear();
-            m_reqData.eventCode = eventCode;
-            m_Socket.Send(JsonConvert.SerializeObject(m_reqData));
+            sendPacketData.Data.Clear();
+            sendPacketData.EvCode = eventCode;
+            m_Socket.Send(Serializer.Serialize(sendPacketData));
         }
         /// <summary>
         /// 서버에 메시지 보낼 때 사용
@@ -121,10 +94,9 @@ namespace SimulFactory.WebSocket
         /// <param name="param"></param>
         public void SendPacket(byte eventCode, Dictionary<byte, object> param)
         {
-            m_reqData.Clear();
-            m_reqData.eventCode = eventCode;
-            m_reqData.data = param;
-            m_Socket.Send(JsonConvert.SerializeObject(m_reqData));
+            sendPacketData.Data = param;
+            sendPacketData.EvCode = eventCode;
+            m_Socket.Send(Serializer.Serialize(sendPacketData));
         }
         /// <summary>
         /// 연결 끊겼을 때 호출
@@ -158,11 +130,11 @@ namespace SimulFactory.WebSocket
             return m_Socket.ReadyState;
         }
         #endregion
-        public bool CheckCallBack(ReceivedPacketData recvData)
+        public bool CheckCallBack(PacketData packet)
         {
-            if (_callbackDic.ContainsKey(recvData.eventCode))
+            if (_callbackDic.ContainsKey(packet.EvCode))
             {
-                _callbackDic[recvData.eventCode].Invoke(recvData.data);
+                _callbackDic[packet.EvCode].Invoke(packet.Data);
                 return true;
             }
             return false;
@@ -172,9 +144,9 @@ namespace SimulFactory.WebSocket
         {
             if (!m_disconnect)
             {
-                if (m_receivedPacketDatas.Count > 0)
+                if (receivedPacketQueue.Count > 0)
                 {
-                    WorldManager.GetInstance().DataProcess(m_receivedPacketDatas.Dequeue());
+                    WorldManager.GetInstance().DataProcess(receivedPacketQueue.Dequeue());
                 }
             }
             else
