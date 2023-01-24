@@ -56,6 +56,10 @@ namespace PacketSerializer
 
         public static byte[] Serialize(object value)
         {
+            if (value == null)
+            {
+                return new byte[0];
+            }
             Type objectType = value.GetType();
             byte[] data;
             switch (TYPE_DICT[objectType])
@@ -104,6 +108,10 @@ namespace PacketSerializer
         }
         public static object Deserialize(byte[] value)
         {
+            if (value.Length == 0)
+            {
+                return null;
+            }
             byte[] lengthBytes = new byte[Config.LENGTH_SIZE];
             Array.Copy(value, 0, lengthBytes, 0, Config.LENGTH_SIZE);
             int length = BytesToInt(lengthBytes);
@@ -171,7 +179,7 @@ namespace PacketSerializer
         private static byte[] CharToBytes(char value) => BitConverter.GetBytes((value));
         private static char BytesToChar(byte[] value) => BitConverter.ToChar(value, 0);
         private static byte[] DoubleToBytes(double value) => BitConverter.GetBytes(value);
-        private static double BytesToDouble(byte[] value) => BitConverter.ToDouble(value, 0); 
+        private static double BytesToDouble(byte[] value) => BitConverter.ToDouble(value, 0);
         #endregion
         private static byte[] ListToBytes(List<object> value)
         {
@@ -241,7 +249,7 @@ namespace PacketSerializer
             Array.Copy(value, 1, dataBytes, 0, dataBytes.Length);
             return new PacketData(value[0], (Dictionary<byte, object>)Deserialize(dataBytes));
         }
-        private static object ByteToObjectByIndex(byte[] value,ref byte[] lengthBytes, ref byte[] typeBytes, ref int nextIdx)
+        private static object ByteToObjectByIndex(byte[] value, ref byte[] lengthBytes, ref byte[] typeBytes, ref int nextIdx)
         {
             Array.Copy(value, nextIdx, lengthBytes, 0, Config.LENGTH_SIZE);
             int length = BytesToInt(lengthBytes);

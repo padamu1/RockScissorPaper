@@ -75,7 +75,11 @@ namespace SimulFactory.WebSocket
         private void Recv(object sender, MessageEventArgs e)
         {
             Console.WriteLine(e.Data);
-            receivedPacketQueue.Enqueue((PacketData)Serializer.Deserialize(e.RawData));
+            PacketData receivedData = (PacketData)Serializer.Deserialize(e.RawData);
+            if(receivedData != null)
+            {
+                receivedPacketQueue.Enqueue(receivedData);
+            }
         }
         /// <summary>
         /// 서버에 메시지 보낼 때 사용
