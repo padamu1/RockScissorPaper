@@ -18,22 +18,21 @@ namespace SimulFactory.Game.Event
             // [0] 상대방이 낸 버튼
             // [1] 상대방이 낸 카드
             // UI 상에 바로 띄워짐
-            Dictionary<string, long> UserResult = JsonConvert.DeserializeObject<Dictionary<string,long>>(param[0].ToString());
-            foreach(KeyValuePair<string, long> result in UserResult)
+            List<object> results = (List<object>)param[0];
+            for(int count = 0; count < results.Count; count++)
             {
-                switch ((Define.ROCK_SCISSOR_PAPER)result.Value)
+                List<object> userResult = (List<object>)results[count];
+                switch ((Define.ROCK_SCISSOR_PAPER)(int)userResult[1])
                 {
                     case Define.ROCK_SCISSOR_PAPER.Rock:
-                        ShowCard.GetInstance().EnemyCard("rock");
-                        Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Rock.ToString());
+
+                        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Rock.ToString());
                         break;
                     case Define.ROCK_SCISSOR_PAPER.Scissor:
-                        UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("scissor");
-                        Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
+                        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
                         break;
                     case Define.ROCK_SCISSOR_PAPER.Paper:
-                        UiManager.GetInstance().GetBattleManager().showCard.EnemyCard("paper");
-                        Debug.Log("상대방이 낸 카드 " + Define.ROCK_SCISSOR_PAPER.Paper.ToString());
+                        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Paper.ToString());
                         break;
                 }
             }

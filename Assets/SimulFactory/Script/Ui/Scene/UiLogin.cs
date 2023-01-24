@@ -23,7 +23,7 @@ public class UiLogin : MonoBehaviour
         // GameUi 로드
         GameObject gameUi = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
         UiManager uiManager = gameUi.GetComponent<UiManager>();
-
+        BattleManager.GetInstance();
         // HelperMenu 로드
         Instantiate(Resources.Load<GameObject>("Ui/MainCanvas/HelperMenu"),uiManager.gameObject.transform,false);
     }

@@ -1,4 +1,5 @@
 using SimulFactory.Manager;
+using SimulFactory.System.Common;
 using SimulFactory.Ui.Base;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,11 +32,12 @@ namespace SimulFactory.Ui.Battle
         private void SetUserCount()
         {
             playerResultDic = new Dictionary<string, UiPlayerResultSlot>();
-            for (int count = 0; count < uiPlayerResultSlots.Length; count++)
+            List<string> userInfos = BattleManager.GetInstance().GetMatchUserInfos();
+            for (int count = 0; count < userInfos.Count; count++)
             {
                 uiPlayerResultSlots[count].gameObject.SetActive(true);
-                uiPlayerResultSlots[count].SetName(count.ToString());
-                playerResultDic.Add(count.ToString(), uiPlayerResultSlots[count]);
+                uiPlayerResultSlots[count].SetName(userInfos[count]);
+                playerResultDic.Add(userInfos[count], uiPlayerResultSlots[count]);
             }
         }
         private Sprite GetResultSprite(int resultCode) => resultSprites[resultCode];

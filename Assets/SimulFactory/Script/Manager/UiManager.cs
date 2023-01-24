@@ -55,7 +55,7 @@ namespace SimulFactory.Manager
         {
             friendUIManager.Init();
             yield return null;
-            GetBattleManager().Init();
+            //GetBattleManager().Init();
             yield return null;
             C_LoginComplete.LoginCompleteC();
         }
@@ -106,8 +106,7 @@ namespace SimulFactory.Manager
             Debug.Log("매칭 시작 성공");
             startButton.SetActive(false);
             stopButton.SetActive(false);
-            battleManager.gameObject.SetActive(true);
-            battleManager.ButtonActivate();
+            Managers.GetInstance().LoadScene("Battle");
         }
         public void AcceptButtonClicked(bool isAccept)
         {
@@ -124,7 +123,7 @@ namespace SimulFactory.Manager
         }
         public void StopGameUi()
         {
-            battleManager.gameObject.SetActive(false);
+            Managers.GetInstance().LoadScene("GameMain");
         }
         // 친구요청 버튼클릭
         public void FriendRequestButtonClicked(string userName)

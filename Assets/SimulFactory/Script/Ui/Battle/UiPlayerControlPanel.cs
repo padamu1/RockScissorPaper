@@ -31,7 +31,7 @@ namespace SimulFactory.Ui.Battle
         {
             uiRSPButtons = new List<UiRSPButton>();
 
-            for(int count = 0; count < gameButtonContent.childCount; count++)
+            for(int count = 0; count < uiRSPButtons.Count; count++)
             {
                 UiRSPButton uiRSPButton = gameButtonContent.GetChild(count).GetComponent<UiRSPButton>();
 
@@ -57,7 +57,7 @@ namespace SimulFactory.Ui.Battle
         /// <param name="rspType"></param>
         private void ButtonClicked(Define.ROCK_SCISSOR_PAPER rspType)
         {
-            C_UserBattleButtonClicked.UserBattleButtonClickedC((int)rspType);
+            BattleManager.GetInstance().ButtonClicked(rspType);
         }
     }
 }

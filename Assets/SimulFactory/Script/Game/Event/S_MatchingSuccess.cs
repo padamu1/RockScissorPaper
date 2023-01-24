@@ -18,7 +18,7 @@ namespace SimulFactory.Game.Event
             {
                 Debug.Log(user.ToString());
             }
-
+            BattleManager.GetInstance().SetMatchUserInfos(users.Select(x => x.ToString()).ToList());
             UiManager.GetInstance().MatchSuccess();
         }
     }

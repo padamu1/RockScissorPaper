@@ -21,7 +21,6 @@ namespace SimulFactory.Game.Event
             Debug.Log("매칭 결과 도착");
             UiManager.GetInstance().StopGameUi();
             UiManager.GetInstance().ResetGameStartButton();
-            UiManager.GetInstance().GetBattleManager().ButtonDeactivate();
         }
     }
 }

@@ -13,14 +13,12 @@ namespace SimulFactory.Game.Event
     {
         public static void RoundResultS(Dictionary<byte,object> param)
         {
-            Define.ROCK_SCISSOR_PAPER winUserResult = (Define.ROCK_SCISSOR_PAPER)Convert.ToInt32(param[0]);
+            Define.ROCK_SCISSOR_PAPER winUserResult = (Define.ROCK_SCISSOR_PAPER)(int)(param[0]);
             Debug.LogFormat("결과 : {0}",winUserResult.ToString());
 
             //라운드 끝났을때 호출
             ShowCard.GetInstance().RoundEnd();
-
             UiManager.GetInstance().GetBattleManager().CompareResult(winUserResult);
-            UiManager.GetInstance().GetBattleManager().ButtonActivate();
             // 라운드 결과가 들어옴
             // [0] : 승패 여부 각 팀 넘버 비겼을 경우 3
             // [1] : 이번 라운드에 사용한 카드 정보 -> 해당 카드를 바로 없애야함
