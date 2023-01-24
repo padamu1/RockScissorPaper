@@ -31,7 +31,7 @@ namespace SimulFactory.Ui.Battle
         {
             uiRSPButtons = new List<UiRSPButton>();
 
-            for(int count = 0; count < uiRSPButtons.Count; count++)
+            for(int count = 0; count < gameButtonContent.childCount; count++)
             {
                 UiRSPButton uiRSPButton = gameButtonContent.GetChild(count).GetComponent<UiRSPButton>();
 
