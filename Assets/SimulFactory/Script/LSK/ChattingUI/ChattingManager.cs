@@ -17,6 +17,7 @@ namespace SimulFactory.Manager
         public GameObject messagePrefParent;
         public TMP_InputField inputField;
         public int maxMessageCount;
+        public int myTextMaxLength = 10;
 
         private string text;
 
@@ -27,17 +28,39 @@ namespace SimulFactory.Manager
         //GetInputText().IndexOf(" ")
         public void SendButtonClicked()
         {
-            string[] mytext = GetInputText().Split(' ');
+            string linedText = "";
+            if (GetInputText().Length >= myTextMaxLength)
+            {
+                int lineNum = GetInputText().Length / myTextMaxLength;
+
+                for (int i = 0; i <= lineNum; i++)
+                {
+                    if(i< lineNum)
+                    {
+                        linedText = linedText + GetInputText().Substring(i * myTextMaxLength, myTextMaxLength) + "\r\n";
+                    }
+                    else
+                    {
+                        linedText = linedText + GetInputText().Substring(i * myTextMaxLength) + "\r\n";
+                    }
+                }
+            }
+            else
+            {
+                linedText = GetInputText();
+            }
+
+            string[] mytext = linedText.Split(' ');
             if (mytext.Length >= 3 && mytext[0] == "/w")
             {
                 string name = mytext[1];
-                string text = GetInputText().Replace(String.Format("/w {0} ", name), "");
+                string text = linedText.Replace(String.Format("/w {0} ", name), "");
 
                 C_Chat.ChatC((long)Define.CHAT_TYPE.Whisper, text, name);
             }
             else
             {
-                C_Chat.ChatC((long)Define.CHAT_TYPE.None, GetInputText(), "");
+                C_Chat.ChatC((long)Define.CHAT_TYPE.None, linedText, "");
             }
         }
 

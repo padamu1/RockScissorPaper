@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MyText
+  m_text: "MyText\u3147\u3134\u3134\u3147\u3139\u3139\u3134\u3147\u3139\u3134\u3147\u3139"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9fc376f2a119e0d4e803fe600a58f9f6, type: 2}
   m_sharedMaterial: {fileID: -1760241804323177939, guid: 9fc376f2a119e0d4e803fe600a58f9f6, type: 2}
@@ -257,7 +257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 288.80573, y: 0}
+  m_AnchoredPosition: {x: 185.63536, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6345797122645072623
@@ -392,7 +392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 67.46499, y: 0.000009536743}
+  m_AnchoredPosition: {x: 67.46499, y: 0.0000076293945}
   m_SizeDelta: {x: 134.93, y: 40.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4495593651252283844
