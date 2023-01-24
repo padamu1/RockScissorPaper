@@ -22,16 +22,16 @@ namespace SimulFactory.Manager
 
         private string GetInputText()
         {
-            this.text = inputField.GetComponent<TMP_InputField>().text;
-            return this.text;
+            return inputField.text;
         }
-
+        //GetInputText().IndexOf(" ")
         public void SendButtonClicked()
         {
-            if (GetInputText().Substring(0, 2) == "/w ")
+            string[] mytext = GetInputText().Split(' ');
+            if (mytext.Length == 3 && mytext[0] == "/w")
             {
-                string name = GetInputText().Substring(3, GetInputText().IndexOf(" "));
-                string text = GetInputText().Substring(GetInputText().IndexOf(" "), GetInputText().Length);
+                string name = mytext[1];
+                string text = mytext[2];
 
                 C_Chat.ChatC((long)Define.CHAT_TYPE.Whisper, text, name);
             }
