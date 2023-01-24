@@ -39,10 +39,14 @@ namespace SimulFactory.Game.Event
                     break;
                 case Define.CHAT_TYPE.Whisper:
                     {
-                        string sendUser = (string)param[1];
-                        string chatText = (string)param[2];
-
-                        Debug.LogFormat("{0}  :  {1}",sendUser,chatText);
+                        if ((string)param[1] == UserData.GetInstance().GetUserName())
+                        {
+                            ChattingManager.GetInstance().MakeMyWhisper((string)param[1], (string)param[2]);
+                        }
+                        else
+                        {
+                            ChattingManager.GetInstance().MakeOtherWhisper((string)param[1], (string)param[2]);
+                        }
                     }
                     break;
             }

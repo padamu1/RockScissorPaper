@@ -12,6 +12,8 @@ namespace SimulFactory.Manager
     {
         public GameObject myMessagePref;
         public GameObject otherMessagePref;
+        public GameObject myWhisperPref;
+        public GameObject otherWhisperPref;
         public GameObject messagePrefParent;
         public TMP_InputField inputField;
         public int maxMessageCount;
@@ -26,7 +28,17 @@ namespace SimulFactory.Manager
 
         public void SendButtonClicked()
         {
-            C_Chat.ChatC((long)Define.CHAT_TYPE.None, GetInputText(), "");
+            if (GetInputText().Substring(0, 2) == "/w ")
+            {
+                string name = GetInputText().Substring(3, GetInputText().IndexOf(" "));
+                string text = GetInputText().Substring(GetInputText().IndexOf(" "), GetInputText().Length);
+
+                C_Chat.ChatC((long)Define.CHAT_TYPE.Whisper, text, name);
+            }
+            else
+            {
+                C_Chat.ChatC((long)Define.CHAT_TYPE.None, GetInputText(), "");
+            }
         }
 
         public void MakeMyMessage(string userName, string chatText)
@@ -49,6 +61,28 @@ namespace SimulFactory.Manager
                 Destroy(messagePrefParent.transform.GetChild(0).gameObject);
             }
             Instantiate(otherMessagePref, messagePrefParent.transform);
+        }
+
+        public void MakeMyWhisper(string userName, string chatText)
+        {
+            myWhisperPref.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = userName;
+            myWhisperPref.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = chatText;
+            if (messagePrefParent.transform.childCount >= maxMessageCount)
+            {
+                Destroy(messagePrefParent.transform.GetChild(0).gameObject);
+            }
+            Instantiate(myWhisperPref, messagePrefParent.transform);
+        }
+
+        public void MakeOtherWhisper(string userName, string chatText)
+        {
+            otherWhisperPref.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = userName;
+            otherWhisperPref.transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>().text = chatText;
+            if (messagePrefParent.transform.childCount >= maxMessageCount)
+            {
+                Destroy(messagePrefParent.transform.GetChild(0).gameObject);
+            }
+            Instantiate(otherWhisperPref, messagePrefParent.transform);
         }
     }
 
