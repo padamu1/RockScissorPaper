@@ -1179,6 +1179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMessagePref: {fileID: 4585692816752345713, guid: 6232d094450eb1345ad27403944540ea, type: 3}
   otherMessagePref: {fileID: 1056099641042058990, guid: c2bffd8d159d8ee4d805e853ad916c30, type: 3}
+  myWhisperPref: {fileID: 1267333879034607872, guid: f84599e44e3eab349be6755b865ff91a, type: 3}
+  otherWhisperPref: {fileID: 7265295930722584791, guid: ec90126d14ca181439db572668534928, type: 3}
   messagePrefParent: {fileID: 7363583940813469217}
   inputField: {fileID: 5636787535499454938}
   maxMessageCount: 12
