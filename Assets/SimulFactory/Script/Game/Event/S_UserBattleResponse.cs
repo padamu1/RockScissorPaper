@@ -21,20 +21,29 @@ namespace SimulFactory.Game.Event
             List<object> results = (List<object>)param[0];
             for(int count = 0; count < results.Count; count++)
             {
-                List<object> userResult = (List<object>)results[count];
-                switch ((Define.ROCK_SCISSOR_PAPER)(int)userResult[1])
+                List<object> userResultData = (List<object>)results[count];
+                string userName = (string)userResultData[0];
+                int userResult = (int)userResultData[1];
+                if(userName == UserData.GetInstance().GetUserName())
                 {
-                    case Define.ROCK_SCISSOR_PAPER.Rock:
-
-                        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Rock.ToString());
-                        break;
-                    case Define.ROCK_SCISSOR_PAPER.Scissor:
-                        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
-                        break;
-                    case Define.ROCK_SCISSOR_PAPER.Paper:
-                        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Paper.ToString());
-                        break;
+                    UiManager.GetInstance().GetUiPlayerResultPanel().SetMyResult(userResult);
                 }
+                else
+                {
+                    UiManager.GetInstance().GetUiPlayerResultPanel().SetResult(userName, userResult);
+                }
+                //switch ((Define.ROCK_SCISSOR_PAPER)(int)userResult[1])
+                //{
+                //    case Define.ROCK_SCISSOR_PAPER.Rock:
+                //        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Rock.ToString());
+                //        break;
+                //    case Define.ROCK_SCISSOR_PAPER.Scissor:
+                //        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
+                //        break;
+                //    case Define.ROCK_SCISSOR_PAPER.Paper:
+                //        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Paper.ToString());
+                //        break;
+                //}
             }
         }
     }

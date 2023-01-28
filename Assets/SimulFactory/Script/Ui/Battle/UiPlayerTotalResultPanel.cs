@@ -27,6 +27,7 @@ namespace SimulFactory.Ui.Battle
             {
                 uiPlayerTotalResultSlots[count].gameObject.SetActive(true);
                 uiPlayerTotalResultSlots[count].SetName(userInfos[count - 1]);
+                uiPlayerTotalResultSlots[count].ResetUi();
                 userTotalResultDic.Add(userInfos[count - 1], uiPlayerTotalResultSlots[count]);
             }
             for (int count = userInfos.Count + 1; count < uiPlayerTotalResultSlots.Length; count++)

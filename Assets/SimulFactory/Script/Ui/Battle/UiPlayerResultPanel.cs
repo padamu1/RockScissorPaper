@@ -19,6 +19,7 @@ namespace SimulFactory.Ui.Battle
             RegistPanelThisPanel();
             SetMyResultSlot();
             SetUserCount();
+            myResultSlot.ResetResult();
         }
         public void RegistPanelThisPanel()
         {
@@ -37,6 +38,7 @@ namespace SimulFactory.Ui.Battle
             {
                 uiPlayerResultSlots[count].gameObject.SetActive(true);
                 uiPlayerResultSlots[count].SetName(userInfos[count]);
+                uiPlayerResultSlots[count].ResetResult();
                 playerResultDic.Add(userInfos[count], uiPlayerResultSlots[count]);
             }
             for(int count = userInfos.Count; count < uiPlayerResultSlots.Length; count++)
@@ -60,7 +62,14 @@ namespace SimulFactory.Ui.Battle
         }
         // 내 결과 설정
         public void SetMyResult(int resultCode) => myResultSlot.SetResult(GetResultSprite(resultCode));
-
+        public void ResetResult()
+        {
+            for(int count = 0; count < uiPlayerResultSlots.Length; count++)
+            {
+                uiPlayerResultSlots[count].ResetResult();
+            }
+            myResultSlot.ResetResult();
+        }
     }
 
 }
