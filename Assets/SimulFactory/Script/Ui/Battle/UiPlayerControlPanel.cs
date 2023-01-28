@@ -49,7 +49,7 @@ namespace SimulFactory.Ui.Battle
         /// <param name="rspType"></param>
         private void ButtonClicked(Define.ROCK_SCISSOR_PAPER rspType)
         {
-            BattleManager.GetInstance().ButtonClicked(rspType);
+            BattleManager.GetInstance().ButtonClicked((int)rspType);
         }
     }
 }

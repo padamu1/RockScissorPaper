@@ -15,7 +15,6 @@ namespace SimulFactory.Manager
     public class BattleManager : MonoSingleton<BattleManager>
     {
         private List<string> matchUserInfos;
-        private Define.ROCK_SCISSOR_PAPER clickedButton;
         private void Awake()
         {
             matchUserInfos = new List<string>();
@@ -29,26 +28,10 @@ namespace SimulFactory.Manager
         {
             return matchUserInfos;
         }
-        public void ButtonClicked(Define.ROCK_SCISSOR_PAPER buttonType)
+        public void ButtonClicked(int buttonType)
         {
-            clickedButton = buttonType;
-            C_UserBattleButtonClicked.UserBattleButtonClickedC((int)buttonType);
-        }
-        public void CompareResult(Define.ROCK_SCISSOR_PAPER winUserResult)
-        {
-            if(winUserResult == clickedButton)
-            {
-                DOTweenManager.GetInstance().StartDOTween();
-                Debug.Log("내가 이김");
-            }
-            else if(winUserResult == Define.ROCK_SCISSOR_PAPER.Tie)
-            {
-                Debug.Log(" 비김 ");
-            }
-            else
-            {
-                Debug.Log(" 내가 짐 ");
-            }
+            UiManager.GetInstance().GetUiPlayerResultPanel().SetMyResult(buttonType);
+            C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonType);
         }
     }
 }

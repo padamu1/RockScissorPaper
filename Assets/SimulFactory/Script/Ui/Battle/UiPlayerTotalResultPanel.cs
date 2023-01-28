@@ -21,6 +21,7 @@ namespace SimulFactory.Ui.Battle
 
             uiPlayerTotalResultSlots[0].gameObject.SetActive(true);
             uiPlayerTotalResultSlots[0].SetName(UserData.GetInstance().GetUserName());
+            uiPlayerTotalResultSlots[0].ResetUi();
             userTotalResultDic.Add(UserData.GetInstance().GetUserName(), uiPlayerTotalResultSlots[0]);
             List<string> userInfos = BattleManager.GetInstance().GetMatchUserInfos();
             for (int count = 1; count <= userInfos.Count; count++)

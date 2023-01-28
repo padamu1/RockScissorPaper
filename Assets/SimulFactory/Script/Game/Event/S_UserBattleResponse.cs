@@ -15,35 +15,12 @@ namespace SimulFactory.Game.Event
         public static void UserBattleResponseS(Dictionary<byte, object> param)
         {
             // 유저의 배틀 결과를 시각적으로 보여주기 위함. 결과 전에 먼저 도착해서 UI에 띄워짐
-            // [0] 상대방이 낸 버튼
-            // [1] 상대방이 낸 카드
             // UI 상에 바로 띄워짐
             List<object> results = (List<object>)param[0];
             for(int count = 0; count < results.Count; count++)
             {
                 List<object> userResultData = (List<object>)results[count];
-                string userName = (string)userResultData[0];
-                int userResult = (int)userResultData[1];
-                if(userName == UserData.GetInstance().GetUserName())
-                {
-                    UiManager.GetInstance().GetUiPlayerResultPanel().SetMyResult(userResult);
-                }
-                else
-                {
-                    UiManager.GetInstance().GetUiPlayerResultPanel().SetResult(userName, userResult);
-                }
-                //switch ((Define.ROCK_SCISSOR_PAPER)(int)userResult[1])
-                //{
-                //    case Define.ROCK_SCISSOR_PAPER.Rock:
-                //        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Rock.ToString());
-                //        break;
-                //    case Define.ROCK_SCISSOR_PAPER.Scissor:
-                //        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Scissor.ToString());
-                //        break;
-                //    case Define.ROCK_SCISSOR_PAPER.Paper:
-                //        Debug.LogFormat("{0} 상대방이 낸 카드 {1}", (string)userResult[0], Define.ROCK_SCISSOR_PAPER.Paper.ToString());
-                //        break;
-                //}
+                UiManager.GetInstance().GetUiPlayerResultPanel().SetResult((string)userResultData[0], (int)userResultData[1]);
             }
         }
     }
