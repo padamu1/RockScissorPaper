@@ -30,6 +30,9 @@ namespace SimulFactory.Manager
         /// </summary>
         private void Init()
         {
+#if UNITY_EDITOR
+            Application.runInBackground = true;
+#endif
             // ContextHolder Setting
             ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
             _masterContext = new MasterContext();
