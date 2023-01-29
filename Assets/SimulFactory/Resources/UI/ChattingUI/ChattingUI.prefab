@@ -1541,6 +1541,7 @@ MonoBehaviour:
   inputField: {fileID: 5636787535499454938}
   maxMessageCount: 12
   myTextMaxLength: 15
+  textLimit: 100
 --- !u!1 &8420374659933772085
 GameObject:
   m_ObjectHideFlags: 0
