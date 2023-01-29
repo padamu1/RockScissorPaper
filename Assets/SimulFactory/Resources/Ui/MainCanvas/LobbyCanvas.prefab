@@ -30,7 +30,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4042333454174222278}
+  - {fileID: 3121894222278591910}
   - {fileID: 5900010644570886841}
   - {fileID: 3011645389410400276}
   m_Father: {fileID: 3849788490752393550}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2983208654743354901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2675,6 +2675,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2324430273184296496, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2454193712971092114, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
       propertyPath: m_Name
       value: ProfileSettingPopup
@@ -2713,6 +2717,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4342680124549954856, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
       propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6551490010135523106, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7213053547739462891, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
@@ -2770,7 +2778,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1568662342655430149, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
   m_PrefabInstance: {fileID: 2327235750531351467}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4855119527010395687
+--- !u!1001 &5776618479398261831
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2867,8 +2875,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b062c58405faa144b8a16b94110d8e9, type: 3}
---- !u!224 &4042333454174222278 stripped
+--- !u!224 &3121894222278591910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8897311483570885089, guid: 0b062c58405faa144b8a16b94110d8e9, type: 3}
-  m_PrefabInstance: {fileID: 4855119527010395687}
+  m_PrefabInstance: {fileID: 5776618479398261831}
   m_PrefabAsset: {fileID: 0}
