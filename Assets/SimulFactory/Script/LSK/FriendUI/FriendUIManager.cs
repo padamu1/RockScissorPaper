@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SimulFactory.Manager;
 
 namespace SimulFactory.Game.Event
 {
@@ -68,7 +69,18 @@ namespace SimulFactory.Game.Event
         {
             AddFriend(UserData.GetInstance().GetFriendRequestDto(friendName));
         }
-
+        public void AddFriendButtonClicked()
+        {
+            PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+            popupInfo.Type = Define.POPUP_TYPE.InputPopup;
+            popupInfo.Title = "친구 요청";
+            popupInfo.NoButtonText = "취소";
+            popupInfo.YesButtonText = "요청";
+            popupInfo.InputAction = C_FriendRequest.FriendRequestC;
+            popupInfo.Top = true;
+            popupInfo.Block = true;
+            PopupManager.GetInstance().CreatePopup(popupInfo);
+        }
         // 친구요청 왔을때 수락버튼 클릭
         public void FriendReceiveButtonClicked(bool isReceived, string friendName)
         {

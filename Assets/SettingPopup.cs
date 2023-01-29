@@ -52,9 +52,10 @@ public class SettingPopup : MonoBehaviour
         PopupManager.GetInstance().CreatePopup(popupInfo);
     }
 
+    [System.Obsolete]
     public void ChangeUserPic()
     {
-
+        transform.parent.parent.FindChild("CustomizeUI").gameObject.SetActive(true);
     }
 
     public void AccountSync()

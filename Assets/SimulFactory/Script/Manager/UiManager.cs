@@ -17,11 +17,6 @@ namespace SimulFactory.Manager
     public class UiManager : MonoSingleton<UiManager>
     {
         [SerializeField] private GameObject lobbyCanvas; 
-        [SerializeField] private GameObject startButton; 
-        [SerializeField] private GameObject stopButton;
-        [SerializeField] private GameObject matchObj;
-        [SerializeField] private GameObject uiHolder;
-        [SerializeField] private BattleManager battleManager;
         [SerializeField] private FriendUIManager friendUIManager;
         private UiPlayerResultPanel uiPlayerResultPanel;
         private UiPlayerControlPanel uiPlayerControlPanel;
@@ -43,10 +38,6 @@ namespace SimulFactory.Manager
             contextHolder.Context = masterContext;
 
 
-            // 메인 ui 설정
-            startButton.gameObject.SetActive(true);
-            stopButton.gameObject.SetActive(false);
-            matchObj.SetActive(false);
             //lobbyCanvas.SetActive(true);
             // 로그인 완료 보냄
             StartCoroutine(SetUi());
@@ -104,14 +95,11 @@ namespace SimulFactory.Manager
         public void MatchResultUiActivate()
         {
             Debug.Log("매칭 시작 성공");
-            startButton.SetActive(false);
-            stopButton.SetActive(false);
             this.gameObject.SetActive(false);
             Managers.GetInstance().LoadScene("Battle");
         }
         public void AcceptButtonClicked(bool isAccept)
         {
-            matchObj.SetActive(false);
             C_MatchingResponse.MatchingResponseC(isAccept);
         }
         /// <summary>
@@ -119,8 +107,6 @@ namespace SimulFactory.Manager
         /// </summary>
         public void ResetGameStartButton()
         {
-            startButton.gameObject.SetActive(true);
-            stopButton.gameObject.SetActive(false);
         }
         public void StopGameUi()
         {
@@ -131,10 +117,6 @@ namespace SimulFactory.Manager
         public void FriendRequestButtonClicked(string userName)
         {
             C_FriendRequest.FriendRequestC(userName);
-        }
-        public BattleManager GetBattleManager()
-        {
-            return battleManager;
         }
         public FriendUIManager GetFriendUiManager()
         {
