@@ -116,11 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobbyCanvas: {fileID: 3563185156872564794}
-  startButton: {fileID: 0}
-  stopButton: {fileID: 0}
-  matchObj: {fileID: 0}
-  uiHolder: {fileID: 0}
-  battleManager: {fileID: 0}
   friendUIManager: {fileID: 2436936645857091626}
 --- !u!1001 &2325225812983117618
 PrefabInstance:
@@ -889,7 +884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4152240691283157264, guid: 8892c4c960bce4d42b2b8abf8c270ac3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4752030326361102451, guid: 8892c4c960bce4d42b2b8abf8c270ac3, type: 3}
       propertyPath: m_IsActive
