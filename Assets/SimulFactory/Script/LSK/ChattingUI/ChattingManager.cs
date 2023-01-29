@@ -18,6 +18,7 @@ namespace SimulFactory.Manager
         public TMP_InputField inputField;
         public int maxMessageCount;
         public int myTextMaxLength = 10;
+        public int textLimit = 20;
 
         private string text;
 
@@ -29,7 +30,7 @@ namespace SimulFactory.Manager
         public void SendButtonClicked()
         {
             string linedText = "";
-            if (GetInputText().Length >= myTextMaxLength)
+            if (GetInputText().Length > myTextMaxLength)
             {
                 int lineNum = GetInputText().Length / myTextMaxLength;
 
@@ -48,6 +49,13 @@ namespace SimulFactory.Manager
             else
             {
                 linedText = GetInputText();
+            }
+
+            //20글자제한
+            if(linedText.Length >= textLimit)
+            {
+                linedText = "";
+                Debug.Log("20글자 넘어감");
             }
 
             string[] mytext = linedText.Split(' ');
