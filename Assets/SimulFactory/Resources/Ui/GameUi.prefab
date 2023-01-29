@@ -1320,6 +1320,66 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2168164151977363124}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4331154589960458399, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1971967516408710717}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateUserInvitePopup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SimulFactory.Manager.UiManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512713998254725729, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4924098406959513408, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
