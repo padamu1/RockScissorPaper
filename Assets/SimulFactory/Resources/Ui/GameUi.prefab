@@ -117,11 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lobbyCanvas: {fileID: 3563185156872564794}
-  startButton: {fileID: 0}
-  stopButton: {fileID: 0}
-  matchObj: {fileID: 0}
-  uiHolder: {fileID: 0}
-  battleManager: {fileID: 0}
   friendUIManager: {fileID: 2436936645857091626}
 --- !u!1001 &2325225812983117618
 PrefabInstance:
