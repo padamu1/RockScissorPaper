@@ -13,12 +13,12 @@ namespace SimulFactory.Game.Event
     {
         public static void MatchingSuccessS(Dictionary<byte,object> param)
         {
-            List<string> Users = JsonConvert.DeserializeObject<List<string>>(param[0].ToString());
-            foreach(string User in Users)
+            List<object> users = (List<object>)param[0];
+            foreach(object user in users)
             {
-                Debug.Log(User);
+                Debug.Log(user.ToString());
             }
-
+            BattleManager.GetInstance().SetMatchUserInfos(users.Select(x => x.ToString()).ToList());
             UiManager.GetInstance().MatchSuccess();
         }
     }

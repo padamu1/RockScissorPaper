@@ -18,7 +18,6 @@ namespace SimulFactory.Ui.Battle
         {
             RegistPanelThisPanel();
             GetGameButton();
-            SetButtonAction();
         }
         public void RegistPanelThisPanel()
         {
@@ -40,24 +39,17 @@ namespace SimulFactory.Ui.Battle
                     continue;
                 }
 
+                uiRSPButton.SetAction(ButtonClicked);
                 uiRSPButtons.Add(uiRSPButton);
             }
         }
-        /// <summary>
-        /// 유저 버튼 눌렸을 때 동작 설정
-        /// </summary>
-        private void SetButtonAction() => uiRSPButtons.ForEach(
-            uiRSPButton => 
-            uiRSPButton.GetButton().onClick.AddListener(delegate { 
-                ButtonClicked(uiRSPButton.GetRSPType()); 
-            }));
         /// <summary>
         /// 실제 버튼 눌렸을 때 동작
         /// </summary>
         /// <param name="rspType"></param>
         private void ButtonClicked(Define.ROCK_SCISSOR_PAPER rspType)
         {
-            C_UserBattleButtonClicked.UserBattleButtonClickedC((int)rspType);
+            BattleManager.GetInstance().ButtonClicked((int)rspType);
         }
     }
 }

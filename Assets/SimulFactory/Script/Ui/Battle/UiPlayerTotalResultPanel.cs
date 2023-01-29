@@ -1,4 +1,5 @@
 using SimulFactory.Manager;
+using SimulFactory.System.Common;
 using SimulFactory.Ui.Base;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,11 +18,22 @@ namespace SimulFactory.Ui.Battle
         private void SetUserCount()
         {
             userTotalResultDic = new Dictionary<string, UiPlayerTotalResultSlot>();
-            for (int count = 0; count < uiPlayerTotalResultSlots.Length; count++)
+
+            uiPlayerTotalResultSlots[0].gameObject.SetActive(true);
+            uiPlayerTotalResultSlots[0].SetName(UserData.GetInstance().GetUserName());
+            uiPlayerTotalResultSlots[0].ResetUi();
+            userTotalResultDic.Add(UserData.GetInstance().GetUserName(), uiPlayerTotalResultSlots[0]);
+            List<string> userInfos = BattleManager.GetInstance().GetMatchUserInfos();
+            for (int count = 1; count <= userInfos.Count; count++)
             {
                 uiPlayerTotalResultSlots[count].gameObject.SetActive(true);
-                uiPlayerTotalResultSlots[count].SetName(count.ToString());
-                userTotalResultDic.Add(count.ToString(), uiPlayerTotalResultSlots[count]);
+                uiPlayerTotalResultSlots[count].SetName(userInfos[count - 1]);
+                uiPlayerTotalResultSlots[count].ResetUi();
+                userTotalResultDic.Add(userInfos[count - 1], uiPlayerTotalResultSlots[count]);
+            }
+            for (int count = userInfos.Count + 1; count < uiPlayerTotalResultSlots.Length; count++)
+            {
+                uiPlayerTotalResultSlots[count].gameObject.SetActive(false);
             }
         }
         
