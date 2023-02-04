@@ -9,6 +9,7 @@ namespace SimulFactory.System.Common
 {
     public class UserData : MonoSingleton<UserData>
     {
+        public bool IsFirstActive = true;
         private StringBuilder sb;
         // Context 변수들
         private UserInfoContext _userInfoContext;
