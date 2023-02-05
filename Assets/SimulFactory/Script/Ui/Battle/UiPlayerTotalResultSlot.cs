@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace SimulFactory.Ui.Battle
 {
@@ -17,6 +18,7 @@ namespace SimulFactory.Ui.Battle
         }
         public void ResetUi() => resultImages.ForEach(resultImage => resultImage.color = Color.black);
         public void SetName(string name) => userName.text = name;
-        public void IncreaseWinCount() => resultImages[currentWinCount++].color = Color.yellow;
+        public void IncreaseWinCount() => resultImages[currentWinCount++].DOColor(Color.yellow, 1);
+            //resultImages[currentWinCount++].color = Color.yellow;
     }
 }

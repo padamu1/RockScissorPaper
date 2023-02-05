@@ -23,7 +23,9 @@ namespace SimulFactory.Ui.Battle
         public void SetResult(Sprite sprite)
         {
             playerResult.sprite = sprite;
+            playerResult.gameObject.transform.localScale = new Vector3(0, 0, 0);
             playerResult.gameObject.SetActive(true);
+            playerResult.gameObject.transform.DOScale(new Vector3(1, 1, 1), 1);
         }
     }
 
