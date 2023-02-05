@@ -1,3 +1,4 @@
+using DigitalRuby.SoundManagerNamespace;
 using SimulFactory.Game.Event;
 using SimulFactory.Manager;
 using SimulFactory.Script.Util;
@@ -17,18 +18,29 @@ public class UiLogin : MonoBehaviour
     private void Awake()
     {
         Managers.GetInstance();
+        AudioSourceManager.GetInstance();
     }
     private void Start()
     {
-        // GameUi 로드
-        GameObject gameUi = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
-        UiManager uiManager = gameUi.GetComponent<UiManager>();
-        BattleManager.GetInstance();
-        // HelperMenu 로드
-        Instantiate(Resources.Load<GameObject>("Ui/MainCanvas/HelperMenu"),uiManager.gameObject.transform,false);
+        // 최초 한번만 생성
+        if(UserData.GetInstance().IsFirstActive)
+        {
+            // GameUi 로드
+            GameObject gameUi = Instantiate(Resources.Load<GameObject>("Ui/GameUi"));
+            UiManager uiManager = gameUi.GetComponent<UiManager>();
+            BattleManager.GetInstance();
+            // HelperMenu 로드
+            Instantiate(Resources.Load<GameObject>("Ui/MainCanvas/HelperMenu"), uiManager.gameObject.transform, false);
+            UserData.GetInstance().IsFirstActive = false;
+        }
     }
     private void OnEnable()
     {
+        AudioSource loginBgm = AudioSourceManager.GetInstance().GetMusicAudioSource("bgm_login");
+        if(loginBgm != null)
+        {
+            SoundManager.PlayLoopingMusic(loginBgm);
+        }
         SocketManager.GetInstance().Init(LoginToServer);
         uiFrame.gameObject.SetActive(false);
     }

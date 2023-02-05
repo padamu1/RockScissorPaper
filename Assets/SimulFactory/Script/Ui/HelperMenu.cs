@@ -1,7 +1,9 @@
+using SimulFactory.DataScript;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static SimulFactory.DataScript.HelperIconData;
 
 namespace SimulFactory.Ui
 {
@@ -16,11 +18,16 @@ namespace SimulFactory.Ui
         }
         public void SetHelperData(string key)
         {
-            string title = titleText.text;
-            string desc = descText.text;
-            SetTitle(title);
-            SetDesc(desc);
-            this.gameObject.SetActive(true);
+            if(HelperIconData.HELPER_ICON_DATA.ContainsKey(key))
+            {
+                HelperData helperData = HELPER_ICON_DATA[key];
+
+                string title = helperData.Title;
+                string desc = helperData.Desc;
+                SetTitle(title);
+                SetDesc(desc);
+                this.gameObject.SetActive(true);
+            }
         }
         public void SetTitle(string title)
         {
