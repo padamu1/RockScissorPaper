@@ -46,12 +46,10 @@ namespace SimulFactory.Manager
         public void InvokeMatchingHideAction()
         {
             matchingEndAction?.Invoke();
-            matchingEndAction= null;
         }
         public void InvokeMatchingShowAction()
         {
             matchingStartAction?.Invoke();
-            matchingStartAction = null;
         }
     }
 }
