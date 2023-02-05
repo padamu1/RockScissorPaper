@@ -29,7 +29,7 @@ namespace SimulFactory.Game.Event
         {
             GameObject obj = Instantiate(friendSlot, parentObject.transform, false);
             friendSlotDic.Add(friendDto.FriendName, obj);
-            obj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
+            obj.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = friendDto.FriendName;
         }
         public void AddFriend(FriendRequestDto friendDto)
         {

@@ -652,6 +652,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -201.8375
       objectReference: {fileID: 0}
+    - target: {fileID: 7171028098900539289, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5423399087061255810}
+    - target: {fileID: 7171028098900539289, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 7506792912908058290, guid: be25c8cdb22ea3e4a9de9f17de926f88, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -845,7 +853,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2221204718636855766, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3602320953831682776, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
       propertyPath: m_Pivot.x
@@ -933,7 +941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4224147368088415852, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410261499571282254, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
+      propertyPath: textLimit
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 7955869250280622148, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
       propertyPath: m_AnchorMax.x
@@ -961,6 +973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
+--- !u!1 &5423399087061255810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8070105250525924228, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
+  m_PrefabInstance: {fileID: 2647286775745744134}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1532084351666192350 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3602320953831682776, guid: d4f733c9ea6489249926fa4685837a77, type: 3}
