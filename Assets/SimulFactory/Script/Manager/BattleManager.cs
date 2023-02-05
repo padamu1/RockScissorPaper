@@ -15,6 +15,8 @@ namespace SimulFactory.Manager
     public class BattleManager : MonoSingleton<BattleManager>
     {
         private List<string> matchUserInfos;
+        private Action matchingEndAction;
+        private Action matchingStartAction;
         private void Awake()
         {
             matchUserInfos = new List<string>();
@@ -32,6 +34,24 @@ namespace SimulFactory.Manager
         {
             UiManager.GetInstance().GetUiPlayerResultPanel().SetMyResult(buttonType);
             C_UserBattleButtonClicked.UserBattleButtonClickedC(buttonType);
+        }
+        public void SetMatchingHideAction(Action action)
+        {
+            matchingEndAction = action;
+        }
+        public void SetMatchingShowAction(Action action)
+        {
+            matchingStartAction = action;
+        }
+        public void InvokeMatchingHideAction()
+        {
+            matchingEndAction?.Invoke();
+            matchingEndAction= null;
+        }
+        public void InvokeMatchingShowAction()
+        {
+            matchingStartAction?.Invoke();
+            matchingStartAction = null;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SimulFactory.Game.Event
         {
             Debug.Log("매칭 취소 성공");
             UiManager.GetInstance().ResetGameStartButton();
+            BattleManager.GetInstance().InvokeMatchingHideAction();
         }
     }
 }

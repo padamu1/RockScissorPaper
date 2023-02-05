@@ -96,10 +96,12 @@ namespace SimulFactory.Manager
         {
             Debug.Log("매칭 시작 성공");
             this.gameObject.SetActive(false);
+            BattleManager.GetInstance().InvokeMatchingHideAction();
             Managers.GetInstance().LoadScene("Battle");
         }
         public void AcceptButtonClicked(bool isAccept)
         {
+            BattleManager.GetInstance().InvokeMatchingHideAction();
             C_MatchingResponse.MatchingResponseC(isAccept);
         }
         /// <summary>
