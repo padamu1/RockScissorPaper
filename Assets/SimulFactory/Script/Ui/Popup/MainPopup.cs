@@ -30,6 +30,7 @@ namespace SimulFactory.Ui.Popup
                 case Define.POPUP_TYPE.InputPopup:
                     inputField.gameObject.SetActive(true);
                     inputAction = popupInfo.InputAction;
+                    yesButtonText.text = popupInfo.YesButtonText;
                     break;
             }
 
@@ -42,7 +43,6 @@ namespace SimulFactory.Ui.Popup
             warningText.gameObject.SetActive(popupInfo.WarningText !=String.Empty);
             noButtonText.text = popupInfo.NoButtonText;
             noButtonAction = popupInfo.NoButtonAction;
-            showAnimation.Restart();
         }
         public void YesButtonClicked()
         {

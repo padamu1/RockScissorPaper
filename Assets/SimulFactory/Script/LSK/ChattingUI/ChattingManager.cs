@@ -18,9 +18,15 @@ namespace SimulFactory.Manager
         public TMP_InputField inputField;
         public int maxMessageCount;
         public int myTextMaxLength = 10;
-        public int textLimit = 20;
+        public int textLimit = 100;
 
         private string text;
+
+        private void Awake()
+        {
+            GetInstance();
+            gameObject.SetActive(false);
+        }
 
         private string GetInputText()
         {
@@ -51,11 +57,10 @@ namespace SimulFactory.Manager
                 linedText = GetInputText();
             }
 
-            //20글자제한
+            //글자수 제한
             if(linedText.Length >= textLimit)
             {
                 linedText = "";
-                Debug.Log("20글자 넘어감");
             }
 
             string[] mytext = linedText.Split(' ');

@@ -165,6 +165,14 @@ PrefabInstance:
       propertyPath: rspType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 404572599033048570, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: ButtonColorChangeTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4005932029396550269, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -398,9 +406,57 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2861443760013884691}
     m_Modifications:
+    - target: {fileID: 404572599033048570, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: ButtonColorChangeTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 7344647354092636214}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UiRSPButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338983180072234613, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8316498608684615848, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
       propertyPath: m_Name
       value: RockButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8316498608684615848, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8316498608684615849, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
       propertyPath: m_Pivot.x
@@ -493,6 +549,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8316498608684615849, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
   m_PrefabInstance: {fileID: 5943203593522694731}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7344647354092636214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4005932029396550269, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+  m_PrefabInstance: {fileID: 5943203593522694731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7639283488751753649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,6 +569,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 404572599033048570, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
       propertyPath: rspType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404572599033048570, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: ButtonColorChangeTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716269010641625745, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}
+      propertyPath: m_Transition
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4005932029396550269, guid: e3d5d4a5a6b0c8d4aa7ed37262c3c089, type: 3}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimulFactory.Manager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace SimulFactory.Game.Event
             if (isMatchStarted)
             {
                 Debug.Log("매칭 시작 성공");
+                BattleManager.GetInstance().InvokeMatchingShowAction();
             }
             else
             {

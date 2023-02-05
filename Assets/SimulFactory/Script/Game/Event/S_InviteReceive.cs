@@ -13,7 +13,7 @@ namespace SimulFactory.Game.Event
         public static void InviteReceiveS(Dictionary<byte,object> param)
         {
 
-            Define.RECEIVE_DATA_TYPE receiveDataType = (Define.RECEIVE_DATA_TYPE)(long)param[0];
+            Define.RECEIVE_DATA_TYPE receiveDataType = (Define.RECEIVE_DATA_TYPE)param[0];
             switch (receiveDataType)
             {
                 case Define.RECEIVE_DATA_TYPE.Me:

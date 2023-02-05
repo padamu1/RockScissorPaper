@@ -11,6 +11,8 @@ namespace SimulFactory.Ui.Battle
         [SerializeField] private TMP_Text playerNameText;
         [SerializeField] private Image playerResult;
 
+        public float SetTime = 0.5f;
+
         // 이름 설정
         public void SetName(string name) => playerNameText.text = name;
         // 현재 결과 창 리셋
@@ -23,7 +25,9 @@ namespace SimulFactory.Ui.Battle
         public void SetResult(Sprite sprite)
         {
             playerResult.sprite = sprite;
+            playerResult.gameObject.transform.localScale = new Vector3(0, 0, 0);
             playerResult.gameObject.SetActive(true);
+            playerResult.gameObject.transform.DOScale(new Vector3(1, 1, 1), SetTime);
         }
     }
 
