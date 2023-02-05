@@ -50,6 +50,7 @@ namespace SimulFactory.System.Common
             ChatS = 14,             // 채팅 받음
             InviteUserS = 15,       // 초대 받음
             InviteReceiveS = 16,    // 초대 응답에 대한 결과
+            LoadProfileS = 17,      // 프로필 데이터 받음
         }
 
         public enum HAPTIC_EVET

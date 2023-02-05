@@ -94,6 +94,9 @@ namespace SimulFactory.Manager
                 case (byte)Define.EVENT_CODE.UserNameS:
                     S_UserName.UserNameS(param);
                     break;
+                case (byte)Define.EVENT_CODE.LoadProfileS:
+                    S_LoadProfile.LoadProfileS(param);
+                    break;
                 default:
                     break;
             }
