@@ -15,7 +15,7 @@ namespace SimulFactory.Game.Event
     {
         public static void FriendRemoveS(Dictionary<byte, object> param)
         {
-            Define.RECEIVE_DATA_TYPE type = (Define.RECEIVE_DATA_TYPE)(long)param[0];
+            Define.RECEIVE_DATA_TYPE type = (Define.RECEIVE_DATA_TYPE)param[0];
             switch (type)
             {
                 case Define.RECEIVE_DATA_TYPE.Me:

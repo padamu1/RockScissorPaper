@@ -29,6 +29,7 @@ namespace SimulFactory.Ui.Popup
                 case Define.POPUP_TYPE.InputPopup:
                     inputField.gameObject.SetActive(true);
                     inputAction = popupInfo.InputAction;
+                    yesButtonText.text = popupInfo.YesButtonText;
                     break;
             }
 

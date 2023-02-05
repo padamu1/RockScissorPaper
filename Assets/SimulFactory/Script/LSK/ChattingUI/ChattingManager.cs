@@ -22,6 +22,12 @@ namespace SimulFactory.Manager
 
         private string text;
 
+        private void Awake()
+        {
+            GetInstance();
+            gameObject.SetActive(false);
+        }
+
         private string GetInputText()
         {
             return inputField.text;

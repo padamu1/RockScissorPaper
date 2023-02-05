@@ -130,6 +130,7 @@ namespace SimulFactory.Manager
             popupInfo.Title = "유저 초대";
             popupInfo.WarningText = "현재 접속중인 유저만 초대 가능합니다.";
             popupInfo.NoButtonText = "취소";
+            popupInfo.YesButtonText = "초대";
             popupInfo.InputAction = C_InviteUser.InviteUserC;
             popupInfo.Top = true;
             popupInfo.Block = true;
