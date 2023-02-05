@@ -13,8 +13,8 @@ public class UiRSPButton : MonoBehaviour
     [SerializeField] private Define.ROCK_SCISSOR_PAPER rspType;
     private Action<Define.ROCK_SCISSOR_PAPER> action;
 
-    public float ButtonColorChangeTime = 0.5f;
-    public Color ButtonChangeColor = Color.gray;
+    //public float ButtonColorChangeTime = 0.5f;
+    //public Color ButtonChangeColor = Color.gray;
 
     // 현재 버튼의 타입 반환
     public Define.ROCK_SCISSOR_PAPER GetRSPType() => rspType;
@@ -24,9 +24,6 @@ public class UiRSPButton : MonoBehaviour
     public void ButtonClickedAction()
     {
         action?.Invoke(rspType);
-    }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        gameObject.transform.GetComponent<Image>().DOColor(ButtonChangeColor, ButtonColorChangeTime);
+        //gameObject.GetComponent<Image>().DOColor(ButtonChangeColor, ButtonColorChangeTime);
     }
 }
