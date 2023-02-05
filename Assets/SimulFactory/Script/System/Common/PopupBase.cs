@@ -17,15 +17,17 @@ namespace SimulFactory.System.Common
         private void Start()
         {
             showAnimation = DOTween.Sequence();
-            showAnimation.OnPlay(LayoutRebuild);
-            showAnimation.Append(frame.DOScale(1f, 0.5f).SetEase(Ease.InOutBounce));
+            showAnimation.Append(frame.DOScale(1f, 0.5f).From(0.5f).SetEase(Ease.Linear));
             showAnimation.SetAutoKill(false);
             showAnimation.Pause();
 
             hideAnimation = DOTween.Sequence();
-            hideAnimation.Append(frame.DOScale(0.3f, 0.5f).SetEase(Ease.Linear)).OnComplete(ClosePopup);
+            hideAnimation.Append(frame.DOScale(0.3f, 0.5f).From(1f).SetEase(Ease.Linear)).OnComplete(ClosePopup);
             hideAnimation.SetAutoKill(false);
             hideAnimation.Pause();
+
+            // 첫 실행시 애니메이션 재생을 위함
+            showAnimation.Restart();
         }
         protected virtual void OnEnable()
         {

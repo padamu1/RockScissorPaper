@@ -41,7 +41,6 @@ namespace SimulFactory.Ui.Popup
             warningText.gameObject.SetActive(popupInfo.WarningText !=String.Empty);
             noButtonText.text = popupInfo.NoButtonText;
             noButtonAction = popupInfo.NoButtonAction;
-            showAnimation.Restart();
         }
         public void YesButtonClicked()
         {

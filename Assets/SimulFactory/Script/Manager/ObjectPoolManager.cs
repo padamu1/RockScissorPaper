@@ -22,7 +22,7 @@ namespace SimulFactory.Manager
             objectDic.Add(obj.name, obj);
             for(int count = 0; count < setObjCount; count++)
             {
-                GameObject tempObj = Instantiate(obj);
+                GameObject tempObj = Instantiate(obj, this.transform, false);
                 tempObj.name = obj.name;
                 tempObj.SetActive(false);
             }
