@@ -101,7 +101,6 @@ namespace SimulFactory.Manager
         }
         public void AcceptButtonClicked(bool isAccept)
         {
-            BattleManager.GetInstance().InvokeMatchingHideAction();
             C_MatchingResponse.MatchingResponseC(isAccept);
         }
         /// <summary>
