@@ -131,7 +131,7 @@ namespace SimulFactory.System.Common
 
             _multiMatchInfoContext = new MatchInfoContext();
             UpdateMultiMatchInfoContext();
-            masterContext.Master.Add(Define.CONTEXT_LIST.MultiMatchInfo.ToString(), _matchInfoContext);
+            masterContext.Master.Add(Define.CONTEXT_LIST.MultiMatchInfo.ToString(), _multiMatchInfoContext);
         }
         /// <summary>
         /// 유저 정보 컨텍스트 업데이트
@@ -153,7 +153,7 @@ namespace SimulFactory.System.Common
             }
             else
             {
-                winRate = (pvpInfo.WinCount / (pvpInfo.DefeatCount + pvpInfo.WinCount)) * 100f;
+                winRate = ((float)pvpInfo.WinCount / (pvpInfo.DefeatCount + pvpInfo.WinCount)) * 100f;
             }
             sb.AppendFormat("{0:D} %", winRate.ToString());
             _matchInfoContext.SetValue("UserWinDefeat", sb.ToString());
@@ -171,7 +171,7 @@ namespace SimulFactory.System.Common
             }
             else
             {
-                winRate = (pvpInfoMulti.WinCount / ( pvpInfoMulti.DefeatCount + pvpInfoMulti.WinCount)) * 100f;
+                winRate = ((float)pvpInfoMulti.WinCount / ( pvpInfoMulti.DefeatCount + pvpInfoMulti.WinCount)) * 100f;
             }
             sb.AppendFormat("{0:D} %", winRate.ToString());
             _multiMatchInfoContext.SetValue("UserWinDefeat", sb.ToString());
