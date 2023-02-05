@@ -7,6 +7,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 
+
 namespace SimulFactory.Ui.Popup
 {
     public class MainPopup : PopupBase
