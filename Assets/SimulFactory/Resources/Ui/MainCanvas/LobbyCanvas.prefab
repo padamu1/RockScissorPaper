@@ -2419,6 +2419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMode Prefab - Normal Mode
       objectReference: {fileID: 0}
+    - target: {fileID: 8517554468585822651, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7361141578361287661, guid: 64748850107f543408d291094e27354a, type: 3}
     - target: {fileID: 8926405785226629855, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2569,6 +2573,10 @@ PrefabInstance:
       propertyPath: Key.Constant
       value: MultiMatchInfo
       objectReference: {fileID: 0}
+    - target: {fileID: 8517554468585822651, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7361141578361287661, guid: 64748850107f543408d291094e27354a, type: 3}
     - target: {fileID: 8926405785226629855, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
