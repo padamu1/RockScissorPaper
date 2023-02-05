@@ -393,7 +393,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2983208654743354901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2449,6 +2449,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939600560872435617}
     m_Modifications:
+    - target: {fileID: 768131801310389469, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
+      propertyPath: Key.Constant
+      value: MultiMatchInfo
+      objectReference: {fileID: 0}
     - target: {fileID: 1581262003564214752, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2560,6 +2564,10 @@ PrefabInstance:
     - target: {fileID: 3897383217081734282, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
       propertyPath: m_Name
       value: GameMode Prefab - Multi Mode
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735216631900409358, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
+      propertyPath: Key.Constant
+      value: MultiMatchInfo
       objectReference: {fileID: 0}
     - target: {fileID: 8926405785226629855, guid: 15a3748aa1cd0884a9c908af70eecf67, type: 3}
       propertyPath: m_AnchorMax.y

@@ -14,11 +14,13 @@ namespace SimulFactory.System.Common
         // Context 변수들
         private UserInfoContext _userInfoContext;
         private MatchInfoContext _matchInfoContext;
+        private MatchInfoContext _multiMatchInfoContext;
 
         // 유저 정보가 담긴 변수들
         public long UserNo { get; set; }
         private string userName;
         private PvpInfo pvpInfo;
+        private PvpInfo pvpInfoMulti;
 
         //친구목록
         private Dictionary<string, FriendDto> friends;
@@ -32,6 +34,7 @@ namespace SimulFactory.System.Common
             friends = new Dictionary<string, FriendDto>();
             friendRequests = new Dictionary<string, FriendRequestDto>();
             pvpInfo = new PvpInfo();
+            pvpInfoMulti = new PvpInfo();
             InitUserDataContext();
         }
         //친구목록 받아오기
@@ -106,6 +109,10 @@ namespace SimulFactory.System.Common
         {
             return pvpInfo;
         }
+        public PvpInfo GetMultiPvpInfo()
+        {
+            return pvpInfoMulti;
+        }
         /// <summary>
         /// 컨텍스트 초기화
         /// </summary>
@@ -121,6 +128,10 @@ namespace SimulFactory.System.Common
             _matchInfoContext = new MatchInfoContext();
             UpdateMatchInfoContext();
             masterContext.Master.Add(Define.CONTEXT_LIST.MatchInfo.ToString(), _matchInfoContext);
+
+            _multiMatchInfoContext = new MatchInfoContext();
+            UpdateMultiMatchInfoContext();
+            masterContext.Master.Add(Define.CONTEXT_LIST.MultiMatchInfo.ToString(), _matchInfoContext);
         }
         /// <summary>
         /// 유저 정보 컨텍스트 업데이트
@@ -142,10 +153,29 @@ namespace SimulFactory.System.Common
             }
             else
             {
-                winRate = (float)pvpInfo.WinCount / pvpInfo.DefeatCount;
+                winRate = (pvpInfo.WinCount / (pvpInfo.DefeatCount + pvpInfo.WinCount)) * 100f;
             }
             sb.AppendFormat("{0:D} %", winRate.ToString());
             _matchInfoContext.SetValue("UserWinDefeat", sb.ToString());
         }
+        public void UpdateMultiMatchInfoContext()
+        {
+            _multiMatchInfoContext.SetValue("UserRating", string.Format("{0} pt", pvpInfoMulti.Rating));
+
+            sb.Clear();
+            sb.AppendFormat("{0} 승 / {1} 패\n", pvpInfoMulti.WinCount, pvpInfoMulti.DefeatCount);
+            float winRate = 0;
+            if(pvpInfoMulti.DefeatCount == 0)
+            {
+                winRate = 100;
+            }
+            else
+            {
+                winRate = (pvpInfoMulti.WinCount / ( pvpInfoMulti.DefeatCount + pvpInfoMulti.WinCount)) * 100f;
+            }
+            sb.AppendFormat("{0:D} %", winRate.ToString());
+            _multiMatchInfoContext.SetValue("UserWinDefeat", sb.ToString());
+        }
+
     }
 }

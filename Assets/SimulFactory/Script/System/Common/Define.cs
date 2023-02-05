@@ -68,6 +68,7 @@ namespace SimulFactory.System.Common
         {
             UserInfo,
             MatchInfo,
+            MultiMatchInfo,
             RockScissorPaper,
             Setting,
             GameModeSelectAction,
