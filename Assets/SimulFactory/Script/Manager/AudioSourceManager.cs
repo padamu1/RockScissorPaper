@@ -11,10 +11,12 @@ namespace SimulFactory.Manager
     {
         private string loadMusicPath = "Sound/Music";                   // 기본 뮤직 소스 경로
         private string loadEffectPath = "Sound/Effect";                 // 기본 이펙트 소스 경로
-        private Dictionary<string, AudioSource> musicAudioSourceDic;
+        private Dictionary<string, AudioClip> musicAudioClipDic;
         private Dictionary<string, AudioSource> effectAudioSourceDic;
+        private AudioSource bgmSource;
         private void Awake()
         {
+            bgmSource = this.gameObject.AddComponent<AudioSource>();
             LoadMusic();
             LoadEffect();
         }
@@ -25,12 +27,10 @@ namespace SimulFactory.Manager
         {
             AudioClip[] musicAudioSources = Resources.LoadAll<AudioClip>(loadMusicPath);
 
-            musicAudioSourceDic = new Dictionary<string, AudioSource>();
+            musicAudioClipDic = new Dictionary<string, AudioClip>();
             for (int count = 0; count < musicAudioSources.Length; count++)
             {
-                AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.clip = musicAudioSources[count];
-                musicAudioSourceDic.Add(musicAudioSources[count].name, audioSource);
+                musicAudioClipDic.Add(musicAudioSources[count].name, musicAudioSources[count]);
             }
         }
         /// <summary>
@@ -49,19 +49,6 @@ namespace SimulFactory.Manager
             }
         }
         /// <summary>
-        /// 배경 오디오 소스 호출
-        /// </summary>
-        /// <param name="sourceName"></param>
-        /// <returns></returns>
-        public AudioSource GetMusicAudioSource(string sourceName)
-        {
-            if(musicAudioSourceDic.ContainsKey(sourceName))
-            {
-                return musicAudioSourceDic[sourceName];
-            }
-            return null;
-        }
-        /// <summary>
         /// 이펙트 오디오 소스 호출
         /// </summary>
         /// <param name="sourceName"></param>
@@ -73,6 +60,18 @@ namespace SimulFactory.Manager
                 return effectAudioSourceDic[sourceName];
             }
             return null;
+        }
+        public void PlayMusic(string musicName)
+        {
+            if(musicAudioClipDic.ContainsKey(musicName))
+            {
+                if(bgmSource.isPlaying)
+                {
+                    bgmSource.Stop();
+                }
+                bgmSource.clip = musicAudioClipDic[musicName];
+                bgmSource.Play();
+            }
         }
     }
 }

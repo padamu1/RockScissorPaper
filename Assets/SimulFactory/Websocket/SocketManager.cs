@@ -9,6 +9,7 @@ using SimulFactory.Manager;
 using System;
 using SimulFactory.PacketSerializer.Model;
 using PacketSerializer;
+using System.Threading.Tasks;
 
 namespace SimulFactory.WebSocket
 {
@@ -29,34 +30,40 @@ namespace SimulFactory.WebSocket
         }
         public void Init(Action action)
         {
-            m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 서버 ip주소
-            //m_Socket = new WebSocketSharp.WebSocket("ws://timinetprinter.iptime.org:3000");
+           // m_Socket = new WebSocketSharp.WebSocket("ws://MYWATTBATBET.asuscomm.com:3000"); // 서버 ip주소
+            m_Socket = new WebSocketSharp.WebSocket("ws://rspserver.koreacentral.cloudapp.azure.com:3000");
             //m_Socket = new WebSocketSharp.WebSocket("ws://127.0.0.1:80"); // 서버 ip주소
             m_Socket.OnMessage += Recv;
             m_Socket.OnClose += OnClose;
-            Connect(action);
+            Connect();
+            StartCoroutine(CheckServerConnect(action));
         }
 
         #region 기본 로직
         /// <summary>
         /// 서버와 연결을 시도하는 함수
         /// </summary>
-        public void Connect(Action action)
+        public void Connect()
         {
-            StartCoroutine(CheckServer(action));
+            Task task = new Task(CheckServer);
+            task.Start();
+            //StartCoroutine(CheckServer(action));
         }
-        IEnumerator CheckServer(Action action)
+
+        private void CheckServer()
         {
-            WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
-            int waitCount = 0;
             m_Socket.ConnectAsync();
+        }
+        IEnumerator CheckServerConnect(Action action)
+        {
+            int waitCount = 0;
             while (m_Socket.ReadyState != WebSocketState.Open)
             {
-                if (waitCount++ > 5f)
+                if (waitCount++ > 500f)
                 {
                     yield break;
                 }
-                yield return waitForSeconds;
+                yield return null;
             }
             if (m_Socket.ReadyState != WebSocketState.Open)
             {

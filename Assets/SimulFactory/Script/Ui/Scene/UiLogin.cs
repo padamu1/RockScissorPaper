@@ -1,4 +1,3 @@
-using DigitalRuby.SoundManagerNamespace;
 using SimulFactory.Game.Event;
 using SimulFactory.Manager;
 using SimulFactory.Script.Util;
@@ -36,11 +35,7 @@ public class UiLogin : MonoBehaviour
     }
     private void OnEnable()
     {
-        AudioSource loginBgm = AudioSourceManager.GetInstance().GetMusicAudioSource("bgm_login");
-        if(loginBgm != null)
-        {
-            SoundManager.PlayLoopingMusic(loginBgm);
-        }
+        AudioSourceManager.GetInstance().PlayMusic("bgm_login");
         SocketManager.GetInstance().Init(LoginToServer);
         uiFrame.gameObject.SetActive(false);
     }
