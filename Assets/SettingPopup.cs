@@ -16,13 +16,13 @@ public class SettingPopup : MonoBehaviour
     public void BGMChange(float val)
     {
         bgmVol = val;
-        //SoundManager.GetInstance().MusicVolume = val;
+        AudioSourceManager.GetInstance().MusicVolume = val;
     }
 
     public void SFXChange(float val)
     {
         sfxVol = val;
-        //SoundManager.GetInstance().SoundVolume = val;
+        AudioSourceManager.GetInstance().SoundVolume = val;
     }
 
     private void OnEnable()
