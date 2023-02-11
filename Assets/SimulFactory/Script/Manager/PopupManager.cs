@@ -37,6 +37,9 @@ namespace SimulFactory.Manager
             public bool Block;
             public string WarningText;
             public Action<string> InputAction;
+            public bool SetTimer;
+            public float SettingTime;
+            public Action TimerEndAction;
             public void Reset()
             {
                 Title = "";
@@ -49,6 +52,9 @@ namespace SimulFactory.Manager
                 Block = false;
                 InputAction = null;
                 WarningText = String.Empty;
+                SetTimer = false;
+                SettingTime = 0f;
+                TimerEndAction = null;
             }
         }
         public virtual void CreatePopup(PopupInfo popupInfo)

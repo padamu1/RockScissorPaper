@@ -90,6 +90,8 @@ namespace SimulFactory.Manager
             popupInfo.YesButtonText = "수락";
             popupInfo.NoButtonAction = delegate { AcceptButtonClicked(false); };
             popupInfo.YesButtonAction = delegate { AcceptButtonClicked(true); };
+            popupInfo.SetTimer = true;
+            popupInfo.SettingTime = Define.MATCH_USER_WAIT_TIME;
             PopupManager.GetInstance().CreatePopup(popupInfo);
             //matchObj.SetActive(true);
             Debug.Log("매칭 성공");

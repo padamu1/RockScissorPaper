@@ -19,6 +19,7 @@ namespace SimulFactory.Game.Event
                 UiManager.GetInstance().GetUiPlayerTotalResultPanel().SetUserWin((string)userName);
             }
             UiManager.GetInstance().GetUiPlayerResultPanel().ResetResult();
+            UiManager.GetInstance().GetUiPlayerControlPanel().StartTimer();
             //Define.ROCK_SCISSOR_PAPER winUserResult = (Define.ROCK_SCISSOR_PAPER)(int)(param[0]);
             //Debug.LogFormat("결과 : {0}",winUserResult.ToString());
             //

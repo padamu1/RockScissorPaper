@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
+using SimulFactory.Ui.UiElements;
 
 namespace SimulFactory.Ui.Popup
 {
@@ -15,9 +16,11 @@ namespace SimulFactory.Ui.Popup
         [SerializeField] private Text noButtonText;
         [SerializeField] private Text warningText;
         [SerializeField] private TMP_InputField inputField;
+        [SerializeField] private UiCustomTimer uiCustomTimer;
         private Action yesButtonAction;
         private Action noButtonAction;
         private Action<string> inputAction;
+        private Action timerEndAction;
         public override void SetInfo(PopupManager.PopupInfo popupInfo)
         {
             base.SetInfo(popupInfo);
@@ -42,6 +45,16 @@ namespace SimulFactory.Ui.Popup
             warningText.gameObject.SetActive(popupInfo.WarningText !=String.Empty);
             noButtonText.text = popupInfo.NoButtonText;
             noButtonAction = popupInfo.NoButtonAction;
+
+            if (popupInfo.SetTimer)
+            {
+                this.timerEndAction = popupInfo.TimerEndAction;
+                uiCustomTimer.SetTimer(popupInfo.SettingTime, NoButtonClicked);
+            }
+            else
+            {
+                uiCustomTimer.gameObject.SetActive(false);
+            }
         }
         public void YesButtonClicked()
         {
@@ -67,6 +80,7 @@ namespace SimulFactory.Ui.Popup
         }
         public void NoButtonClicked()
         {
+            timerEndAction?.Invoke();
             noButtonAction?.Invoke();
             hideAnimation.Restart();
         }
