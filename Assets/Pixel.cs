@@ -15,6 +15,7 @@ public class Pixel : MonoBehaviour
     {
         get { return col; }
     }
+
     void Start()
     {
         transform.GetComponent<Button>().OnPointerDownAsObservable()
