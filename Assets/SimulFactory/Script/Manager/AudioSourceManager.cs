@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,43 @@ namespace SimulFactory.Manager
 {
     public class AudioSourceManager : MonoSingleton<AudioSourceManager>
     {
+        private float musicVolume;
+        private float soundVolume;
+        public float MusicVolume 
+        { 
+            get 
+            { 
+                return musicVolume; 
+            } 
+            set
+            {
+                musicVolume = value;
+                bgmSource.volume = musicVolume;
+            }
+        }
+        public float SoundVolume
+        {
+            get
+            {
+                return soundVolume;
+            }
+            set
+            {
+                soundVolume = value;
+            }
+        }
+
         private string loadMusicPath = "Sound/Music";                   // 기본 뮤직 소스 경로
         private string loadEffectPath = "Sound/Effect";                 // 기본 이펙트 소스 경로
-        private Dictionary<string, AudioSource> musicAudioSourceDic;
+        private Dictionary<string, AudioClip> musicAudioClipDic;
         private Dictionary<string, AudioSource> effectAudioSourceDic;
+        private AudioSource bgmSource;
         private void Awake()
         {
+            bgmSource = this.gameObject.AddComponent<AudioSource>();
+            MusicVolume = PlayerPrefs.GetFloat("BGMVol");
+            SoundVolume = PlayerPrefs.GetFloat("SFXVol");
+            bgmSource.loop = true;
             LoadMusic();
             LoadEffect();
         }
@@ -25,12 +57,10 @@ namespace SimulFactory.Manager
         {
             AudioClip[] musicAudioSources = Resources.LoadAll<AudioClip>(loadMusicPath);
 
-            musicAudioSourceDic = new Dictionary<string, AudioSource>();
+            musicAudioClipDic = new Dictionary<string, AudioClip>();
             for (int count = 0; count < musicAudioSources.Length; count++)
             {
-                AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.clip = musicAudioSources[count];
-                musicAudioSourceDic.Add(musicAudioSources[count].name, audioSource);
+                musicAudioClipDic.Add(musicAudioSources[count].name, musicAudioSources[count]);
             }
         }
         /// <summary>
@@ -45,34 +75,72 @@ namespace SimulFactory.Manager
             {
                 AudioSource audioSource = gameObject.AddComponent<AudioSource>();
                 audioSource.clip = effectAudioSources[count];
+                audioSource.loop = false;
                 effectAudioSourceDic.Add(effectAudioSources[count].name, audioSource);
             }
         }
-        /// <summary>
-        /// 배경 오디오 소스 호출
-        /// </summary>
-        /// <param name="sourceName"></param>
-        /// <returns></returns>
-        public AudioSource GetMusicAudioSource(string sourceName)
+        public void PlayMusic(string musicName)
         {
-            if(musicAudioSourceDic.ContainsKey(sourceName))
+            if(musicAudioClipDic.ContainsKey(musicName))
             {
-                return musicAudioSourceDic[sourceName];
+                if(bgmSource.isPlaying)
+                {
+                    bgmSource.Stop();
+                }
+                bgmSource.clip = musicAudioClipDic[musicName];
+                bgmSource.Play();
             }
-            return null;
         }
         /// <summary>
-        /// 이펙트 오디오 소스 호출
+        /// 이펙트 한번만 플레이
         /// </summary>
         /// <param name="sourceName"></param>
-        /// <returns></returns>
-        public AudioSource GetEffectAudioClip(string sourceName)
+        public void PlayOnShotEffect(string sourceName)
+        {
+            if(effectAudioSourceDic.ContainsKey(sourceName))
+            {
+                effectAudioSourceDic[sourceName].volume = soundVolume;
+                effectAudioSourceDic[sourceName].Play();
+            }
+        }
+        /// <summary>
+        /// 반복 횟수를 지정해서 효과음 재생
+        /// </summary>
+        /// <param name="sourceName"></param>
+        /// <param name="count"></param>
+        public void PlayEffectSetLoopCount(string sourceName, int count)
+        {
+            if(effectAudioSourceDic.ContainsKey(sourceName))
+            {
+                effectAudioSourceDic[sourceName].volume = soundVolume;
+                StartCoroutine(PlayEffectSetLoopCount(effectAudioSourceDic[sourceName], count));
+            }
+        }
+        private IEnumerator PlayEffectSetLoopCount(AudioSource audioSource, int count)
+        {
+            int currentCount = 0;
+            while(currentCount >= count)
+            {
+                if(!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                    count++;
+                }
+                yield return null;
+            }
+        }
+        /// <summary>
+        /// 딜레이를 적용시켜서 이펙트 재생
+        /// </summary>
+        /// <param name="sourceName"></param>
+        /// <param name="delay"></param>
+        public void PlayDelayEffect(string sourceName, float delay)
         {
             if (effectAudioSourceDic.ContainsKey(sourceName))
             {
-                return effectAudioSourceDic[sourceName];
+                effectAudioSourceDic[sourceName].volume = soundVolume;
+                effectAudioSourceDic[sourceName].PlayDelayed(delay);
             }
-            return null;
         }
     }
 }

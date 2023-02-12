@@ -126,6 +126,8 @@ namespace SimulFactory.System.Common
         public static readonly string PLAYERPREFS_USER_NO = "USER_NO";
         public static readonly int POPUP_TOP_START_ORDER = 100;
         public static readonly int POPUP_TOP_END_ORDER = 400;
-    }
 
+        public static readonly float USER_RESULT_WAIT_TIME = 10f;   // 10초 -> 서버는 11초 대기
+        public static readonly float MATCH_USER_WAIT_TIME = 10f;    // 10초 -> 서버는 11초 대기
+    }
 }

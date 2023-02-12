@@ -62,6 +62,7 @@ namespace SimulFactory.Ui.Battle
         }
         // 내 결과 설정
         public void SetMyResult(int resultCode) => myResultSlot.SetResult(GetResultSprite(resultCode));
+        public Sprite GetMyResult() => myResultSlot.GetResult();
         public void ResetResult()
         {
             for(int count = 0; count < uiPlayerResultSlots.Length; count++)

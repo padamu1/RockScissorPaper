@@ -21,7 +21,7 @@ namespace SimulFactory.Manager
         private UiPlayerResultPanel uiPlayerResultPanel;
         private UiPlayerControlPanel uiPlayerControlPanel;
         private UiPlayerTotalResultPanel uiPlayerTotalResultPanel;
-
+        private bool isInit = false;
         private MasterContext masterContext;
         private void Awake()
         {
@@ -30,14 +30,16 @@ namespace SimulFactory.Manager
         }
         public void Init()
         {
-            CoroutineHelper.StartLogoStopCoroutine(SendPing());
-            // 컨텍스트 세팅
-            ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
+            if(isInit == false)
+            {
+                isInit = true;
+                CoroutineHelper.StartLogoStopCoroutine(SendPing());
+                // 컨텍스트 세팅
+                ContextHolder contextHolder = this.gameObject.AddComponent<ContextHolder>();
 
-            masterContext = Managers.GetInstance().GetMasterContext();
-            contextHolder.Context = masterContext;
-
-
+                masterContext = Managers.GetInstance().GetMasterContext();
+                contextHolder.Context = masterContext;
+            }
             //lobbyCanvas.SetActive(true);
             // 로그인 완료 보냄
             StartCoroutine(SetUi());
@@ -88,6 +90,8 @@ namespace SimulFactory.Manager
             popupInfo.YesButtonText = "수락";
             popupInfo.NoButtonAction = delegate { AcceptButtonClicked(false); };
             popupInfo.YesButtonAction = delegate { AcceptButtonClicked(true); };
+            popupInfo.SetTimer = true;
+            popupInfo.SettingTime = Define.MATCH_USER_WAIT_TIME;
             PopupManager.GetInstance().CreatePopup(popupInfo);
             //matchObj.SetActive(true);
             Debug.Log("매칭 성공");
