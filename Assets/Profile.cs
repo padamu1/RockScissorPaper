@@ -31,6 +31,14 @@ public class Profile : MonoBehaviour
     public void InitUserProfile()
     {
         pixel_data = UserData.GetInstance().GetMyProfile().Split(',');
+        if (pixel_data.Length < 64)
+        {
+            pixel_data = new string[64];
+            for (int i = 0; pixel_data.Length < 64; i++)
+            {
+                pixel_data[i] = "FFFFFF";
+            }
+        }
         for (int i = 0; i < pixel_data.Length; i++)
         {
             ColorUtility.TryParseHtmlString("#" + pixel_data[i], out Color col);

@@ -28,7 +28,7 @@ public class CustomizeUI : MonoBehaviour
     {
         sb = new StringBuilder();
 
-        pixel_data = new string[64];
+        //pixel_data = new string[64];
         InitUserProfile();
         Color col;
         ConfirmButton.OnClickAsObservable()
@@ -51,6 +51,14 @@ public class CustomizeUI : MonoBehaviour
     void InitUserProfile()
     {
         pixel_data = UserData.GetInstance().GetMyProfile().Split(',');
+        if (pixel_data.Length < 64) 
+        {
+            pixel_data = new string[64];
+            for (int i = 0; i < pixel_data.Length; i++)
+            {
+                pixel_data[i] = "FFFFFF";
+            }
+        }
         for (int i = 0; i < pixel_data.Length; i++)
         {
             ColorUtility.TryParseHtmlString("#" + pixel_data[i],out Color col);

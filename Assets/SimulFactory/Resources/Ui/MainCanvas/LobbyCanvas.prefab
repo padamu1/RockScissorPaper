@@ -12475,6 +12475,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4969553945129495741, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 2090264603053272103}
     - target: {fileID: 5163294696063407759, guid: f7c52c2b7af52cc4489b1c9ac6d7fa42, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
