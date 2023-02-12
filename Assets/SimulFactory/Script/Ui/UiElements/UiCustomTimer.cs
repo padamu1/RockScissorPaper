@@ -21,7 +21,7 @@ namespace SimulFactory.Ui.UiElements
         {
             this.gameObject.SetActive(true);
             this.customAction = customAction;
-            slicedImage.DOFillAmount(0f, setTime).From(1f).OnComplete(CompleteAction);
+            slicedImage.DOFillAmount(0f, setTime - 0.5f).From(1f).SetEase(Ease.Linear).OnComplete(CompleteAction);
         }
         private void CompleteAction()
         {
