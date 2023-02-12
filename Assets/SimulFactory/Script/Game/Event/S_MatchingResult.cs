@@ -34,6 +34,23 @@ namespace SimulFactory.Game.Event
                 default:
                     break;
             }
+
+            if ((bool)param[0] == true)
+            {
+                PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+                popupInfo.Type = Define.POPUP_TYPE.ToastPopup;
+                popupInfo.Description = string.Format("승리");
+                popupInfo.Top = true;
+                PopupManager.GetInstance().CreatePopup(popupInfo);
+            }
+            else
+            {
+                PopupManager.PopupInfo popupInfo = PopupManager.GetInstance().GetPopupInfo();
+                popupInfo.Type = Define.POPUP_TYPE.ToastPopup;
+                popupInfo.Description = string.Format("패배");
+                popupInfo.Top = true;
+                PopupManager.GetInstance().CreatePopup(popupInfo);
+            }
             
             Debug.Log("매칭 결과 도착");
             UiManager.GetInstance().StopGameUi();
