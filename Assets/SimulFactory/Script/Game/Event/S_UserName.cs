@@ -28,7 +28,7 @@ namespace SimulFactory.Game.Event
                     popupInfo.Description = "특수문자를 포함할 수 없습니다.";
                     break;
                 case 3:
-                    popupInfo.Description = "닉네임 몇자까지 가능한지. 비속어 포함된 닉네임불가, ";
+                    popupInfo.Description = "닉네임은 최대 10자까지 가능합니다.";
                     break;
             }
             popupInfo.Top = true;
