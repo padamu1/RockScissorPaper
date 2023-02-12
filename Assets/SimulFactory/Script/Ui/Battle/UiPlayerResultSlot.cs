@@ -29,9 +29,9 @@ namespace SimulFactory.Ui.Battle
             playerResult.gameObject.SetActive(true);
             playerResult.gameObject.transform.DOScale(new Vector3(1, 1, 1), SetTime);
         }
-        public Sprite GetResult()
+        public bool GetResult()
         {
-            return playerResult.sprite;
+            return playerResult.gameObject.activeSelf;
         }
     }
 

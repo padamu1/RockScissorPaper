@@ -66,7 +66,7 @@ namespace SimulFactory.Ui.Battle
         /// </summary>
         public void EndTimerAction()
         {
-            if(UiManager.GetInstance().GetUiPlayerResultPanel().GetMyResult() == null)
+            if(!UiManager.GetInstance().GetUiPlayerResultPanel().GetMyResult())
             {
                 int randomValue = Random.Range(0, 3);
                 BattleManager.GetInstance().ButtonClicked(randomValue);
