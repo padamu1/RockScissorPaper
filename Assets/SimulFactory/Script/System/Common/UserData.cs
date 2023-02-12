@@ -188,6 +188,7 @@ namespace SimulFactory.System.Common
         public void SetMyProfile(string value)
         {
             userProfile = value;
+            UiManager.GetInstance().GetProfile().InitUserProfile();
         }
     }
 }

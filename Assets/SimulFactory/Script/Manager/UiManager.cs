@@ -18,6 +18,7 @@ namespace SimulFactory.Manager
     {
         [SerializeField] private GameObject lobbyCanvas; 
         [SerializeField] private FriendUIManager friendUIManager;
+        [SerializeField] private Profile profile;
         private UiPlayerResultPanel uiPlayerResultPanel;
         private UiPlayerControlPanel uiPlayerControlPanel;
         private UiPlayerTotalResultPanel uiPlayerTotalResultPanel;
@@ -72,6 +73,11 @@ namespace SimulFactory.Manager
         public UiPlayerControlPanel GetUiPlayerControlPanel() => this.uiPlayerControlPanel;
         public UiPlayerTotalResultPanel GetUiPlayerTotalResultPanel() => this.uiPlayerTotalResultPanel;
         #endregion
+
+        public Profile GetProfile()
+        {
+            return profile;
+        }
 
         public void StopButtonClicked()
         {
