@@ -17,16 +17,19 @@ public class CustomizeUI : MonoBehaviour
     [SerializeField]
     private GameObject pixels;
     [SerializeField]
+    private Profile profile;
+    [SerializeField]
     private string[] pixel_data;
 
     private StringBuilder sb;
 
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         sb = new StringBuilder();
 
         pixel_data = new string[64];
+        InitUserProfile();
         Color col;
         ConfirmButton.OnClickAsObservable()
             .Subscribe(_ => {
@@ -38,18 +41,20 @@ public class CustomizeUI : MonoBehaviour
                     sb.AppendFormat("{0},",ColorUtility.ToHtmlStringRGB(col));
                   
                 }
-                SendPixel(sb.ToString().TrimEnd(','));               
+                string newProfile = sb.ToString().TrimEnd(',');
+                C_SetProfile.SetProflieC(newProfile);
+                UserData.GetInstance().SetMyProfile(newProfile);
+                profile.InitUserProfile();
             });
     }
 
-
-   
-    public static void SendPixel(string data)
+    void InitUserProfile()
     {
-        Dictionary<byte, object> param = new Dictionary<byte, object>();
-        param.Add(0, 1l);
-        param.Add(1, data);
-        param.Add(2, "");
-        SocketManager.GetInstance().SendPacket((byte)Define.EVENT_CODE.ChatC, param);  // ChatC = > ?
+        pixel_data = UserData.GetInstance().GetMyProfile().Split(',');
+        for (int i = 0; i < pixel_data.Length; i++)
+        {
+            ColorUtility.TryParseHtmlString("#" + pixel_data[i],out Color col);
+            pixels.transform.GetChild(i).GetComponent<Pixel>().Col = col;
+        }
     }
 }

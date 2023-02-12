@@ -44,8 +44,16 @@ namespace SimulFactory.Manager
         private void Awake()
         {
             bgmSource = this.gameObject.AddComponent<AudioSource>();
-            MusicVolume = PlayerPrefs.GetFloat("BGMVol");
-            SoundVolume = PlayerPrefs.GetFloat("SFXVol");
+            if (!PlayerPrefs.HasKey("BGMVol"))
+            {
+                MusicVolume = 0.5f;
+                SoundVolume = 0.5f;
+            }
+            else
+            {
+                MusicVolume = PlayerPrefs.GetFloat("BGMVol");
+                SoundVolume = PlayerPrefs.GetFloat("SFXVol");
+            }
             bgmSource.loop = true;
             LoadMusic();
             LoadEffect();

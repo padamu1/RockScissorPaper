@@ -26,8 +26,6 @@ namespace SimulFactory.System.Common
         private Dictionary<string, FriendDto> friends;
         private Dictionary<string, FriendRequestDto> friendRequests;
 
-        //프로필
-        private string userProfile;
         private void Awake()
         {
             sb = new StringBuilder();
@@ -180,10 +178,16 @@ namespace SimulFactory.System.Common
             _multiMatchInfoContext.SetValue("UserWinDefeat", sb.ToString());
         }
 
+        private string userProfile;
 
-        public void SetMyProfile(string data)
+        public string GetMyProfile()
         {
-            userProfile = data;
+            return userProfile;
+        }
+
+        public void SetMyProfile(string value)
+        {
+            userProfile = value;
         }
     }
 }

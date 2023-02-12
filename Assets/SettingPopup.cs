@@ -4,6 +4,7 @@ using SimulFactory.System.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingPopup : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class SettingPopup : MonoBehaviour
 
     float bgmVol = 0;
     float sfxVol = 0;
+
+    [SerializeField]
+    private Slider musicSlider;
+
+    [SerializeField]
+    private Slider soundSlider;
 
     public void BGMChange(float val)
     {
@@ -27,14 +34,17 @@ public class SettingPopup : MonoBehaviour
 
     private void OnEnable()
     {
-        //bgmVol = SoundManager.GetInstance().MusicVolume;
-        //sfxVol = SoundManager.GetInstance().SoundVolume;
+        bgmVol = AudioSourceManager.GetInstance().MusicVolume;
+        sfxVol = AudioSourceManager.GetInstance().SoundVolume;
+        musicSlider.value = bgmVol;
+        soundSlider.value = sfxVol;
     }
 
     private void OnDisable()
     {
         PlayerPrefs.SetFloat("BGMVol", bgmVol);
         PlayerPrefs.SetFloat("SFXVol", sfxVol);
+        PlayerPrefs.Save();
     }
 
     //buttons  계정연동버튼 닉네임변경 프로필사진변경

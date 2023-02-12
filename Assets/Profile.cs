@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using SimulFactory.System.Common;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
-using SimulFactory.Manager;
 
 public class Profile : MonoBehaviour
 {
-    [SerializeField] private Image profileImage;
-    private GameObject profileSettingPopup;
+    //[SerializeField] private Image profileImage;
+    [SerializeField] private GameObject profileSettingPopup;
+
+    [SerializeField]
+    private GameObject pixels;
+
+    [SerializeField]
+    private string[] pixel_data;
+
     private Button button;
     void Start()
     {
-        profileSettingPopup = GameObject.Find("LobbyCanvas").transform.Find("ProfileSettingPopup").gameObject;
         button = GetComponent<Button>();
 
         button
@@ -21,6 +25,16 @@ public class Profile : MonoBehaviour
             {
                 profileSettingPopup.SetActive(true);
             });
+
     }
 
+    public void InitUserProfile()
+    {
+        pixel_data = UserData.GetInstance().GetMyProfile().Split(',');
+        for (int i = 0; i < pixel_data.Length; i++)
+        {
+            ColorUtility.TryParseHtmlString("#" + pixel_data[i], out Color col);
+            pixels.transform.GetChild(i).GetComponent<Pixel>().Col = col;
+        }
+    }
 }
