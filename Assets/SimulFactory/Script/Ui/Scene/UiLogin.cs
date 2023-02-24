@@ -49,7 +49,7 @@ public class UiLogin : MonoBehaviour
     {
         if (isLoginClicked) return;
         isLoginClicked = true;
-        EventManager.GetInstance().StartListening((byte)Define.UNITY_EVENT.Login, LoginState);
+        EventManager.GetInstance().StartListening(Define.UNITY_EVENT.Login, LoginState);
 
         long userNo = 0;
         if (PlayerPrefs.HasKey(Define.PLAYERPREFS_USER_NO))
@@ -60,7 +60,7 @@ public class UiLogin : MonoBehaviour
     }
     private void LoginState(Dictionary<string,object> message)
     {
-        EventManager.GetInstance().StopListening((byte)Define.UNITY_EVENT.Login, LoginState);
+        EventManager.GetInstance().StopListening(Define.UNITY_EVENT.Login, LoginState);
         if ((bool)message["result"] == false)
         {
             isLoginClicked = false;

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using SimulFactory.System.Common;
+
 namespace SimulFactory.Manager
 {
     /// <summary>
@@ -9,21 +11,21 @@ namespace SimulFactory.Manager
     /// </summary>
     public class EventManager : MonoSingleton<EventManager>
     {
-        private Dictionary<byte, Action<Dictionary<string, object>>> EventList = new Dictionary<byte, Action<Dictionary<string, object>>>();
+        private Dictionary<Define.UNITY_EVENT, Action<Dictionary<string, object>>> EventList = new Dictionary<Define.UNITY_EVENT, Action<Dictionary<string, object>>>();
 
         /// <summary>
         /// EventListener의 Event 코드에 EventAction 추가
         /// </summary>
         /// <param name="Eventcode"></param>
         /// <param name="action"></param>
-        public void StartListening(byte Eventcode, Action<Dictionary<string, object>> EventAction)
+        public void StartListening(Define.UNITY_EVENT eventcode, Action<Dictionary<string, object>> eventAction)
         {
-            if (EventList.ContainsKey(Eventcode))
+            if (EventList.ContainsKey(eventcode))
             {
-                EventList[Eventcode] += EventAction;
+                EventList[eventcode] += eventAction;
             }
             else
-                EventList.Add(Eventcode, EventAction);
+                EventList.Add(eventcode, eventAction);
         }
 
         /// <summary>
@@ -31,23 +33,23 @@ namespace SimulFactory.Manager
         /// </summary>
         /// <param name="Eventcode"></param>
         /// <param name="action"></param>
-        public void StopListening(byte Eventcode, Action<Dictionary<string, object>> EventAction)
+        public void StopListening(Define.UNITY_EVENT eventcode, Action<Dictionary<string, object>> eventAction)
         {
-            if (EventList.ContainsKey(Eventcode))
-                EventList[Eventcode] -= EventAction;
+            if (EventList.ContainsKey(eventcode))
+                EventList[eventcode] -= eventAction;
             else
-                Debug.Log("EVENT_CODE does not exist");
+                Debug.Log("UNITY_EVENT does not exist");
         }
         /// <summary>
         /// Event 발생
         /// </summary>
         /// <param name="EventCode"></param>
         /// <param name="EventAction"></param>
-        public void TriggerEvent(byte EventCode)
+        public void TriggerEvent(Define.UNITY_EVENT eventcode)
         {
-            if (EventList.ContainsKey(EventCode))
+            if (EventList.ContainsKey(eventcode))
             {
-                EventList[EventCode]?.Invoke(null);
+                EventList[eventcode]?.Invoke(null);
             }
             else
                 Debug.Log("The EventList does not contain EVENT_CODE.");
@@ -58,11 +60,11 @@ namespace SimulFactory.Manager
         /// </summary>
         /// <param name="EventCode"></param>
         /// <param name="EventAction"></param>
-        public void TriggerEvent(byte EventCode, Dictionary<string, object> message = null)
+        public void TriggerEvent(Define.UNITY_EVENT eventcode, Dictionary<string, object> message = null)
         {
-            if (EventList.ContainsKey(EventCode))
+            if (EventList.ContainsKey(eventcode))
             {
-                EventList[EventCode]?.Invoke(message);
+                EventList[eventcode]?.Invoke(message);
             }
             else
                 Debug.Log("The EventList does not contain EVENT_CODE.");

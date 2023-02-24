@@ -1,4 +1,6 @@
 using DG.Tweening;
+using SimulFactory.Manager;
+using SimulFactory.System.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,20 +48,20 @@ namespace SimulFactory.Ui
 
             // On Pointer Up 이벤트
             trigger = this.gameObject.AddComponent<EventTrigger>();
-            EventTrigger.Entry pointerUpEvent = new EventTrigger.Entry()
+            EventTrigger.Entry beginDragEvent = new EventTrigger.Entry()
             {
-                eventID = EventTriggerType.PointerUp,
+                eventID = EventTriggerType.BeginDrag,
             };
-            pointerUpEvent.callback.AddListener(delegate { OnPointerUp();});
-            trigger.triggers.Add(pointerUpEvent);
+            beginDragEvent.callback.AddListener(delegate { BeginDrag();});
+            trigger.triggers.Add(beginDragEvent);
 
             // On Pointer Down 이벤트
-            EventTrigger.Entry pointerDownEvent = new EventTrigger.Entry()
+            EventTrigger.Entry endDragEvent = new EventTrigger.Entry()
             {
-                eventID = EventTriggerType.PointerDown,
+                eventID = EventTriggerType.EndDrag,
             };
-            pointerDownEvent.callback.AddListener(delegate { OnPointerDown(); });
-            trigger.triggers.Add(pointerDownEvent);
+            endDragEvent.callback.AddListener(delegate { EndDrag(); });
+            trigger.triggers.Add(endDragEvent);
         }
         /// <summary>
         /// ScrollRect 초기화
@@ -86,7 +88,7 @@ namespace SimulFactory.Ui
         /// <summary>
         /// 마우스 클릭이 해제될 때 수행될 동작
         /// </summary>
-        public void OnPointerUp()
+        public void EndDrag()
         {
             Vector2 baseValue;
             float childBaseSize;
@@ -124,7 +126,7 @@ namespace SimulFactory.Ui
         /// <summary>
         /// 마우스 클릭이 시작될 때 수행될 동작
         /// </summary>
-        public void OnPointerDown()
+        public void BeginDrag()
         {
             content.DOPause();
         }
