@@ -20,7 +20,9 @@ namespace SimulFactory.Ui.UiElements
         public void SetTimer(float setTime, Action customAction, bool autokill = true)
         {
             this.gameObject.SetActive(true);
+            slicedImage.DORewind();
             this.customAction = customAction;
+            this.autokill = autokill;
             slicedImage.DOFillAmount(0f, setTime - 0.5f).From(1f).SetEase(Ease.Linear).OnComplete(CompleteAction);
         }
         private void CompleteAction()
