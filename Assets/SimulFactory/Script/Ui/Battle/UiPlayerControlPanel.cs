@@ -16,8 +16,14 @@ namespace SimulFactory.Ui.Battle
 
         private List<UiRSPButton> uiRSPButtons;
 
+        //브금
+        public string bgm = "bgm_login";
+
         private void OnEnable()
         {
+            //브금
+            AudioSourceManager.GetInstance().PlayMusic(bgm);
+
             RegistPanelThisPanel();
             GetGameButton();
             StartTimer();

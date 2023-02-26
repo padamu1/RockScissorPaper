@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameButtonContent: {fileID: 2861443760013884691}
   uiCustomTimer: {fileID: 2824059137130688049}
+  bgm: s
 --- !u!1 &6932601600499400851
 GameObject:
   m_ObjectHideFlags: 0

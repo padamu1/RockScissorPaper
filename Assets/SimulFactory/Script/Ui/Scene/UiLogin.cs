@@ -35,7 +35,7 @@ public class UiLogin : MonoBehaviour
     }
     private void OnEnable()
     {
-        AudioSourceManager.GetInstance().PlayMusic("bgm_login");
+        //AudioSourceManager.GetInstance().PlayMusic("bgm_login");
         SocketManager.GetInstance().Init(LoginToServer);
         uiFrame.gameObject.SetActive(false);
     }

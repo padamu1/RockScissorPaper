@@ -29,6 +29,12 @@ namespace SimulFactory.Manager
             GetInstance();
            // this.gameObject.SetActive(false);
         }
+
+        private void OnEnable()
+        {
+            AudioSourceManager.GetInstance().PlayMusic("bgm_login");
+        }
+
         public void Init()
         {
             if(isInit == false)
