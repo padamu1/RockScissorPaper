@@ -16,7 +16,9 @@ public class Pixel : MonoBehaviour
     [SerializeField]
     private FlexibleColorPicker fcp;
     [SerializeField]
-    private Toggle tg;
+    private Toggle tg;  //ColorPipette
+    [SerializeField]
+    private Toggle tg2; //LineDraw
     public Color Col
     {
         get { return col; }
@@ -28,11 +30,9 @@ public class Pixel : MonoBehaviour
 
     void Start()
     {
-        //fcp = GameObject.Find("FlexibleColorPicker").GetComponent<FlexibleColorPicker>();
-        //tg = GameObject.Find("ColorPipette").GetComponent<Toggle>();
         transform.GetComponent<Button>().OnPointerDownAsObservable()
             .Subscribe(_ => {
-                if (tg.isOn)
+                if (tg.isOn && !tg2.isOn)
                 {
                     fcp.SetColorNoAlpha(col);
                     tg.isOn = false;
@@ -44,6 +44,18 @@ public class Pixel : MonoBehaviour
                 }
                     
         });
+
+        transform.GetComponent<Button>().OnPointerEnterAsObservable()
+            .Subscribe(_ =>
+            {
+                if (!Input.GetMouseButton(0)) { return; }
+                if (tg2 == null) { return; }
+                if (tg2.isOn && !tg.isOn)
+                {
+                    transform.GetComponent<Image>().color = ColorBender.color;
+                    col = ColorBender.color;
+                }
+            });
     }
 
 }
