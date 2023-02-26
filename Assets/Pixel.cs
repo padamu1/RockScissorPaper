@@ -32,6 +32,8 @@ public class Pixel : MonoBehaviour
     {
         transform.GetComponent<Button>().OnPointerDownAsObservable()
             .Subscribe(_ => {
+                if (tg == null) { return; }
+                if (tg2 == null) { return; }
                 if (tg.isOn && !tg2.isOn)
                 {
                     fcp.SetColorNoAlpha(col);
@@ -49,6 +51,7 @@ public class Pixel : MonoBehaviour
             .Subscribe(_ =>
             {
                 if (!Input.GetMouseButton(0)) { return; }
+                if (tg == null) { return; }
                 if (tg2 == null) { return; }
                 if (tg2.isOn && !tg.isOn)
                 {
