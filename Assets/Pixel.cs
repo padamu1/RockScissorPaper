@@ -32,7 +32,7 @@ public class Pixel : MonoBehaviour
     {
         transform.GetComponent<Button>().OnPointerDownAsObservable()
             .Subscribe(_ => {
-                if (tg.isOn)
+                if (tg.isOn && !tg2.isOn)
                 {
                     fcp.SetColorNoAlpha(col);
                     tg.isOn = false;
@@ -49,7 +49,8 @@ public class Pixel : MonoBehaviour
             .Subscribe(_ =>
             {
                 if (!Input.GetMouseButton(0)) { return; }
-                if (tg2.isOn)
+                if (tg2 == null) { return; }
+                if (tg2.isOn && !tg.isOn)
                 {
                     transform.GetComponent<Image>().color = ColorBender.color;
                     col = ColorBender.color;
