@@ -16,9 +16,4 @@ public class ColorPipetteManager : MonoBehaviour
         Toggle t = fcp.transform.Find("ColorPipette").GetComponent<Toggle>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
