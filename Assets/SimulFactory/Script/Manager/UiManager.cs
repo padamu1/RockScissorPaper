@@ -35,6 +35,20 @@ namespace SimulFactory.Manager
             AudioSourceManager.GetInstance().PlayMusic("bgm_login");
         }
 
+        public GameObject particle;
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                particle.SetActive(false);
+                Debug.Log("클릭");
+                AudioSourceManager.GetInstance().PlayOnShotEffect("click");
+
+                particle.transform.position = Input.mousePosition;
+                particle.SetActive(true);    
+            }
+        }
+
         public void Init()
         {
             if(isInit == false)
