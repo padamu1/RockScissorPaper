@@ -28,6 +28,7 @@ namespace SimulFactory.Ui.Battle
             GetGameButton();
             StartTimer();
         }
+
         public void RegistPanelThisPanel()
         {
             UiManager.GetInstance().RegistUiPlayerControlPanel(this);
