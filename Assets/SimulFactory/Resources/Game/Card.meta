@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/SimulFactory/Resources/Game/Card.meta
+guid: e8e286b9df4e3cc4da0c4ed9204cdec2
+========
+guid: 00a2a434811c4954faf91d864fc04768
+>>>>>>>> develop:Assets/SimulFactory/Resources/Ui/Buttons.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
